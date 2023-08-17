@@ -1,0 +1,34 @@
+.navbar{
+    background-color: #803232;
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+}
+body{
+    color: white;
+}
+.moving-text-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 50px; 
+  }
+  
+  .moving-text {
+    position: absolute;
+    white-space: nowrap;
+    animation: moveText 15s linear infinite;
+  }
+  
+  @keyframes moveText {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  .mainHomeDiv{
+    /* background-image: url("../public/assets/backgroundMain.jpg");
+    height: fit-content; */
+  }

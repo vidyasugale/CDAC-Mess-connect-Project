@@ -1,9 +1,12 @@
 import './App.css';
-
+import MainHomepg from './components/body/MainHomepg';
+import Navbar from "./components/header/Navbar"
 function App() {
   return (
     <div className="App">
-      <div>Mess connect application</div>
+      
+      <Navbar/>
+      <MainHomepg/>
     </div>
   );
 }
