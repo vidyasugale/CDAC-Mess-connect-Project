@@ -1,13 +1,24 @@
-const MainHomepg = () => {
-    return(
-        <>
-        <div className="mainHomeDiv">
-        <div class="moving-text-container">
-            <p class="moving-text text-dark">Your moving text goes herecxvcxv Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            </p>
-        </div>
+import AboutCard from "./AboutCard";
 
+const MainHomepg = () => {
+    return (
+        <>
+        <div style={{width:"500px",height:"300px"}}>
+            {/* <img src="../assets/5.jpeg" alt="" srcset="" /> */}
         </div>
+            <AboutCard />
+            <div style={{textAlign:"center"}}>
+            <div className="" style={{position:"relative"}}>
+                <div className="largeFont zIndBack headingLarge" style={{left:"15%"}}> 
+                    Today's Menu
+                </div>
+                <div className="smallFont zIndFront headingSmall" style={{left:"15%"}}>
+                    Today's Menu
+                </div>
+            </div>
+            </div>
+            
+
         </>
     );
 }
