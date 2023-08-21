@@ -3,7 +3,7 @@ import Button from "./Button";
 const Navbar = () => {
     return (<>
 
-        <div className="navbar m-1 d-flex text-secondary">
+        <div className="navbar d-flex text-secondary">
             <div className="col-lg-4 col-md-4 col-4">
                 <img className="img-fluid" style={{ width: "20vw" }} src="https://webdesigndev.com/wp-content/uploads/2021/10/banner-image.jpg" alt="" srcset="" />
             </div>
