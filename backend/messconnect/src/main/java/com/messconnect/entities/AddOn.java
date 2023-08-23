@@ -23,4 +23,7 @@ public class AddOn extends BaseEntity {
 	
 	@Column( nullable = false)
     private double price;
+	
+	@Column(columnDefinition="boolean default false")
+	private boolean active;
 }
