@@ -5,7 +5,7 @@ const Navbar = () => {
 
         <div className="navbar d-flex text-secondary">
             <div className="col-lg-4 col-md-4 col-4">
-                <img className="img-fluid" style={{ width: "20vw" }} src="https://webdesigndev.com/wp-content/uploads/2021/10/banner-image.jpg" alt="" srcset="" />
+                <img className="img-fluid" style={{ width: "10vw" }} src="../assets/logo.svg" alt="" srcset="" />
             </div>
 
             <div className="nav_bar  d-flex p-3 p-sm-1 col-lg-8 col-md-8  col-8" >

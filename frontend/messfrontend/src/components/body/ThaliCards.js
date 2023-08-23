@@ -1,9 +1,11 @@
+
 import Card from "./Card";
 
 const ThaliCards = () => {
 
     return (
         <>
+           
            <Card/>
            <Card/>
            <Card/>
