@@ -48,5 +48,8 @@ public class Menu extends BaseEntity{
 	@JoinColumn(name = "main_course_id")
 	private MainCourse mainCourse;
 	
+	@Column(columnDefinition="boolean default false")
+	private boolean active;
+	
 
 }
