@@ -18,12 +18,12 @@ body {
   body{
     background-color: #f9f9f9;
     background-image: url('../public/assets/bg_phone.png');
-    background-size: 100% 50%;
+    background-size: 100% 100%;
   }
 }
 
 .customBtn{
-  background: linear-gradient(to right, #e26d00,#fea755);
+  background: linear-gradient(to right, #e26d00,#FFA958);
   border-radius: 10px;
 }
 
@@ -143,5 +143,26 @@ body {
   box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.2);
 }
 .cardImg{
-  width: 300px;
+  width: 190px;
 }
+
+.registerdiv{
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.2);
+}
+
+.registerHeadOut{
+  left:20%;
+}
+.registerHeadIn{
+  left:30%;
+  top:35px;
+}
+@media (max-width: 800px) {
+  .registerHeadOut{
+    top: 20px;
+    left: 30%;
+  }
+}
+
