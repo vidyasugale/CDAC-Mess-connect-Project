@@ -27,7 +27,7 @@ public class UserController {
 		try {
 			return new ResponseEntity<>(userService.addUser(newUser), HttpStatus.OK);
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("Course not added!!!");
+			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("User not added!!!");
 		}
 	}
 	

@@ -31,7 +31,7 @@ public class RiceController {
 	}
 	
 	@GetMapping("/getallrices")
-	public ResponseEntity<?> getAllSweetDetails (){
+	public ResponseEntity<?> getAllRiceDetails (){
 		try {
 			return new ResponseEntity<>(riceService.getAllRice(), HttpStatus.OK);
 		} catch (Exception e) {
@@ -40,7 +40,7 @@ public class RiceController {
 	}
 	
 	@DeleteMapping("/deleterice/{id}")
-	public ResponseEntity<?> deleteSweetDetails (@PathVariable Long id){
+	public ResponseEntity<?> deleteRiceDetails (@PathVariable Long id){
 		try {
 			return new ResponseEntity<>(riceService.deleteRice(id), HttpStatus.OK);
 		} catch (Exception e) {
