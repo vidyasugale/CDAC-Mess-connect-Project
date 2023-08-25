@@ -1,8 +1,44 @@
+import { useState } from "react";
+import Navbar from "../header/Navbar";
+import axiosConfig from "../../configs/axiosConfig";
+import Button from "../header/Button";
 
 
 const Registerpg = () => {
+
+    const [registerUserData, setRegisterUserData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        role: "",
+        password: "",
+        address: ""
+    })
+
+    const changeHandler = (e) => {
+        const { name, value } = e.target;
+        setRegisterUserData({
+            ...registerUserData,
+            [name]: value
+        })
+        console.log(name, value)
+    }
+    const submitRegister = async (event) => {
+        event.preventDefault();
+        await axiosConfig.get("/getallusers")
+        .then(result => {
+            alert("New User Registration Successful");
+            console.log(result.data);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
+
     return (
         <>
+            <Navbar/>
             <div className="container mt-5 p-3 border registerdiv" style={{ width: "60%" }}>
                 <div className="" style={{ position: "relative", height: "5rem" }}>
                     <div className="largeFont zIndBack registerHeadOut" style={{ left: "20%" }}>
@@ -14,51 +50,55 @@ const Registerpg = () => {
                 </div>
 
                 <form>
-                    <div class="mb-3">
-                        <label for="firstname" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="firstname" aria-describedby="" required="true"/>
+                    <div className="mb-3">
+                        <label htmlFor="firstname" className="form-label">First Name</label>
+                        <input type="text" name="firstName" className="form-control" id="firstname" aria-describedby="" required={true} onChange={(e) => e ? changeHandler(e) : ""} />
 
                     </div>
-                    <div class="mb-3">
-                        <label for="lastname" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="lastname" aria-describedby="" />
+                    <div className="mb-3">
+                        <label htmlFor="lastname" className="form-label">Last Name</label>
+                        <input type="text" name="lastName" className="form-control" id="lastname" aria-describedby="" onChange={(e) => e ? changeHandler(e) : ""}/>
 
                     </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required="true"/>
+                    <div className="mb-3">
+                        <label htmlFor="email" className="form-label">Email address</label>
+                        <input type="email" name="email" className="form-control" id="email" aria-describedby="emailHelp" required={true} onChange={(e) => e ? changeHandler(e) : ""}/>
 
                     </div>
-                    <div class="row g-3 align-items-center">
-                        <div class="col-auto">
-                            <label for="password" class="col-form-label">Password</label>
+                    <div className="row g-3 align-items-center">
+                        <div className="col-auto">
+                            <label htmlFor="password" className="col-form-label">Password</label>
                         </div>
-                        <div class="col-auto">
-                            <input type="password" id="password" class="form-control" aria-describedby="passwordHelpInline" required="true" />
+                        <div className="col-auto">
+                            <input type="password" name="password" id="password" className="form-control" aria-describedby="passwordHelpInline" required={true} onChange={(e) => e ? changeHandler(e) : ""}/>
                         </div>
-                        <div class="col-auto">
-                            <span id="passwordHelpInline" class="form-text">
+                        <div className="col-auto">
+                            <span id="passwordHelpInline" className="form-text">
                                 Must be 8-20 characters long.
                             </span>
                         </div>
                     </div>
-                    <div class="input-group mt-3">
-                        <span class="input-group-text">Address</span>
-                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                    <div className="mb-3">
+                        <label htmlFor="address" className="form-label">address</label>
+                        <textarea className="form-control" id="address" rows="3" name="address" onChange={(e) => e ? changeHandler(e) : ""}></textarea>
                     </div>
-                    <div class="mb-3">
-                        <label for="mobile" class="form-label">Mobile no</label>
-                        <input type="number" class="form-control" id="mobile" aria-describedby="" required="true" />
+                    <div className="mb-3">
+                        <label htmlFor="mobile" className="form-label">Mobile no</label>
+                        <input name="phone" type="number" className="form-control" id="mobile" aria-describedby="" required={true} onChange={(e) => e ? changeHandler(e) : ""}/>
                     </div>
-                    <div class="">
-                        <label for="role" class="form-label">Role</label>
-                        <select class="form-select" id="role" required="true" >
+                    <div className="">
+                        <label htmlFor="role" className="form-label">Role</label>
+                        <select name="role" className="form-select" id="role" required={true} onChange={(e) => e ? changeHandler(e) : ""}>
                             <option selected disabled value="">-- Select role --</option>
-                            <option>Admin</option>
-                            <option>Customer</option>
+                            <option value="ROLE_ADMIN">Admin</option>
+                            <option value="ROLE_CUSTOMER" >Customer</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary" >Submit</button>
+                    <Button classname="btn btn-md mt-3  border" btnText="Register" onClick={submitRegister}/>
+                    <button type="button" onClick={submitRegister}>Register</button>
+                    <div>OR</div>
+                    <Button classname="btn btn-md mt-3  border" btnText="Login" onClick={submitRegister}/>
+                    
                 </form>
             </div>
 

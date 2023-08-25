@@ -11,7 +11,7 @@ const Herosection = () => {
                 </div>
                 <div className="mt-3 d-flex align-items-center flex-wrap">
                     <div className=" col-lg-8 col-md-8 col-12">
-                    <img src="../assets/thali.png" alt="" srcset="" className="thaliImg" />
+                    <img src="../assets/thali.png" alt="" srcSet="" className="thaliImg" />
                     </div>
                     
                     <div className="col-lg-4 col-md-4 col-12 justify-content-end">
