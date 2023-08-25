@@ -1,31 +1,39 @@
-import Navbar from "../header/Navbar"
-
+import Footer from "../footer/Footer";
+import Navbar from "../header/Navbar";
+import "../stylesheets/aboutcard.css";
 const Contactus = () => {
-    
+
     return (
-        <div className="topHalf">
-            <Navbar />
-            <div style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
-                <div style={{ position: "relative" }}>
-                    <div className="largeFont zIndBack headingLarge" style={{ position: "absolute", left: "50%", transform: "translateX(-50%)"}}>
-                        Contact Us
-                    </div>
-                    <div className="smallFont zIndFront headingSmall" style={{ position: "absolute", left: "50%", transform: "translateX(-50%)" , fontWeight:"bold" }}>
-                        Contact Us
+        <>
+        <Navbar />
+            <div className="container" style={{height:"20rem"}}>
+                
+                <div className="container box box1 zIndBack" style={{transform:"translateX(12%)",height:"20rem"}}>
+                        <div className=" headingBox">
+                            <div className="headingLarge largeFont zIndBack" style={{transform: "translateX(-50%, -50%)"}}>
+                                Contact Us
+                            </div>
+                            <div className="headingSmall smallFont zIndFront">
+                                Contact Us
+                            </div>
+                        </div>
+                        <div className="container aboutDetails p-1">
+                            <div style={{ marginBottom: "20px", fontSize: "20px" }}>
+                                Phone No.:    9881474580
+                            </div>
+                            <div style={{ fontSize: "20px" }}>
+                                Email at :    messconnect@gmail.com
+                            </div>
+                        </div>
+
                     </div>
                 
-                </div>
-            </div>
-            <div style={{textAlign: "center" }}>
-                    <div style={{marginBottom:"20px", fontSize:"20px"}}>
-                        Phone No.:    9881474580
-                    </div>
-                    <div style={{ fontSize:"20px"}}>
-                        Email at :    mymess2023@gmail.com 
-                    </div>
 
-                    </div>
-        </div>
+            </div>
+            <Footer/>
+        </>
+            
+        
     );
 }
 

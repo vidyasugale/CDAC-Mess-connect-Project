@@ -56,11 +56,14 @@ const ThaliCards = () => {
                     </div>
                 </div>
             </div>
+            <div className="container">
             {cardDetails && cardDetails.map(data => {
                 return (
                     <Card key={data.key} cardData={data} />
                 )
             })}
+            </div>
+
         </>
 
     )

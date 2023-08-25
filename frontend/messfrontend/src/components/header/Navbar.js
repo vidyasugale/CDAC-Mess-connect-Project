@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Button from "./Button";
+import "../stylesheets/navbar.css";
 
 const Navbar = () => {
     return (<>
@@ -7,7 +8,7 @@ const Navbar = () => {
         <div className="navbar d-flex text-secondary mb-1">
             <div className="col-lg-4 col-md-4 col-12 ">
                 <Link to="/">
-                <img style={{ width: "10vw",alignSelf:"center"}} src="../assets/newlogo.svg" alt="logo" srcSet="" />
+                <img style={{ width: "10vw", marginLeft: "10px"}} src="../assets/newlogo.svg" alt="logo" srcSet="" />
                 </Link>
                 
             </div>
@@ -22,7 +23,10 @@ const Navbar = () => {
                     <Button classname="btn btn-md text-secondary" btnText="REGISTER" />
                     </Link>
                     
+                    <Link to="/About">
                     <Button classname="btn btn-md text-secondary" btnText="ABOUT US" />
+                    </Link>
+
                     <Link to="/Contact">
                     <Button classname="btn btn-md text-secondary" btnText="CONTACT" />
                     </Link>

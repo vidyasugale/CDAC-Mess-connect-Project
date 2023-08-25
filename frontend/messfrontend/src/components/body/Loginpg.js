@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import Navbar from '../header/Navbar';
 import Button from '../header/Button';
+import { Link } from 'react-router-dom';
+import "../stylesheets/loginpg.css";
 const Loginpg = () => {
-
+  
 
   //   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -12,9 +14,7 @@ const Loginpg = () => {
     // console.log('Logging in with:', username, email, password);
   };
 
-  const handleRegister = () => {
-    // console.log('Registering:', username, email, password);
-  };
+
 
   return (
     <>
@@ -23,10 +23,10 @@ const Loginpg = () => {
 
         <div className="" style={{ position: "relative", height: "5rem" }}>
           <div className="largeFont zIndBack registerHeadOut" style={{ left: "20%" }}>
-            Log-in
+            Login
           </div>
           <div className="smallFont zIndFront registerHeadIn" style={{}}>
-            Log-in
+            Login
           </div>
         </div>
 
@@ -48,9 +48,12 @@ const Loginpg = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <Button classname="btn btn-md mt-3 border" btnText="Login" onClick={handleLogin} />
+        <Button classname="btn btn-md  customBtn text-light" btnText="Login" onClick={handleLogin} />
         <p>OR</p>
-        <Button classname="btn btn-md border" btnText="Register" onClick={handleRegister} />
+        <Link to="/Register">
+        <Button classname="btn btn-md  customBtn text-light" btnText="Register"  />
+        </Link>
+        
       </div>
     </>
   );

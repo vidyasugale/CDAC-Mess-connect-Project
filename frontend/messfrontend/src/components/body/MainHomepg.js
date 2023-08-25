@@ -1,10 +1,11 @@
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
-import AboutCard from "./AboutCard";
 import Herosection from "./Herosection";
 import ThaliCards from "./ThaliCards";
 import Registerpg from "./Registerpg";
 import Loginpg from "./Loginpg";
-import Contactus from "./Contactus";
+import Contactus from "./ContactUs";
+import Footer from './../footer/Footer';
+import AboutUs from "./AboutUs";
 
 const MainHomepg = () => {
     return (
@@ -15,19 +16,20 @@ const MainHomepg = () => {
                         <>
                             <Herosection />
 
-                            <AboutCard />
+                            
 
 
-                            <Link to="/Register">
+                            <Link to="/Login">
                             <ThaliCards />
                             </Link>
-                            
+                            <Footer/>
                         </>
                     } />
                     
                     <Route path="/Register" element={<Registerpg />}/>
                     <Route path="/Login" element={<Loginpg/>}/>
                     <Route path="/Contact" element={<Contactus/>}/>
+                    <Route path="/About" element={<AboutUs/>} />
                     
                     
                 </Routes>

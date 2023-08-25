@@ -1,42 +1,38 @@
 import Button from "../header/Button";
 import Navbar from "../header/Navbar";
-
+import "../stylesheets/herosection.css";
 const Herosection = () => {
-    return(
+    return (
         <>
-        <div className="topHalf">
+            
                 <Navbar />
-                <div className="container" style={{ textAlign: "end", color: "#d66f10", fontFamily: "satisfy" }}>
-                    <h3 style={{marginRight:"10%",fontFamily:"brush-script-std"}}>"Effortless Meal Management" By MessConnect</h3>
+                <div className="container headline" style={{}}>
+                    <h3 style={{}}>"Effortless Meal Management" By MessConnect</h3>
                 </div>
                 <div className="mt-3 d-flex align-items-center flex-wrap">
-                    <div className=" col-lg-8 col-md-8 col-12">
-                    <img src="../assets/thali.png" alt="" srcSet="" className="thaliImg" />
+                    <div className=" col-lg-7 col-md-7 col-12">
+                        <img src="../assets/thali_splash.png" alt="" srcSet="" className="thaliImg" />
                     </div>
-                    
-                    <div className="col-lg-4 col-md-4 col-12 justify-content-end">
-                        <div style={{fontFamily:"Poppins",margin:"10px"}}>
 
-                        
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero quibusdam voluptates magni velit sequi autem dolor consequuntur, placeat error illum aperiam ipsa  <br /><br />
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero quibusdam voluptates magni
-                       
+                    <div className="col-lg-5 col-md-5 col-12 justify-content-end">
+                        <div style={{ margin: "10px" }}>
+
+
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero quibusdam voluptates magni velit sequi autem dolor consequuntur, placeat error illum aperiam ipsa  <br /><br />
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero quibusdam voluptates magni
+
                         </div>
                         <div className="d-flex justify-content-center m-3">
                             <a href="#menuCards">
-                            <Button classname="btn btn-md ps-3 pe-3 me-5 customBtn text-light" btnText="MENU"/>
+                                <Button classname="btn btn-md ps-3 pe-3 me-5 customBtn text-light" btnText="MENU" />
                             </a>
-                            
-                            <Button classname="btn btn-md ps-3 pe-3 me-2 customBtn text-light" btnText="REGISTER"/>
-                        
-                            
-                            
-                            
+
+                            <Button classname="btn btn-md ps-3 pe-3 me-2 customBtn text-light" btnText="REGISTER" />
                         </div>
 
                     </div>
                 </div>
-            </div>
+            
         </>
     )
 }

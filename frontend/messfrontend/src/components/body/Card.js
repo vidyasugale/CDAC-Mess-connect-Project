@@ -1,3 +1,4 @@
+import "../stylesheets/menucard.css";
 const Card = ({cardData}) => {
     
     return (

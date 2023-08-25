@@ -1,3 +1,4 @@
+import "../stylesheets/button.css";
 const Button = ({ btnText, classname}) => {
     return (
         <>

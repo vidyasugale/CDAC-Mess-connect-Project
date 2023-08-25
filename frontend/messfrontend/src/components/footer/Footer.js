@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import "../stylesheets/footer.css";
 const Footer = () => {
   return (
     <>
@@ -6,32 +8,51 @@ const Footer = () => {
           <img style={{ width: "10vw", alignSelf: "left" }} src="../assets/newlogo.svg" alt="logo" srcset="" />
         </div>
 
-       <div className="social-links col-lg-4 col-md-4 col-sm-4 col-4 justify-content-center">
-        <ul className="nav justify-content-center">
-          <li class="nav-item">
-            <a class="nav-link " href="#"><i className="fab fa-instagram" style={{ color: "#e26d00" }} ></i></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i className="fab fa-twitter" style={{ color: "#e26d00" }}></i></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fa-brands fa-square-facebook" style={{ color: "#e26d00" }}></i></a>
-          </li>
-        </ul>
+        <div className="social-links col-lg-4 col-md-4 col-sm-4 col-4 justify-content-center">
+          <ul className="nav justify-content-center">
+            <li className="nav-item">
+              <a className="nav-link " href="instagram.com"><i className="fab fa-instagram" style={{ color: "#e26d00" }} ></i></a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="twitter.com"><i className="fab fa-twitter" style={{ color: "#e26d00" }}></i></a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="facebook.com"><i className="fa-brands fa-square-facebook" style={{ color: "#e26d00" }}></i></a>
+            </li>
+          </ul>
         </div>
 
-<div className="footer-nav col-lg-4 col-md-4 col-sm-4 col-4">
-        <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link" href="#">HOME</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">ABOUT US</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">CONTACT US</a>
-        </li>
-        </ul>
+        <div className=" col-lg-4 col-md-4 col-sm-4 col-4">
+          <ul className="nav flex-column">
+            <li className="nav-item">
+              <Link to="/">
+                <span className="nav-link footerNav">
+                  HOME
+                </span>
+
+              </Link>
+
+            </li>
+            <li className="nav-item">
+              <Link to="/About">
+                <span className="nav-link footerNav">
+                  ABOUT US
+                </span>
+
+              </Link>
+
+            </li>
+            <li className="nav-item">
+              <Link to="/Contact">
+
+                <span className="nav-link footerNav">
+                  CONTACT US
+                </span>
+
+              </Link>
+
+            </li>
+          </ul>
         </div>
 
       </div>
