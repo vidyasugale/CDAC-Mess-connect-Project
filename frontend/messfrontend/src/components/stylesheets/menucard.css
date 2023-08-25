@@ -1,0 +1,10 @@
+.myCard{
+    display: inline-block;
+    margin: 2vw 2vw;
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.2);
+  }
+  .cardImg{
+    width: 190px;
+  }

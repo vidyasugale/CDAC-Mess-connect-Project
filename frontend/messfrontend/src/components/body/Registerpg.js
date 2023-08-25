@@ -2,7 +2,8 @@ import { useState } from "react";
 import Navbar from "../header/Navbar";
 import axiosConfig from "../../configs/axiosConfig";
 import Button from "../header/Button";
-
+import { Link } from 'react-router-dom';
+import "../stylesheets/registerpg.css";
 
 const Registerpg = () => {
 
@@ -15,9 +16,11 @@ const Registerpg = () => {
         password: "",
         address: ""
     })
+    // const[isValid,setIsValid] = useState(false);
 
     const changeHandler = (e) => {
         const { name, value } = e.target;
+        // setIsValid(/^[a-zA-Z]+$/.test(value))
         setRegisterUserData({
             ...registerUserData,
             [name]: value
@@ -26,7 +29,7 @@ const Registerpg = () => {
     }
     const submitRegister = async (event) => {
         event.preventDefault();
-        await axiosConfig.get("/getallusers")
+        await axiosConfig.post("/signup",registerUserData)
         .then(result => {
             alert("New User Registration Successful");
             console.log(result.data);
@@ -94,10 +97,15 @@ const Registerpg = () => {
                             <option value="ROLE_CUSTOMER" >Customer</option>
                         </select>
                     </div>
-                    <Button classname="btn btn-md mt-3  border" btnText="Register" onClick={submitRegister}/>
-                    <button type="button" onClick={submitRegister}>Register</button>
+                    <Button classname="btn btn-md ps-3 pe-3 me-5 customBtn text-light" btnText="Register" onClick={submitRegister}/>
                     <div>OR</div>
-                    <Button classname="btn btn-md mt-3  border" btnText="Login" onClick={submitRegister}/>
+                    <Link to="/Login">
+                    <button type="button" onClick={submitRegister}>Register</button>
+                    <Button classname="btn btn-md ps-3 pe-3 me-5 customBtn text-light" btnText="Login" onClick={submitRegister}/>
+                    </Link>
+                    
+                    
+                    
                     
                 </form>
             </div>
