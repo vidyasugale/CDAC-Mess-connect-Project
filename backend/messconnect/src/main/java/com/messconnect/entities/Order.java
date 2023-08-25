@@ -1,6 +1,7 @@
 package com.messconnect.entities;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -38,9 +39,13 @@ public class Order extends BaseEntity{
 	@Column(nullable = false,columnDefinition = "double default 0",name = "total_amount")
 	private double totalAmount;
 
+	@Column(nullable = false,name = "order_date")
+	@CreationTimestamp
+	private LocalDate orderDate;
+	
 	@Column(nullable = false,name = "order_time")
 	@CreationTimestamp
-	private LocalDateTime orderTime;
+	private LocalTime orderTime;
 	
 
 }
