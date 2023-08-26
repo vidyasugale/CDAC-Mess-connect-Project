@@ -1,0 +1,42 @@
+.menu-container {
+    font-family: Poppins;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 110vh;
+    color: #e26d00; 
+  }
+
+  .menu-border{
+    border: 1px solid #120101;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+  }
+
+  .menu-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+  
+  .menu-box {
+    flex: 1;
+    min-width: 100px;
+    height: 80px;
+    background-color: #f0f0f0;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: 4px 4px 4px rgb(61, 24, 1);
+    color: #e26d00;
+  }
+
+  

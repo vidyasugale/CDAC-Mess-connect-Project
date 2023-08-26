@@ -3,7 +3,7 @@ import Herosection from "./Herosection";
 import ThaliCards from "./ThaliCards";
 import Registerpg from "./Registerpg";
 import Loginpg from "./Loginpg";
-import Contactus from "./ContactUs";
+import Contactus from "./Contactus";
 import Footer from './../footer/Footer';
 import AboutUs from "./AboutUs";
 

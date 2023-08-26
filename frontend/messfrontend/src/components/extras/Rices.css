@@ -1,0 +1,65 @@
+.rice-component {
+  text-align: center;
+  font-family: Poppins;
+  display:flex;
+  color: #e26d00;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.riceHeader {
+  text-align: center;
+  display: flex;
+  color: #e26d00;
+}
+
+
+.rice-form {
+  margin-bottom: 20px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+
+
+.rice-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+button {
+  min-width: 40px;
+  height: 30px;
+  background-color: #f0f0f0;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+  box-sizing: border-box;
+  box-shadow: 4px 4px 4px rgb(61, 24, 1);
+}
+
+.rice-tableHead {
+  align-items: center;
+  border-bottom: #552a01;
+  padding: 5px;
+  text-align: center;
+  border-bottom: 1px solid;
+  justify-content: center;
+  align-items: center;
+}
+.rice-table {
+  align-items: center;
+  border-bottom: #e26d00;
+  padding: 5px;
+  text-align: center;
+  border-bottom: 1px solid;
+  justify-content: center;
+  align-items: center;
+}
