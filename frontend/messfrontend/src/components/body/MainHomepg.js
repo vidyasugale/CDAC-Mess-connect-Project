@@ -3,7 +3,7 @@ import Herosection from "./Herosection";
 import ThaliCards from "./ThaliCards";
 import Registerpg from "./Registerpg";
 import Loginpg from "./Loginpg";
-import Contactus from "./Contactus";
+import ContactUs from "./ContactUs";
 import Footer from './../footer/Footer';
 import AboutUs from "./AboutUs";
 
@@ -28,7 +28,7 @@ const MainHomepg = () => {
                     
                     <Route path="/Register" element={<Registerpg />}/>
                     <Route path="/Login" element={<Loginpg/>}/>
-                    <Route path="/Contact" element={<Contactus/>}/>
+                    <Route path="/Contact" element={<ContactUs/>}/>
                     <Route path="/About" element={<AboutUs/>} />
                     
                     
