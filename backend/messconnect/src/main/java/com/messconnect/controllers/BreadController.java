@@ -20,35 +20,23 @@ import com.messconnect.services.BreadService;
 @CrossOrigin(origins = "http://localhost:3000")
 public class BreadController {
 
-	
 	@Autowired
 	private BreadService breadService;
-	
+
 	@PostMapping("/addbread")
 	public ResponseEntity<?> addBread(@RequestBody Bread newBread) {
-		try {
-			return new ResponseEntity<>(breadService.addNewBread(newBread), HttpStatus.OK);
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("Bread not added!!!");
-		}
+		return new ResponseEntity<>(breadService.addNewBread(newBread), HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/getallbreads")
-	public ResponseEntity<?> getAllBreadDetails (){
-		try {
-			return new ResponseEntity<>(breadService.getAllBreads(), HttpStatus.OK);
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("Bread not found!!!");
-		}	
+	public ResponseEntity<?> getAllBreadDetails() {
+		return new ResponseEntity<>(breadService.getAllBreads(), HttpStatus.OK);
 	}
-	
+
 	@DeleteMapping("/deletebread/{id}")
-	public ResponseEntity<?> deletebreadDetails (@PathVariable Long id){
-		try {
-			return new ResponseEntity<>(breadService.deleteBread(id), HttpStatus.OK);
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("Bread not found!!!");
-		}	
+	public ResponseEntity<?> deletebreadDetails(@PathVariable Long id) {
+		return new ResponseEntity<>(breadService.deleteBread(id), HttpStatus.OK);
+
 	}
-	
+
 }

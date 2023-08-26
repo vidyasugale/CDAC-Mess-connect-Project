@@ -15,41 +15,27 @@ import org.springframework.web.bind.annotation.RestController;
 import com.messconnect.entities.Sweet;
 import com.messconnect.services.SweetService;
 
-
-
 @RestController
 @RequestMapping("/sweet")
 @CrossOrigin(origins = "http://localhost:3000")
 public class SweetController {
-	
+
 	@Autowired
 	private SweetService sweetService;
-	
+
 	@PostMapping("/addsweet")
 	public ResponseEntity<?> addSweet(@RequestBody Sweet newSweet) {
-		try {
-			return new ResponseEntity<>(sweetService.addNewSweet(newSweet), HttpStatus.OK);
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("Sweet not added!!!");
-		}
+		return new ResponseEntity<>(sweetService.addNewSweet(newSweet), HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/getallsweets")
-	public ResponseEntity<?> getAllSweetDetails (){
-		try {
-			return new ResponseEntity<>(sweetService.getAllSweets(), HttpStatus.OK);
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("Sweets not found!!!");
-		}	
+	public ResponseEntity<?> getAllSweetDetails() {
+		return new ResponseEntity<>(sweetService.getAllSweets(), HttpStatus.OK);
 	}
-	
+
 	@DeleteMapping("/deletesweet/{id}")
-	public ResponseEntity<?> deleteSweetDetails (@PathVariable Long id){
-		try {
-			return new ResponseEntity<>(sweetService.deleteSweet(id), HttpStatus.OK);
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("Sweets not found!!!");
-		}	
+	public ResponseEntity<?> deleteSweetDetails(@PathVariable Long id) {
+		return new ResponseEntity<>(sweetService.deleteSweet(id), HttpStatus.OK);
 	}
 
 }

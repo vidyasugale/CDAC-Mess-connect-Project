@@ -17,60 +17,39 @@ import com.messconnect.dto.UserDTO;
 import com.messconnect.entities.User;
 import com.messconnect.services.UserService;
 
-import ch.qos.logback.core.ConsoleAppender;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/user")
 @CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private ModelMapper mapper;
-	
-	
+
 	@PostMapping("/signup")
-	public ResponseEntity<?> signUp(@RequestBody  UserDTO newUserDTO) {
-		User newUser=mapper.map(newUserDTO, User.class);
-		System.out.println(newUser);
-		try {
-			return new ResponseEntity<>(userService.addUser(newUser), HttpStatus.OK);
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("User not added!!!");
-		}
+	public ResponseEntity<?> signUp(@RequestBody @Valid UserDTO newUserDTO) {
+		User newUser = mapper.map(newUserDTO, User.class);
+		return new ResponseEntity<>(userService.addUser(newUser), HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/getuser/{userId}")
-	public ResponseEntity<?> getDetails (@PathVariable Long userId){
-		try {
-			return new ResponseEntity<>(userService.getUser(userId), HttpStatus.OK);
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("User not found!!!");
-		}
-		
+	public ResponseEntity<?> getDetails(@PathVariable Long userId) {
+		return new ResponseEntity<>(userService.getUser(userId), HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/getallusers")
-	public ResponseEntity<?> getAllUserDetails (){
-		try {
-			return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("User not found!!!");
-		}
-		
-	}	
-	
-	@DeleteMapping("/deleteuser/{id}")
-	public ResponseEntity<?> deleteUserDetails (@PathVariable Long id){
-		try {
-			return new ResponseEntity<>(userService.deleteUser(id), HttpStatus.OK);
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(e.getMessage());
-		}	
+	public ResponseEntity<?> getAllUserDetails() {
+		return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
 	}
-	
-	
+
+	@DeleteMapping("/deleteuser/{id}")
+	public ResponseEntity<?> deleteUserDetails(@PathVariable Long id) {
+		return new ResponseEntity<>(userService.deleteUser(id), HttpStatus.OK);
+
+	}
+
 }

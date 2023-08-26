@@ -19,36 +19,24 @@ import com.messconnect.services.RiceService;
 @RequestMapping("/rice")
 @CrossOrigin(origins = "http://localhost:3000")
 public class RiceController {
-	
+
 	@Autowired
 	private RiceService riceService;
-	
+
 	@PostMapping("/addrice")
 	public ResponseEntity<?> addRice(@RequestBody Rice newRice) {
-		try {
-			return new ResponseEntity<>(riceService.addNewRice(newRice), HttpStatus.OK);
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("Rice not added!!!");
-		}
+		return new ResponseEntity<>(riceService.addNewRice(newRice), HttpStatus.OK);
+
 	}
-	
+
 	@GetMapping("/getallrices")
-	public ResponseEntity<?> getAllRiceDetails (){
-		try {
-			return new ResponseEntity<>(riceService.getAllRice(), HttpStatus.OK);
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("Rice not found!!!");
-		}	
+	public ResponseEntity<?> getAllRiceDetails() {
+		return new ResponseEntity<>(riceService.getAllRice(), HttpStatus.OK);
 	}
-	
+
 	@DeleteMapping("/deleterice/{id}")
-	public ResponseEntity<?> deleteRiceDetails (@PathVariable Long id){
-		try {
-			return new ResponseEntity<>(riceService.deleteRice(id), HttpStatus.OK);
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("Rice not found!!!");
-		}	
+	public ResponseEntity<?> deleteRiceDetails(@PathVariable Long id) {
+		return new ResponseEntity<>(riceService.deleteRice(id), HttpStatus.OK);
 	}
-	
 
 }
