@@ -19,35 +19,24 @@ import com.messconnect.services.CurryService;
 @RequestMapping("/curry")
 @CrossOrigin(origins = "http://localhost:3000")
 public class CurryController {
-	
+
 	@Autowired
 	private CurryService curryService;
-	
+
 	@PostMapping("/addcurry")
 	public ResponseEntity<?> addCurry(@RequestBody Curry newCurry) {
-		try {
-			return new ResponseEntity<>(curryService.addNewRice(newCurry), HttpStatus.OK);
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("Curry not added!!!");
-		}
+		return new ResponseEntity<>(curryService.addNewRice(newCurry), HttpStatus.OK);
+
 	}
-	
+
 	@GetMapping("/getallcuries")
-	public ResponseEntity<?> getAllSweetDetails (){
-		try {
-			return new ResponseEntity<>(curryService.getAllCuries(), HttpStatus.OK);
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("Curry not found!!!");
-		}	
+	public ResponseEntity<?> getAllSweetDetails() {
+		return new ResponseEntity<>(curryService.getAllCuries(), HttpStatus.OK);
 	}
-	
+
 	@DeleteMapping("/deletecurry/{id}")
-	public ResponseEntity<?> deleteSweetDetails (@PathVariable Long id){
-		try {
-			return new ResponseEntity<>(curryService.deleteCurry(id), HttpStatus.OK);
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("Curry not found!!!");
-		}	
+	public ResponseEntity<?> deleteSweetDetails(@PathVariable Long id) {
+		return new ResponseEntity<>(curryService.deleteCurry(id), HttpStatus.OK);
 	}
 
 }

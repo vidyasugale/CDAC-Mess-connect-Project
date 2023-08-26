@@ -19,36 +19,25 @@ import com.messconnect.services.MainCourseService;
 @RequestMapping("/maincourse")
 @CrossOrigin(origins = "http://localhost:3000")
 public class MainCourseController {
-	
+
 	@Autowired
 	private MainCourseService mainCourseService;
-	
+
 	@PostMapping("/addmaincourse")
 	public ResponseEntity<?> addMainCourse(@RequestBody MainCourse newMainCourse) {
-		try {
-			return new ResponseEntity<>(mainCourseService.addNewMainCourse(newMainCourse), HttpStatus.OK);
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("Rice not added!!!");
-		}
+		return new ResponseEntity<>(mainCourseService.addNewMainCourse(newMainCourse), HttpStatus.OK);
+
 	}
-	
+
 	@GetMapping("/getallmaincourses")
-	public ResponseEntity<?> getAllMainCourseDetails (){
-		try {
-			return new ResponseEntity<>(mainCourseService.getAllMainCourse(), HttpStatus.OK);
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("MainCourse not found!!!");
-		}	
+	public ResponseEntity<?> getAllMainCourseDetails() {
+		return new ResponseEntity<>(mainCourseService.getAllMainCourse(), HttpStatus.OK);
+
 	}
-	
+
 	@DeleteMapping("/deletemaincourse/{id}")
-	public ResponseEntity<?> deleteMainCourseDetails (@PathVariable Long id){
-		try {
-			return new ResponseEntity<>(mainCourseService.deleteMainCourse(id), HttpStatus.OK);
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("MainCourse not found!!!");
-		}	
+	public ResponseEntity<?> deleteMainCourseDetails(@PathVariable Long id) {
+		return new ResponseEntity<>(mainCourseService.deleteMainCourse(id), HttpStatus.OK);
 	}
-	
 
 }

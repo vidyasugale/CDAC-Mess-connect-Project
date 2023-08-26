@@ -19,26 +19,17 @@ import jakarta.validation.Valid;
 public class HomeController {
 	@Autowired
 	private HomeService homeService;
-	
+
 	@PostMapping("/signin")
 	public ResponseEntity<?> empLogin(@RequestBody @Valid SigninUser request) {
-		try {
-			return new ResponseEntity<>(homeService.authenticate(request), HttpStatus.OK);
-		} catch (RuntimeException e) {
-			System.out.println(e);
-			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(e.getMessage());
-		}
-	}
-	
-	@GetMapping("/home")
-	public ResponseEntity<?> homeData() {
-			try {
-				return new ResponseEntity<>(homeService.getHomeData(), HttpStatus.OK);
-			} catch (RuntimeException e) {
-				System.out.println(e);
-				return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(e.getMessage());
-			}
-		}
-		
+		return new ResponseEntity<>(homeService.authenticate(request), HttpStatus.OK);
+
 	}
 
+	@GetMapping("/home")
+	public ResponseEntity<?> homeData() {
+		return new ResponseEntity<>(homeService.getHomeData(), HttpStatus.OK);
+
+	}
+
+}

@@ -15,39 +15,42 @@ import com.messconnect.repositories.UserRepository;
 
 @Service
 @Transactional
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private BalanceRepository balanceRepository;
 
 	/*
 	 * Adds user
+	 * 
 	 * @param newUser
+	 * 
 	 * @return
+	 * 
 	 * @throws
 	 */
 	@Override
 	public String addUser(User newUser) {
-		User persistentUser=userRepository.save(newUser);
-		if(persistentUser.getRole()==Role.valueOf("ROLE_CUSTOMER")) {
-		balanceRepository.save(new Balance(persistentUser,0.0));
+		User persistentUser = userRepository.save(newUser);
+		if (persistentUser.getRole() == Role.valueOf("ROLE_CUSTOMER")) {
+			balanceRepository.save(new Balance(persistentUser, 0.0));
 		}
-		return persistentUser.getFirstName() + "added to database!!!";
+		return persistentUser.getFirstName() + " added to database!!!";
 	}
 
 	@Override
 	public User getUser(Long userId) {
-		User user=userRepository.findById(userId)
+		User user = userRepository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("Invalid user id !!!!!"));
 		return user;
-		}
+	}
 
 	@Override
 	public List<User> getAllUsers() {
-	    List<User> uList=userRepository.findAll();
+		List<User> uList = userRepository.findAll();
 		return uList;
 	}
 
@@ -56,5 +59,5 @@ public class UserServiceImpl implements UserService{
 		userRepository.deleteById(id);
 		return "User deleted Successfully!!";
 	}
-	
+
 }
