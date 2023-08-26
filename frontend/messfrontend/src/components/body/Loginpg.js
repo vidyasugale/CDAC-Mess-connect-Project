@@ -1,18 +1,42 @@
 import React, { useState } from 'react';
 import Navbar from '../header/Navbar';
 import Button from '../header/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "../stylesheets/loginpg.css";
+import axiosConfig from '../../configs/axiosConfig';
 const Loginpg = () => {
-  
 
-  //   const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    // console.log('Logging in with:', username, email, password);
-  };
+  const [loginUserData, setLoginUserData] = useState({
+    email: "",
+    password: ""
+  })
+  const navigate = useNavigate();
+
+  const changeHandler = (e) => {
+    const { name, value } = e.target;
+    // setIsValid(/^[a-zA-Z]+$/.test(value))
+    setLoginUserData({
+      ...loginUserData,
+      [name]: value
+    })
+    console.log(name, value);
+    
+  }
+
+
+  const handleLogin = async () => {
+    try {
+      const response = await axiosConfig.post("/signin",loginUserData);
+      const data = response.data;
+      console.log(data);
+      navigate('/customer/home', { state: { data } });
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
 
 
 
@@ -35,8 +59,9 @@ const Loginpg = () => {
           <input
             type="email"
             id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={loginUserData.email}
+            name='email'
+            onChange={(e) => changeHandler(e)}
           />
         </div>
         <div className="input-group">
@@ -44,16 +69,19 @@ const Loginpg = () => {
           <input
             type="password"
             id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            
+            name='password'
+            onChange={(e) => changeHandler(e)}
           />
         </div>
-        <Button classname="btn btn-md  customBtn text-light" btnText="Login" onClick={handleLogin} />
-        <p>OR</p>
-        <Link to="/Register">
-        <Button classname="btn btn-md  customBtn text-light" btnText="Register"  />
-        </Link>
+
+        <Button classname="btn btn-md  customBtn text-light" btnText="Login" clickType="button" onClick={handleLogin}/>
         
+        <p>OR</p>
+        <Link to="/register">
+          <Button classname="btn btn-md  customBtn text-light" btnText="Register" />
+        </Link>
+
       </div>
     </>
   );
