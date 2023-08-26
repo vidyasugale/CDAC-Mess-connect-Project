@@ -1,7 +1,7 @@
 import Footer from "../footer/Footer";
 import Navbar from "../header/Navbar";
 import "../stylesheets/aboutcard.css";
-const Contactus = () => {
+const ContactUs = () => {
 
     return (
         <>
@@ -37,4 +37,4 @@ const Contactus = () => {
     );
 }
 
-export default Contactus;
+export default ContactUs;
