@@ -1,7 +1,24 @@
+import axiosConfig from "../../configs/axiosConfig";
 import Button from "../header/Button";
 import Navbar from "../header/Navbar";
 import "../stylesheets/herosection.css";
-const Herosection = () => {
+import { useEffect } from "react";
+const Herosection =  () => {
+
+
+
+    useEffect(() => {
+        const myfunc = async () => {
+            try {
+                const response = await axiosConfig.get("/home");
+                console.log(response.data);
+              } catch (error) {
+                console.log(error);
+              }
+        }
+        myfunc();
+    },[]);
+
     return (
         <>
             
@@ -24,10 +41,10 @@ const Herosection = () => {
                         </div>
                         <div className="d-flex justify-content-center m-3">
                             <a href="#menuCards">
-                                <Button classname="btn btn-md ps-3 pe-3 me-5 customBtn text-light" btnText="MENU" />
+                                <Button classname="btn btn-md ps-5 pe-5 me-5 customBtn text-light" btnText="MENU" />
                             </a>
 
-                            <Button classname="btn btn-md ps-3 pe-3 me-2 customBtn text-light" btnText="REGISTER" />
+                            {/* <Button classname="btn btn-md ps-3 pe-3 me-2 customBtn text-light" btnText="REGISTER" /> */}
                         </div>
 
                     </div>

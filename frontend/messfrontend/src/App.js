@@ -1,6 +1,8 @@
+
 import "./App.css";
 import MainHomepg from "./components/body/MainHomepg";
-function App() {
+ function App() {
+
   return (
     <div className="App">
       <MainHomepg />

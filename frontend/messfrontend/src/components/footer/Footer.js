@@ -5,7 +5,7 @@ const Footer = () => {
     <>
       <div className="footer container d-flex mt-5">
         <div className="col-lg-4 col-md-4 col-sm-4 col-4 justify-content-start">
-          <img style={{ width: "10vw", alignSelf: "left" }} src="../assets/newlogo.svg" alt="logo" srcset="" />
+          <img style={{ width: "10vw", alignSelf: "left" }} src="../assets/newlogo.svg" alt="logo" srcSet="" />
         </div>
 
         <div className="social-links col-lg-4 col-md-4 col-sm-4 col-4 justify-content-center">
