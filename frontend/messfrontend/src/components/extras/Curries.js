@@ -1,6 +1,6 @@
 import './Curries.css';
 import React, { useState } from 'react';
-
+import Button from '../header/Button';
 
 const Curries =() => {
   const [curryList, setCurryList] = useState([]);
@@ -14,40 +14,55 @@ const Curries =() => {
   };
 
   return (
-    <div className="curry-component">
-      
-        <h2 className="curryHeader">Curries</h2>
-      
+    <div className="mt-3 d-flex align-items-center flex-wrap">
+      <div className=" col-lg-5 col-md-5 col-12">
+      <img src="../assets/curry.png" className="curry-Img" />
+
+      </div>
+      <div className="col-lg-7 col-md-6 col-12 justify-content-end">
+      <div className="curry-component">
+      <div className="" style={{ position: "relative", height: "5rem" }}>
+          <div className="largeFont zIndBack registerHeadOut" style={{ left: "20%" }}>
+            Curries
+          </div>
+          <div className="smallFont zIndFront registerHeadIn" style={{}}>
+            Curries
+          </div>
+        </div>
       <div >
-        <form className="curry-form">
-          <label>
-            Curry Name:
+        <form >
+          <label className="form-label">
+            Curry Name :
             <input
               type="text"
-              value={curryName}
+              value={curryName} className="form-control" required={true}
               onChange={(event) => setCurryName(event.target.value)}
             />
           </label>
-          <button type="button" onClick={handleAddCurry}>
-            Add to List
-          </button>
+          <div>
+          <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Create Curry" clickType="Button" onClick={handleAddCurry} />
+          </div>
         </form>
-        <table className="curry-table">
-          <thead>
+        <div >
+        <table className="table table-head" >
+          <thead  >
             <tr>
-              <th className="curry-tableHead">Curry Name</th>
+              <th >Curries</th>
             </tr>
           </thead>
           <tbody>
             {curryList.map((curry, index) => (
               <tr key={index}>
-                <td className="curry-table">{curry}</td>
+                <td >{curry}</td>
               </tr>
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
+      </div>
+       </div>
   );
 }
 
