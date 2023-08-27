@@ -11,6 +11,7 @@ import AppContext from "./configs/AppContext";
       const myfunc = async () => {
           try {
               const response = await axiosConfig.get("/home");
+              console.log(response);
               setMenuDetails(response.data);
             } catch (error) {
               console.log(error);

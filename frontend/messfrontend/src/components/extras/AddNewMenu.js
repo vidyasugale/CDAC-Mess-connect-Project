@@ -127,7 +127,7 @@ const AddNewMenu = () => {
       </div>
       <div >
       <Button classname="btn btn-md mt-3  customBtn text-light" btnText="Create Menu" clickType="button" onClick={handleNewCourse}/>
-      <Link to="/main_menu">
+      <Link to="/main-menu">
       <Button classname="btn btn-md mt-3 mx-2 customBtn text-light" btnText="Main Menu" clickType="button"/>
       </Link>
       </div>
