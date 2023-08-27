@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import Button from './Button';
 
-const Navbar2 = () => {
+const Navbar2 = ({userData,onLogout}) => {
   return (
     <>
     <div className="navbar d-flex text-secondary mb-1">
@@ -16,6 +16,10 @@ const Navbar2 = () => {
 
             <div className="nav_bar  d-flex p-lg-3 col-lg-8 col-md-8 col-12 justify-content-center" >
                 <div>
+
+                  <Link to="/customer/home">
+                  <Button classname="btn btn-md text-secondary" btnText="HOME" />
+                  </Link>
                     
                     <Link to="/about">
                     <Button classname="btn btn-md text-secondary" btnText="ABOUT US" />
@@ -25,7 +29,7 @@ const Navbar2 = () => {
                     <Button classname="btn btn-md text-secondary" btnText="CONTACT" />
                     </Link>
                     <Link to="/">
-                    <Button classname="btn btn-md text-secondary" btnText="LOGOUT" />
+                    <Button classname="btn btn-md text-secondary" btnText="LOGOUT" onClick={onLogout}/>
                     </Link>
                     
                 </div>

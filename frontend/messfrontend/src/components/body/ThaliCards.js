@@ -46,7 +46,6 @@ const ThaliCards = () => {
     //     setCardDetails(cardData)
     // }, [])
     const cardData = useContext(AppContext);
-    console.log(cardData);
     return (
         <>
         <div id="menuCards" style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>

@@ -4,7 +4,7 @@ import Button from '../header/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import "../stylesheets/loginpg.css";
 import axiosConfig from '../../configs/axiosConfig';
-const Loginpg = () => {
+const Loginpg = ({setValidUser}) => {
 
 
   const [loginUserData, setLoginUserData] = useState({
@@ -20,7 +20,6 @@ const Loginpg = () => {
       ...loginUserData,
       [name]: value
     })
-    console.log(name, value);
     
   }
 
@@ -29,14 +28,20 @@ const Loginpg = () => {
     try {
       const response = await axiosConfig.post("/signin",loginUserData);
       const data = response.data;
-      console.log(data);
-      // if(data.status ==="Success"){
+      if(response.status === 200){
         if(data.role === "ROLE_CUSTOMER"){
-          console.log(data.role);
-          sessionStorage.setItem("customerData", data);
+          
+          sessionStorage.setItem("customerData", JSON.stringify(data));
+          setValidUser(true);
           navigate('/customer/home', { state: { data } });
+        }else{
+          sessionStorage.setItem("adminData", JSON.stringify(data));
+          navigate("/admin/home",{state:{data}});
         }
-        navigate("/admin/home",{state:{data}});
+        
+      }
+      // if(data.status ==="Success"){
+        
       // }
 
       
