@@ -1,23 +1,13 @@
-import axiosConfig from "../../configs/axiosConfig";
+
 import Button from "../header/Button";
 import Navbar from "../header/Navbar";
 import "../stylesheets/herosection.css";
-import { useEffect } from "react";
+
 const Herosection =  () => {
 
 
 
-    useEffect(() => {
-        const myfunc = async () => {
-            try {
-                const response = await axiosConfig.get("/home");
-                console.log(response.data);
-              } catch (error) {
-                console.log(error);
-              }
-        }
-        myfunc();
-    },[]);
+
 
     return (
         <>
