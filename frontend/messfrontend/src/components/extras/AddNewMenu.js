@@ -1,6 +1,7 @@
 import "./AddNewMenu.css";
 import { useState } from "react";
 import { Link } from 'react-router-dom';
+import Button from "../header/Button";
 
 const AddNewMenu = () => {
   const [courseList, setCourseList] = useState([]);
@@ -31,76 +32,104 @@ const AddNewMenu = () => {
   };
 
   return (
-    <div className="mainMenu-component">
-      <h2 className="mainMenu-header">Add New Course</h2>
-      <div className="container mt-5 p-3 border registerdiv" style={{ width: "60%" }}>
+    <>
+    <div className="addNewMenu-component">
+    <div className="" style={{ position: "relative", height: "5rem" }}>
+          <div className="largeFont zIndBack registerHeadOut" style={{ left: "20%" }}>
+            Create New Menu
+          </div>
+          <div className="smallFont zIndFront registerHeadIn" style={{}}>
+            Create New Menu
+          </div>
+        </div>
+      <div className="container mt-3  " style={{ width: "60%" }}>
         <form>
-          <div lassName="mb3">
-        <label htmlFor="mainCourse" className="form-label">Main Course : </label>
-        <input
+        <div className="mb3">
+        <label htmlFor="name" className="mt-3 form-label">Name : </label>
+        <input required={true} placeholder="Add Name for New Menu"
           onChange={(event) => {
-            setBread(event.target.value);
+            setPrice(event.target.value);
           }}
           type="text"
-          id="mainCourse" className="form-control"
+          id="name" className="form-control"
         ></input>
       </div>
-
+          <div lassName="mb3">
+        <label htmlFor="mainCourse" className="mt-3 form-label">Main Course : </label>
+        <select name="mainCourse" 
+          onChange={(event) => {
+            setMainCourse(event.target.value);
+          }} required={true} id="mainCourse" className="form-select">
+          <option selected disabled value="">--Select Main Course--</option>
+          {courseList.map((course) => (
+            <option > {course.MainCourse} </option>
+          ))}
+        </select>
+      </div>
       <div className="mb3">
-        <label htmlFor="bread" className="form-label">Bread</label>
-        <input
+        <label htmlFor="bread" className="mt-3 form-label">Bread : </label>
+        <select name="bread"
           onChange={(event) => {
             setBread(event.target.value);
-          }}
-          type="text" id="bread" className="form-control"
-        ></input>
+          }} required={true} id="bread" className="form-select">
+          <option selected disabled value="">--Select Bread--</option>
+          {courseList.map((course) => (
+            <option > {course.Bread} </option>
+          ))}
+        </select>
       </div>
 
       <div className="mb3">
-        <label htmlFor="curry" className="form-label">Curry</label>
-        <input
+        <label htmlFor="curry" className="mt-3 form-label">Curry : </label>
+        <select name="curry"
           onChange={(event) => {
             setCurry(event.target.value);
-          }}
-          type="text"
-          id="curry" className="form-control"
-        ></input>
+          }} required={true} id="curry" className="form-select">
+          <option selected disabled value="">--Select Curry--</option>
+          {courseList.map((course) => (
+            <option > {course.Curry} </option>
+          ))}
+        </select>
       </div>
       <div className="mb3">
-        <label htmlFor="rice" className="form-label">Rice</label>
-        <input
+        <label htmlFor="rice" className="mt-3 form-label">Rice : </label>
+        <select name="rice"
           onChange={(event) => {
             setRice(event.target.value);
-          }}
-          type="text"
-          id="rice" className="form-control"
-        ></input>
+          }} required={true} id="rice" className="form-select">
+          <option selected disabled value="">--Select Rice--</option>
+          {courseList.map((course) => (
+            <option > {course.Rice} </option>
+          ))}
+        </select>
       </div>
       <div className="mb3">
-        <label htmlFor="sweet" className="form-label">Sweet</label>
-        <input
+        <label htmlFor="sweet" className="mt-3 form-label">Sweet : </label>
+        <select name="sweet"
           onChange={(event) => {
             setSweet(event.target.value);
-          }}
-          type="text"
-          id="sweet" className="form-control"
-        ></input>
+          }} required={true} id="sweet" className="form-select">
+          <option selected disabled value="">--Select Sweet--</option>
+          {courseList.map((course) => (
+            <option > {course.Sweet} </option>
+          ))}
+        </select>
       </div>
       <div className="mb3">
-        <label htmlFor="price" className="form-label">Price</label>
+        <label htmlFor="price" className="mt-3 form-label">Price : </label>
         <input
           onChange={(event) => {
             setPrice(event.target.value);
           }}
           type="number"
-          id="price" className="form-control"
+          required={true} id="price" className="form-control"
         ></input>
       </div>
-      <div classname="btn btn-md ps-3 pe-3 me-5 customBtn text-light">
-       
-        <button onClick={handleNewCourse}> Save </button>
-        
-       
+      <div >
+      <Button classname="btn btn-md mt-3  customBtn text-light" btnText="Create Menu" clickType="button" onClick={handleNewCourse}/>
+      <Link to="/main_menu">
+      <Button classname="btn btn-md mt-3 mx-2 customBtn text-light" btnText="Main Menu" clickType="button"/>
+      </Link>
       </div>
       
       </form>
@@ -108,7 +137,7 @@ const AddNewMenu = () => {
       
     </div>
    
-    
+    </>
   );
 };
 
