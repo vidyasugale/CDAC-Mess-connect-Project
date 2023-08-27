@@ -7,8 +7,11 @@ import ContactUs from "./ContactUs";
 import Footer from './../footer/Footer';
 import AboutUs from "./AboutUs";
 import CustomerHome from "../customer/CustomerHome";
+import { useState } from "react";
 
 const MainHomepg = () => {
+    const [validUser,setValidUser] = useState(false);
+
     return (
         <>
             <BrowserRouter>
@@ -22,11 +25,14 @@ const MainHomepg = () => {
                     } />
                     
                     <Route path="/register" element={<Registerpg />}/>
-                    <Route path="/login" element={<Loginpg/>}/>
+                    <Route path="/login" element={<Loginpg setValidUser={setValidUser}/>}/>
                     <Route path="/contact" element={<ContactUs/>}/>
                     <Route path="/about" element={<AboutUs/>} />
-                    <Route path="/customer/home" element={<CustomerHome/>}/>
-                    {/* <Route path="/admin/home" element={<MainMenu/>}/> */}
+
+                    
+                    <Route path="/customer/home" element={<CustomerHome validUser={validUser}/>}/>
+
+                        
                     
                     
                 </Routes>
