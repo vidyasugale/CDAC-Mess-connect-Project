@@ -30,7 +30,16 @@ const Loginpg = () => {
       const response = await axiosConfig.post("/signin",loginUserData);
       const data = response.data;
       console.log(data);
-      navigate('/customer/home', { state: { data } });
+      // if(data.status ==="Success"){
+        if(data.role === "ROLE_CUSTOMER"){
+          console.log(data.role);
+          sessionStorage.setItem("customerData", data);
+          navigate('/customer/home', { state: { data } });
+        }
+        navigate("/admin/home",{state:{data}});
+      // }
+
+      
     } catch (error) {
       console.log(error);
     }

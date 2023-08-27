@@ -2,6 +2,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar2 from '../header/Navbar2';
 import Footer from '../footer/Footer';
 import "../stylesheets/customerHome.css"
+import { useContext } from 'react';
+import AppContext from '../../configs/AppContext';
 const CustomerHome = () => {
     const location = useLocation();
     const navigate = useNavigate();
@@ -11,6 +13,11 @@ const CustomerHome = () => {
         navigate("/");
     }
     const customerData = location.state && location.state.data;
+
+    const menuesData = useContext(AppContext);
+    console.log(menuesData);
+    const customerD = sessionStorage.getItem("customerData");
+    console.log(customerD.id);
     
     return(
         <>

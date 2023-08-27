@@ -16,11 +16,7 @@ const MainHomepg = () => {
                     <Route path="/" element={
                         <>
                             <Herosection />
-
                             <ThaliCards />
-
-
-
                             <Footer/>
                         </>
                     } />
@@ -30,6 +26,7 @@ const MainHomepg = () => {
                     <Route path="/contact" element={<ContactUs/>}/>
                     <Route path="/about" element={<AboutUs/>} />
                     <Route path="/customer/home" element={<CustomerHome/>}/>
+                    {/* <Route path="/admin/home" element={<MainMenu/>}/> */}
                     
                     
                 </Routes>
