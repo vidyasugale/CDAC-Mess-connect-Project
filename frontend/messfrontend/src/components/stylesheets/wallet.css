@@ -1,0 +1,40 @@
+.wallet{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.balanceBox{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #FFA958, #FCF4B6);
+    width: 40%;
+    height: 60%;
+}
+
+.balance{
+    color: #686868;
+    font-size: 1.25rem;
+}
+
+.amount{
+    color: #7e2e00;
+    font-size: 2.25rem;
+    font-weight: bold;
+}
+
+.addMnyBtn{
+    margin: 13%;
+    color: white;
+    font-weight: 550;
+    background: linear-gradient(to right, #e26d00,#FFA958);
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px #b8b8b8;
+}
+
