@@ -2,3 +2,13 @@
     background: linear-gradient(to right, #e26d00,#FFA958);
     border-radius: 10px;
   }
+  
+  .navbtn{
+    color: #6c757d;
+  }
+
+  .navbtn:hover{
+    font-weight: 600;
+    background-color: #ffa9582f;
+    color: #e26d00;
+  }
