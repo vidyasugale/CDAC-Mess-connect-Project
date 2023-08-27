@@ -1,28 +1,14 @@
 import "./AdminMenu.css";
-import MainCourses from "./MainCourses";
-import MainMenu from "./MainMenu";
-import Addons from "./Addons";
-import Breads from "./Breads";
-import Curries from "./Curries";
-import Sweets from "./Sweets";
-import Rices from "./Rices";
-import SearchUser from "./SearchUser";
-import Navbar from "../header/Navbar";
-import Footer from "../footer/Footer";
-import AddNewMenu from "./AddNewMenu"
-import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
+
+import { Link} from "react-router-dom";
+import Footer from './../footer/Footer';
+import Navbar2 from "../header/Navbar2";
 
 
 const AdminMenu = () => {
   return (
     <>
-      <BrowserRouter>
-      < Navbar />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
+    <Navbar2/>
                 <div className="menu-container">
                 <div className="" style={{ position: "relative", height: "5rem" }}>
           <div className="largeFont zIndBack registerHeadOut" style={{ left: "20%" }}>
@@ -34,10 +20,10 @@ const AdminMenu = () => {
         </div>
                   <div className="menu-border">
                     <div className="menu-row">
-                      <Link to="/main_menu" className="menu-box" >
+                      <Link to="/main-menu" className="menu-box" >
                         Main Menu
                       </Link>
-                      <Link to="/search_user" className="menu-box">
+                      <Link to="/search-user" className="menu-box">
                         Search User
                       </Link>
                     </div>
@@ -45,7 +31,7 @@ const AdminMenu = () => {
                     <Link to="/addons" className="menu-box">
                         Addons
                       </Link>
-                      <Link to="/main_courses" className="menu-box">
+                      <Link to="/main-courses" className="menu-box">
                         Main Courses
                       </Link>
                       <Link to="/breads" className="menu-box">
@@ -66,26 +52,15 @@ const AdminMenu = () => {
                                           
                     </div>
                   </div>
-                      <Link to="/add_new_menu"> </Link>
-                      <Link to="/admin_menu"> </Link>
+                      <Link to="/add-new-menu"> </Link>
+                      <Link to="/admin-menu"> </Link>
                 </div>
-              </>
-            }
-          />
-          <Route path="/main_menu" element={<MainMenu />} /> 
-          <Route path="/addons" element= {< Addons />} />
-          <Route path="/main_courses" element= {< MainCourses />} />
-          <Route path="/breads" element= {< Breads />} />
-          <Route path="/rices" element= {< Rices />} />
-          <Route path="/curries"  element= {< Curries />} />
-          <Route path="/sweets" element= {< Sweets />} />
-          <Route path="/search_user"  element= {< SearchUser />}/>
-          <Route path="/add_new_menu" element={< AddNewMenu />} />
-          <Route path="/admin_menu" element={< AdminMenu />} />
+
+
+
           
-        </Routes>
         < Footer/>
-      </BrowserRouter>
+
       
     </>
   );

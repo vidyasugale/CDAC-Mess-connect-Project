@@ -39,7 +39,7 @@ const MainMenu = () => {
           </div>
         </div>
       <div >
-        <Link to="/add_new_menu" > 
+        <Link to="/add-new-menu" > 
       <Button classname="btn btn-md customBtn text-light" btnText="Create New Menu" clickType="button" /> 
       </Link>
       <table className="table mt-3 table-responsive table-striped">
@@ -70,7 +70,7 @@ const MainMenu = () => {
       </div> 
      
       <Button classname="btn btn-md customBtn text-light" btnText="Add Today's Menu" clickType="button" />
-      <Link to="/">
+      <Link to="/admin/home">
       <Button classname="btn btn-md mx-2 customBtn text-light" btnText="Admin Menu" clickType="button" />
       </Link>
 

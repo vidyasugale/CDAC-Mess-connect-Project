@@ -1,17 +1,45 @@
 import './Breads.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../header/Button';
+import axiosConfig from '../../configs/axiosConfig';
 
 const Breads = () => {
-  const [breadList, setBreadList] = useState([]);
+  const [breadList, setBreadList] = useState(null);
   const [breadName, setBreadName] = useState('');
 
-  const handleAddBread = () => {
-    if (breadName.trim() !== '') {
-      setBreadList([...breadList, breadName]);
-      setBreadName('');
+  // const handleAddBread = (e) => {
+  //   if (breadName.trim() !== '') {
+  //     setBreadList([...breadList, breadName]);
+  //     setBreadName('');
+  //   }
+  // };
+
+
+
+  useEffect(() => {
+    const getAllBreads = async () => {
+      try {
+        const response = await axiosConfig.get("/bread/getallbreads");
+        console.log(typeof response.data);
+        setBreadList(response.data);
+      } catch (error) {
+        console.log(error)
+      }
     }
-  };
+    getAllBreads();
+  },[]);
+
+  const addNewBread = async (e) => {
+    
+      try {
+        const response = await axiosConfig.post("/bread/addbread",{
+          name:breadName
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+  }
 
   return (
     <div className="mt-3 d-flex align-items-center flex-wrap">
@@ -40,7 +68,7 @@ const Breads = () => {
             />
           </label>
           <div>
-          <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Create Bread" clickType="Button" onClick={handleAddBread} />
+          <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Create Bread" clickType="Button" onClick={addNewBread} />
           </div>
         </form>
         <div >
@@ -51,9 +79,9 @@ const Breads = () => {
             </tr>
           </thead>
           <tbody>
-            {breadList.map((bread, index) => (
-              <tr key={index}>
-                <td >{bread}</td>
+            {breadList && breadList.map(data => (
+              <tr key={data.id}>
+                <td >{data.name}</td>
               </tr>
             ))}
           </tbody>
