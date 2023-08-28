@@ -17,7 +17,7 @@ const CustomerHome = ({ validUser }) => {
     }
     return (
         <>
-            <Navbar2 userData={customerData} onLogout={logOutUser}/>
+            <Navbar2 homePath="/customer/home" userData={customerData} onLogout={logOutUser}/>
             <div>
                 Welcome, {customerData.firstName} {customerData.lastName}
             </div>

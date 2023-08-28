@@ -5,7 +5,7 @@ import "../stylesheets/wallet.css"
 const Wallet = () => {
     return(
         <>
-        <Navbar2 />
+        <Navbar2 homePath="/customer/home" />
 
         <div className=" headingBox">
                             <div className="headingLarge largeFont zIndBack">

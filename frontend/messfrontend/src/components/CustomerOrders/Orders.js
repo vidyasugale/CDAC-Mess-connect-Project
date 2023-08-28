@@ -44,7 +44,7 @@ const Orders = () => {
 
     return(
         <>
-        <Navbar2 />
+        <Navbar2 homePath="/customer/home" />
         <div className="container orders mt-5 p-4 ps-5 pe-5 table-responsive">
         <table className="list table">
   <thead>
