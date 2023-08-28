@@ -1,7 +1,6 @@
 
 package com.messconnect.entities;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -19,15 +18,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "balances")
-public class Balance extends BaseEntity{
+public class Balance extends BaseEntity {
 	@OneToOne
 	@MapsId
 	@JoinColumn(name = "user_id")
 	private User user;
-	
-	@Column(columnDefinition = "double default 0",nullable = false)
+
+	@Column(columnDefinition = "double default 0", nullable = false)
 	private double balance;
-	
-	
 
 }

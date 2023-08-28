@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -36,7 +37,7 @@ public class Order extends BaseEntity {
 	@JoinColumn(name = "menu_id", nullable = false)
 	private Menu menu;
 
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "order_addons", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "addon_id"))
 	private List<AddOn> addOns = new ArrayList<>();
 

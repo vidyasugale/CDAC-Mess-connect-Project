@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.messconnect.dto.OrderDTO;
 import com.messconnect.dto.UserDTO;
 import com.messconnect.dto.UserDTO2;
 import com.messconnect.entities.User;
+import com.messconnect.services.OrderService;
 import com.messconnect.services.UserService;
 
 import jakarta.validation.Valid;
@@ -31,6 +33,9 @@ public class UserController {
 
 	@Autowired
 	private ModelMapper mapper;
+
+	@Autowired
+	private OrderService orderService;
 
 	@PostMapping("/signup")
 	public ResponseEntity<?> signUp(@RequestBody @Valid UserDTO newUserDTO) {
@@ -68,6 +73,11 @@ public class UserController {
 	@GetMapping("/getuserorders/{userId}")
 	public ResponseEntity<?> getOrders(@PathVariable Long userId) {
 		return new ResponseEntity<>(userService.getUserOrders(userId), HttpStatus.OK);
+	}
+
+	@PostMapping("/order")
+	public ResponseEntity<?> placeOrder(@RequestBody OrderDTO newOrderDTO) {
+		return new ResponseEntity<>(orderService.placeNewOrder(newOrderDTO), HttpStatus.OK);
 	}
 
 }
