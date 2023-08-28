@@ -40,7 +40,7 @@ public class UserDTO {
 	private Role role;
 
 	@NotBlank(message = "Password can't be blank!!")
-	@Pattern(regexp = "^(?=.[a-z])(?=.[A-Z])(?=.\\d)(?=.[@$!%?&])[A-Za-z\\d@$!%?&]{8,20}$")
+	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%?&])[A-Za-z\\d@$!%?&]{8,20}$")
 	private String password;
 
 	@NotBlank(message = "Address can't be blank!!")
