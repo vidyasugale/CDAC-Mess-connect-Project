@@ -18,18 +18,18 @@ const Navbar2 = ({userData,onLogout,homePath}) => {
                 <div>
 
                   <Link to={homePath}>
-                  <Button classname="navbtn btn btn-md text-secondary" btnText="HOME" />
+                  <Button classname="navbtn btn btn-md" btnText="HOME" />
                   </Link>
                     
                     <Link to="/about">
-                    <Button classname="navbtn btn btn-md text-secondary" btnText="ABOUT US" />
+                    <Button classname="navbtn btn btn-md" btnText="ABOUT US" />
                     </Link>
 
                     <Link to="/contact">
-                    <Button classname="navbtn btn btn-md text-secondary" btnText="CONTACT" />
+                    <Button classname="navbtn btn btn-md" btnText="CONTACT" />
                     </Link>
                     <Link to="/">
-                    <Button classname="navbtn btn btn-md text-secondary" btnText="LOGOUT" onClick={onLogout}/>
+                    <Button classname="navbtn btn btn-md" btnText="LOGOUT" onClick={onLogout}/>
                     </Link>
                     
                 </div>

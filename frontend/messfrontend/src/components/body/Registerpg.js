@@ -4,6 +4,7 @@ import axiosConfig from "../../configs/axiosConfig";
 import Button from "../header/Button";
 import { Link, useNavigate } from 'react-router-dom';
 import "../stylesheets/registerpg.css";
+import Footer from "../footer/Footer";
 
 const Registerpg = () => {
 
@@ -141,7 +142,7 @@ const Registerpg = () => {
 
     return (
         <>
-            <Navbar />
+            <Navbar homePath="/"/>
             <div className="container mt-5 p-3 border registerdiv" style={{ width: "60%" }}>
                 <div className="" style={{ position: "relative", height: "5rem" }}>
                     <div className="largeFont zIndBack registerHeadOut" style={{ left: "20%" }}>
@@ -224,6 +225,7 @@ const Registerpg = () => {
                     </Link>
                 </form>
             </div>
+            <Footer homePath="/"/>
 
         </>
     )

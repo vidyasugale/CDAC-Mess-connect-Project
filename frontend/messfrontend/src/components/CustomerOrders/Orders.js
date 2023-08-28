@@ -2,6 +2,7 @@ import {useEffect, useState} from "react"
 import Footer from "../footer/Footer"
 import Navbar2 from "../header/Navbar2"
 import "../stylesheets/customerOrders.css"
+// import axiosConfig from "../../configs/axiosConfig"
 // import "../stylesheets/navbar.css"
 
 const Orders = () => {
@@ -37,10 +38,18 @@ const Orders = () => {
       Order_Date : "10/05/2023"
     }
   ]
+  
 
   useEffect(() => {
-    setData(orderData)
-  }, []);
+    const getOrderSummery = async () => {
+      // const data = JSON.parse( sessionStorage.getItem("customerData"));
+      // const response = await axiosConfig.get(`/user/getuserorders/${data.id}`);
+      // console.log(response);
+      // setData(response.data);
+      setData(orderData);
+    }
+    getOrderSummery();
+  },[]);
 
     return(
         <>

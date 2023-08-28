@@ -5,7 +5,7 @@ import AboutCard from "./AboutCard";
 const AboutUs = () => {
     return(
         <>
-            <Navbar/>
+            <Navbar />
             <br/>
             <AboutCard/>
             <Footer/>
