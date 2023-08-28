@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.messconnect.dto.UserDTO;
+import com.messconnect.dto.UserDTO2;
 import com.messconnect.entities.User;
 import com.messconnect.services.UserService;
 
@@ -36,6 +38,12 @@ public class UserController {
 		return new ResponseEntity<>(userService.addUser(newUser), HttpStatus.OK);
 	}
 
+	@PutMapping("/update/{userId}")
+	public ResponseEntity<?> updateProfile(@RequestBody @Valid UserDTO2 user, @PathVariable Long userId) {
+		return new ResponseEntity<>(userService.updateUserProfile(user, userId), HttpStatus.OK);
+
+	}
+
 	@GetMapping("/getuser/{userId}")
 	public ResponseEntity<?> getDetails(@PathVariable Long userId) {
 		return new ResponseEntity<>(userService.getUser(userId), HttpStatus.OK);
@@ -50,6 +58,16 @@ public class UserController {
 	public ResponseEntity<?> deleteUserDetails(@PathVariable Long id) {
 		return new ResponseEntity<>(userService.deleteUser(id), HttpStatus.OK);
 
+	}
+
+	@GetMapping("/getuserbalances/{userId}")
+	public ResponseEntity<?> getBalance(@PathVariable Long userId) {
+		return new ResponseEntity<>(userService.getUserBalance(userId), HttpStatus.OK);
+	}
+
+	@GetMapping("/getuserorders/{userId}")
+	public ResponseEntity<?> getOrders(@PathVariable Long userId) {
+		return new ResponseEntity<>(userService.getUserOrders(userId), HttpStatus.OK);
 	}
 
 }

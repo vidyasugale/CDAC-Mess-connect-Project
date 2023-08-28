@@ -2,6 +2,8 @@ package com.messconnect.entities;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -9,6 +11,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -22,30 +26,29 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "orders")
-public class Order extends BaseEntity{
-	
+public class Order extends BaseEntity {
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id", nullable = false) 
+	@JoinColumn(name = "user_id", nullable = false)
 	private User user;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "menu_id", nullable = false)
 	private Menu menu;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "add_on_id", nullable = false)
-	private AddOn addOn;
 
-	@Column(nullable = false,columnDefinition = "double default 0",name = "total_amount")
+	@ManyToMany
+	@JoinTable(name = "order_addons", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "addon_id"))
+	private List<AddOn> addOns = new ArrayList<>();
+
+	@Column(nullable = false, columnDefinition = "double default 0", name = "total_amount")
 	private double totalAmount;
 
-	@Column(nullable = false,name = "order_date")
+	@Column(nullable = false, name = "order_date")
 	@CreationTimestamp
 	private LocalDate orderDate;
-	
-	@Column(nullable = false,name = "order_time")
+
+	@Column(nullable = false, name = "order_time")
 	@CreationTimestamp
 	private LocalTime orderTime;
-	
 
 }
