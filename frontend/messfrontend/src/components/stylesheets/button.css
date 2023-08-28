@@ -6,8 +6,8 @@
   .navbtn{
     color: #6c757d;
   }
-
+  
   .navbtn:hover{
-    font-weight: 600;
     color: #f07401;
+    font-weight: 600;
   }
