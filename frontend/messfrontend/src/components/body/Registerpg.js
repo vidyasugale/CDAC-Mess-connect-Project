@@ -212,10 +212,15 @@ const Registerpg = () => {
                         </div>
                     </div>
                     <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Register" clickType="submit" onClick={submitRegister} />
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <div>OR</div>
+                    <div>
+
+                    </div>
+                    <span>Already have an account?</span>
                     <Link to="/login">
-                        <Button classname="btn btn-md ps-3 pe-3 me-5 customBtn text-light" btnText="Login" />
+                        <span className="ms-1" style={{color: "#e26d00"}}>
+                            Login
+                        </span>
+                        
                     </Link>
                 </form>
             </div>
