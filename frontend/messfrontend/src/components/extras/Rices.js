@@ -36,7 +36,7 @@ function Rices() {
 
   return (
     <>
-    < Navbar2 />
+    < Navbar2 homePath="/admin/home" />
     <div className="mt-3 d-flex align-items-center flex-wrap">
     <div className=" col-lg-5 col-md-5 col-12">
     <img src="../assets/rice.png" className="rice-Img" />

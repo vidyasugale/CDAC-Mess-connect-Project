@@ -35,7 +35,7 @@ const CreateNewMenu = () => {
 
   return (
     <>
-    < Navbar2 />
+    < Navbar2 homePath="/admin/home"/>
     <div className="addNewMenu-component">
     <div className="" style={{ position: "relative", height: "5rem" }}>
           <div className="largeFont zIndBack registerHeadOut" style={{ left: "20%" }}>
