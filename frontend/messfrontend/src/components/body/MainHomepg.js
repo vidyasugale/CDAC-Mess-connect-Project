@@ -7,7 +7,6 @@ import ContactUs from "./ContactUs";
 import Footer from './../footer/Footer';
 import AboutUs from "./AboutUs";
 import CustomerHome from "../customer/CustomerHome";
-import { useState } from "react";
 import AdminHome from "../extras/AdminHome";
 import SelectMainMenu from './../extras/SelectMainMenu';
 import Addons from './../extras/Addons';
@@ -18,10 +17,13 @@ import Curries from './../extras/Curries';
 import Sweets from './../extras/Sweets';
 import SearchUser from './../extras/SearchUser';
 import CreateNewMenu from './../extras/CreateNewMenu';
+import Wallet from './../customerWallet/Wallet';
+import Orders from './../CustomerOrders/Orders';
+import CreateOrder from "../customer/CreateOrder";
 
 
 const MainHomepg = () => {
-    const [validUser,setValidUser] = useState(false);
+    
 
     return (
         <>
@@ -36,12 +38,18 @@ const MainHomepg = () => {
                     } />
                     
                     <Route path="/register" element={<Registerpg />}/>
-                    <Route path="/login" element={<Loginpg setValidUser={setValidUser}/>}/>
+                    <Route path="/login" element={<Loginpg/>}/>
                     <Route path="/contact" element={<ContactUs/>}/>
                     <Route path="/about" element={<AboutUs/>} />
 
                     
-                    <Route path="/customer/home" element={<CustomerHome validUser={validUser}/>}/>
+                    <Route path="/customer/home" element={<CustomerHome />}/>
+                    <Route path="customer/wallet" element={<Wallet/>}/>
+                    <Route path="/customer/order-summery" element={<Orders/>}/>
+                    <Route path="/customer/create-order" element={<CreateOrder/>}/>
+
+
+
 
                     <Route path="/admin/home" element={<AdminHome/>}/>
 

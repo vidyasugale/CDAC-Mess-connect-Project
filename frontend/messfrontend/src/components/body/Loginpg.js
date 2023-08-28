@@ -4,6 +4,7 @@ import Button from '../header/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import "../stylesheets/loginpg.css";
 import axiosConfig from '../../configs/axiosConfig';
+import Footer from '../footer/Footer';
 const Loginpg = ({ setValidUser }) => {
 
   const [invalidEmail, setInvalidEmail] = useState(false);
@@ -64,11 +65,11 @@ const Loginpg = ({ setValidUser }) => {
       try {
         const response = await axiosConfig.post("/signin", loginUserData);
         const data = response.data;
+        
         if (response.status === 200) {
           if (data.role === "ROLE_CUSTOMER") {
-
+            console.log(data);
             sessionStorage.setItem("customerData", JSON.stringify(data));
-            setValidUser(true);
             navigate('/customer/home', { state: { data } });
           } else {
             sessionStorage.setItem("adminData", JSON.stringify(data));
@@ -92,7 +93,7 @@ const Loginpg = ({ setValidUser }) => {
 
   return (
     <>
-      <Navbar />
+      <Navbar homePath="/"/>
       <div className="login-container">
 
         <div className="" style={{ position: "relative", height: "5rem" }}>
@@ -145,7 +146,7 @@ const Loginpg = ({ setValidUser }) => {
         </div>
 
 
-        <Button classname="btn btn-md  customBtn text-light mb-3" btnText="Login" clickType="submit" onClick={handleLogin} />
+        <Button classname="btn btn-md  customBtn text-light mb-3" btnText="Login" clickType="button" onClick={handleLogin} />
         <div>
 
           <div>Don't have an account?</div>
@@ -157,6 +158,7 @@ const Loginpg = ({ setValidUser }) => {
 
 
       </div>
+      <Footer homePath="/"/>
     </>
   );
 };

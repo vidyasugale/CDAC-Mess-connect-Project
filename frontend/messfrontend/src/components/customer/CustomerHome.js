@@ -1,16 +1,16 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Navbar2 from '../header/Navbar2';
 import Footer from '../footer/Footer';
 import "../stylesheets/customerHome.css";
 import ThaliCards from '../body/ThaliCards';
-const CustomerHome = ({ validUser }) => {
-    const navigate = useNavigate();
+const CustomerHome = () => {
+    // const navigate = useNavigate();
 
 
-    if(!validUser){
-        alert("Invalid user!!!");
-        navigate("/");
-    }
+    // if(!validUser){
+    //     alert("Invalid user!!!");
+    //     navigate("/");
+    // }
     const customerData = JSON.parse( sessionStorage.getItem("customerData"));
     const logOutUser = () => {
         sessionStorage.removeItem('customerData');
@@ -22,7 +22,7 @@ const CustomerHome = ({ validUser }) => {
                 Welcome, {customerData.firstName} {customerData.lastName}
             </div>
             <div className="container d-flex justify-content-center align-items-center flex-wrap mt-3" >
-                <Link to="customer/home/menu" style={{textDecoration:"none"}}>
+                <Link to="customer/create-order" style={{textDecoration:"none"}}>
                     <div className='whiteBox'>
 
                         Make Order
@@ -45,7 +45,7 @@ const CustomerHome = ({ validUser }) => {
             </div>
             <ThaliCards/>
 
-            <Footer />
+            <Footer homePath="/customer/home"/>
         </>
     )
 }

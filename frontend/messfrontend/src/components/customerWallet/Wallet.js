@@ -1,8 +1,23 @@
 import Navbar2 from "../header/Navbar2"
 import Footer from "../footer/Footer"
 import "../stylesheets/wallet.css"
+import { useEffect, useState } from "react"
 
 const Wallet = () => {
+    const [customerBalance,setCustomerBalance] = useState({});
+   
+    useEffect(() => {
+        const getCustomerData = () => {
+            const data = JSON.parse( sessionStorage.getItem("customerData"));
+            if(data){
+                setCustomerBalance(data);
+                
+            }
+        }
+        getCustomerData();
+        
+    },[]);
+    
     return(
         <>
         <Navbar2 homePath="/customer/home" />
@@ -23,13 +38,13 @@ const Wallet = () => {
                     balance
                 </div>
                 <br/>
-                <div className="amount">550.00</div>
+                <div className="amount">{customerBalance.balance}</div>
 
             </div>
         </div>
 
 
-        <Footer />
+        <Footer homePath="/customer/home"/>
         </>
 
     )
