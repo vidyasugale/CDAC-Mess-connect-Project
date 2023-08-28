@@ -12,6 +12,6 @@ import com.messconnect.entities.User;
 public interface OrderRepository extends JpaRepository<Order, Long> {
 	List<Order> findByOrderDateAndUser(LocalDate orderDate, User user);
 
-	@Query("SELECT o FROM Order o WHERE o.user = ?1")
+	@Query("SELECT o FROM Order o WHERE o.user.id = ?1")
 	List<Order> findOrderByUserId(Long id);
 }
