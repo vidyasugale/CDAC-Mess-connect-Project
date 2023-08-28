@@ -1,19 +1,42 @@
 import './Rices.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../header/Button';
+import axiosConfig from '../../configs/axiosConfig';
+import Navbar2 from '../header/Navbar2'
+import Footer from '../footer/Footer'
 
 function Rices() {
   const [riceList, setRiceList] = useState([]);
   const [riceName, setRiceName] = useState('');
 
-  const handleAddRice = () => {
-    if (riceName.trim() !== '') {
-      setRiceList([...riceList, riceName]);
-      setRiceName('');
+  useEffect(() => {
+    const getAllRices = async () => {
+      try {
+        const response = await axiosConfig.get("/rice/getallrices");
+        console.log(typeof response.data);
+        setRiceList(response.data);
+      } catch (error) {
+        console.log(error)
+      }
     }
-  };
+    getAllRices();
+  },[]);
+
+  const addNewRice = async (e) => {
+    
+      try {
+        const response = await axiosConfig.post("/rice/addrice",{
+          name:riceName
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+  }
 
   return (
+    <>
+    < Navbar2 />
     <div className="mt-3 d-flex align-items-center flex-wrap">
     <div className=" col-lg-5 col-md-5 col-12">
     <img src="../assets/rice.png" className="rice-Img" />
@@ -40,7 +63,7 @@ function Rices() {
             />
           </label>
           <div>
-          <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Create Rice" clickType="Button" onClick={handleAddRice} />
+          <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Create Rice" clickType="Submit" onClick={addNewRice} />
           </div>
         </form>
         <div >
@@ -51,9 +74,9 @@ function Rices() {
             </tr>
           </thead>
           <tbody>
-            {riceList.map((rice, index) => (
-              <tr key={index}>
-                <td >{rice}</td>
+            {riceList && riceList.map(data => (
+              <tr key={data.id}>
+                <td >{data.name}</td>
               </tr>
             ))}
           </tbody>
@@ -63,6 +86,8 @@ function Rices() {
     </div>
       </div>
        </div>
+       < Footer />
+       </>
   );
 }
 

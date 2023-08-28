@@ -1,19 +1,42 @@
 import './Curries.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../header/Button';
+import axiosConfig from '../../configs/axiosConfig';
+import Navbar2 from '../header/Navbar2'
+import Footer from '../footer/Footer'
 
 const Curries =() => {
   const [curryList, setCurryList] = useState([]);
   const [curryName, setCurryName] = useState('');
-
-  const handleAddCurry = () => {
-    if (curryName.trim() !== '') {
-      setCurryList([...curryList, curryName]);
-      setCurryName('');
+  
+  useEffect(() => {
+    const getAllCurries = async () => {
+      try {
+        const response = await axiosConfig.get("/curry/getallcuries");
+        console.log(typeof response.data);
+        setCurryList(response.data);
+      } catch (error) {
+        console.log(error)
+      }
     }
-  };
+    getAllCurries();
+  },[]);
 
-  return (
+  const addNewCurry = async (e) => {
+    
+      try {
+        const response = await axiosConfig.post("/curry/addcurry",{
+          name:curryName
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+  }
+
+   return (
+    <>
+    < Navbar2 />
     <div className="mt-3 d-flex align-items-center flex-wrap">
       <div className=" col-lg-5 col-md-5 col-12">
       <img src="../assets/curry.png" className="curry-Img" />
@@ -40,7 +63,7 @@ const Curries =() => {
             />
           </label>
           <div>
-          <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Create Curry" clickType="Button" onClick={handleAddCurry} />
+          <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Create Curry" clickType="Submit" onClick={addNewCurry} />
           </div>
         </form>
         <div >
@@ -51,9 +74,9 @@ const Curries =() => {
             </tr>
           </thead>
           <tbody>
-            {curryList.map((curry, index) => (
-              <tr key={index}>
-                <td >{curry}</td>
+            {curryList && curryList.map(data => (
+              <tr key={data.id}>
+                <td >{data.name}</td>
               </tr>
             ))}
           </tbody>
@@ -63,6 +86,9 @@ const Curries =() => {
     </div>
       </div>
        </div>
+
+< Footer />
+       </>
   );
 }
 

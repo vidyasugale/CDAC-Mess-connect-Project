@@ -1,19 +1,42 @@
 import './MainCourses.css';
-import React, { useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import Button from '../header/Button';
+import axiosConfig from '../../configs/axiosConfig';
+import Navbar2 from '../header/Navbar2'
+import Footer from '../footer/Footer'
 
 const MainCourses = () => {
   const [mainCourseList, setMainCourseList] = useState([]);
   const [mainCourseName, setMainCourseName] = useState('');
 
-  const handleAddMainCourse = () => {
-    if (mainCourseName.trim() !== '') {
-      setMainCourseList([...mainCourseList, mainCourseName]);
-      setMainCourseName('');
+  useEffect(() => {
+    const getAllMainCourses = async () => {
+      try {
+        const response = await axiosConfig.get("/maincourse/getallmaincourses");
+        console.log(typeof response.data);
+        setMainCourseList(response.data);
+      } catch (error) {
+        console.log(error)
+      }
     }
-  };
+    getAllMainCourses();
+  },[]);
+
+  const addNewMainCourse = async (e) => {
+    
+      try {
+        const response = await axiosConfig.post("/maincourse/addmaincourse",{
+          name:mainCourseName
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+  }
 
   return (
+    <>
+    < Navbar2 />
 <div className="mt-3 d-flex align-items-center flex-wrap">
       <div className=" col-lg-5 col-md-5 col-12">
       <img src="../assets/main_course.png" className="mainCourse-Img" />
@@ -40,7 +63,7 @@ const MainCourses = () => {
             />
           </label>
           <div>
-          <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Create Main Course " clickType="Button" onClick={handleAddMainCourse} />
+          <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Create Main Course " clickType="Submit" onClick={addNewMainCourse} />
           </div>
           </form>
           <div >
@@ -53,9 +76,9 @@ const MainCourses = () => {
           </table>
           <table className="table table-head">
           <tbody>
-            {mainCourseList.map((mainCourse, index) => (
-              <tr key={index}>
-                <td >{mainCourse}</td>
+            {mainCourseList && mainCourseList.map( data => (
+              <tr key={data.id}>
+                <td >{data.name}</td>
               </tr>
             ))}
           </tbody>
@@ -65,6 +88,8 @@ const MainCourses = () => {
     </div>
       </div>
        </div>
+       < Footer />
+       </>
   );
 }
 

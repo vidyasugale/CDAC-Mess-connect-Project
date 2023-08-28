@@ -2,19 +2,12 @@ import './Breads.css';
 import React, { useEffect, useState } from 'react';
 import Button from '../header/Button';
 import axiosConfig from '../../configs/axiosConfig';
+import Navbar2 from '../header/Navbar2'
+import Footer from '../footer/Footer'
 
 const Breads = () => {
   const [breadList, setBreadList] = useState(null);
   const [breadName, setBreadName] = useState('');
-
-  // const handleAddBread = (e) => {
-  //   if (breadName.trim() !== '') {
-  //     setBreadList([...breadList, breadName]);
-  //     setBreadName('');
-  //   }
-  // };
-
-
 
   useEffect(() => {
     const getAllBreads = async () => {
@@ -42,6 +35,8 @@ const Breads = () => {
   }
 
   return (
+    <>
+    <Navbar2 />
     <div className="mt-3 d-flex align-items-center flex-wrap">
       <div className=" col-lg-5 col-md-5 col-12">
       <img src="../assets/bread.png" className="bread-Img" />
@@ -68,7 +63,7 @@ const Breads = () => {
             />
           </label>
           <div>
-          <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Create Bread" clickType="Button" onClick={addNewBread} />
+          <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Create Bread" clickType="Submit" onClick={addNewBread} />
           </div>
         </form>
         <div >
@@ -91,7 +86,8 @@ const Breads = () => {
     </div>
       </div>
        </div>
-    
+       < Footer />
+       </>
   );
 }
 

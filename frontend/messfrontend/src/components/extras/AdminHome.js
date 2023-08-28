@@ -1,27 +1,27 @@
-import "./AdminMenu.css";
+import "./AdminHome.css";
 
 import { Link} from "react-router-dom";
-import Footer from './../footer/Footer';
+import Footer from '../footer/Footer';
 import Navbar2 from "../header/Navbar2";
 
 
-const AdminMenu = () => {
+const AdminHome = () => {
   return (
     <>
     <Navbar2/>
                 <div className="menu-container">
                 <div className="" style={{ position: "relative", height: "5rem" }}>
           <div className="largeFont zIndBack registerHeadOut" style={{ left: "20%" }}>
-            Admin Menu
+            Admin Home
           </div>
           <div className="smallFont zIndFront registerHeadIn" style={{}}>
-            Admin Menu
+            Admin Home
           </div>
         </div>
                   <div className="menu-border">
                     <div className="menu-row">
-                      <Link to="/main-menu" className="menu-box" >
-                        Main Menu
+                      <Link to="/select-main-menu" className="menu-box" >
+                        Select Main Menu
                       </Link>
                       <Link to="/search-user" className="menu-box">
                         Search User
@@ -52,8 +52,8 @@ const AdminMenu = () => {
                                           
                     </div>
                   </div>
-                      <Link to="/add-new-menu"> </Link>
-                      <Link to="/admin-menu"> </Link>
+                      <Link to="/create-new-menu"> </Link>
+                      <Link to="/admin/home"> </Link>
                 </div>
 
 
@@ -66,4 +66,4 @@ const AdminMenu = () => {
   );
 };
 
-export default AdminMenu;
+export default AdminHome;

@@ -2,6 +2,8 @@ import "./Addons.css";
 import { useState, useEffect } from "react";
 import Button from '../header/Button';
 import React, { useRef } from 'react';
+import Navbar2 from '../header/Navbar2'
+import Footer from '../footer/Footer'
 
 const Addons = () => {
   const images = [
@@ -46,6 +48,8 @@ const Addons = () => {
   };
 
   return (
+    <>
+    < Navbar2 />
     <div className="mt-3 d-flex align-items-center flex-wrap">
     <div className=" col-lg-5 col-md-5 col-12">
       <div className="curry-Img">
@@ -124,7 +128,8 @@ const Addons = () => {
       </div>
       </div>
       </div>
-
+      < Footer />
+       </>
   )
 };
 
