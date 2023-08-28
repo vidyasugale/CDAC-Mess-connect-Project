@@ -16,19 +16,19 @@ const Navbar = () => {
             <div className="nav_bar  d-flex p-lg-3 col-lg-8 col-md-8 col-12 justify-content-center" >
                 <div>
                     <Link to="/login">
-                    <Button classname="btn btn-md me-2 text-secondary" btnText="LOGIN" />
+                    <Button classname="navbtn btn btn-md" btnText="LOGIN" />
                     </Link>
                     
                     <Link to="/register">
-                    <Button classname="btn btn-md text-secondary" btnText="REGISTER" />
+                    <Button classname="navbtn btn btn-md" btnText="REGISTER" />
                     </Link>
                     
                     <Link to="/about">
-                    <Button classname="btn btn-md text-secondary" btnText="ABOUT US" />
+                    <Button classname="navbtn btn btn-md" btnText="ABOUT US" />
                     </Link>
 
                     <Link to="/contact">
-                    <Button classname="btn btn-md text-secondary" btnText="CONTACT" />
+                    <Button classname="navbtn btn btn-md" btnText="CONTACT" />
                     </Link>
                     
                 </div>
