@@ -2,6 +2,7 @@ package com.messconnect.services;
 
 import java.util.List;
 
+import com.messconnect.dto.SigninUserResp;
 import com.messconnect.dto.UserDTO2;
 import com.messconnect.entities.Order;
 import com.messconnect.entities.User;
@@ -23,5 +24,7 @@ public interface UserService {
 	List<Order> getUserOrders(Long userId);
 
 	User updateUserProfile(@Valid UserDTO2 user, Long userId);
+
+	SigninUserResp getUserData(String email);
 
 }

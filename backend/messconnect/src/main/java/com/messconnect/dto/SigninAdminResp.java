@@ -4,11 +4,13 @@ import com.messconnect.entities.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class SigninAdminResp {
 
 	private Long id;

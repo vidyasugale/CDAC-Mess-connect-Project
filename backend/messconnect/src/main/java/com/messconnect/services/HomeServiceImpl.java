@@ -1,6 +1,5 @@
 package com.messconnect.services;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
@@ -17,7 +16,6 @@ import com.messconnect.dto.TodayMenuDTO;
 import com.messconnect.entities.AddOn;
 import com.messconnect.entities.Balance;
 import com.messconnect.entities.Menu;
-import com.messconnect.entities.Order;
 import com.messconnect.entities.Role;
 import com.messconnect.entities.User;
 import com.messconnect.repositories.AddonRepository;
@@ -72,9 +70,9 @@ public class HomeServiceImpl implements HomeService {
 			Balance b = balanceRepository.findById(user.getId())
 					.orElseThrow(() -> new ResourceNotFoundException("Invalid user id !!!!!"));
 
-			List<Order> orders = orderRepository.findByOrderDateAndUser(LocalDate.now(), user);
-			return new SigninUserResp(user.getId(), user.getFirstName(), user.getLastName(), b.getBalance(), orders,
-					user.getRole());
+			SigninUserResp rsp = mapper.map(user, SigninUserResp.class);
+			rsp.setBalance(b.getBalance());
+			return rsp;
 		}
 		return new SigninAdminResp(user.getId(), user.getFirstName(), user.getLastName(), user.getRole());
 	}
