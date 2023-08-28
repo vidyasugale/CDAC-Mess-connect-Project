@@ -32,7 +32,7 @@ public class HomeController {
 
 	}
 
-	@GetMapping("/todaysmanu")
+	@GetMapping("/todaysmenu")
 	public ResponseEntity<?> todayMenuData() {
 		return new ResponseEntity<>(homeService.getTodayMenuData(), HttpStatus.OK);
 

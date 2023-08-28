@@ -11,4 +11,6 @@ public interface MenuService {
 
 	AllItemsDTO getAllItemsData();
 
+	String addNewMenu(Menu newMenu);
+
 }

@@ -8,4 +8,6 @@ public interface AddonService {
 
 	List<AddOn> getallAddonsData();
 
+	String addNewAddon(AddOn newAddon);
+
 }
