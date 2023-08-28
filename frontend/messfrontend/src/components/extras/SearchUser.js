@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import "./SearchUser.css";
 import Button from '../header/Button';
+import Navbar2 from '../header/Navbar2';
+import Footer from '../footer/Footer';
 
 function SearchUser() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -48,13 +50,15 @@ function SearchUser() {
   };
 
   return (
+    <>
+   < Navbar2 />
     <div className="search-container">
     <div className="" style={{ position: "relative", height: "5rem" }}>
           <div className="largeFont zIndBack registerHeadOut" style={{ left: "20%" }}>
-            Main Menu
+            Users Data
           </div>
           <div className="smallFont zIndFront registerHeadIn" style={{}}>
-            Main Menu
+            Users Data
           </div>
         </div>
             <div className="input-group mb-3">
@@ -140,7 +144,8 @@ function SearchUser() {
               </table>
             )}
           </div>
-     
+          <Footer />
+          </>
   );
 }
 

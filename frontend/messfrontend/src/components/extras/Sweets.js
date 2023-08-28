@@ -1,19 +1,42 @@
 import './Sweets.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../header/Button';
+import axiosConfig from '../../configs/axiosConfig';
+import Navbar2 from '../header/Navbar2'
+import Footer from '../footer/Footer'
 
 const Sweets = () => {
   const [sweetList, setSweetList] = useState([]);
   const [sweetName, setSweetName] = useState('');
 
-  const handleAddSweet = () => {
-    if (sweetName.trim() !== '') {
-      setSweetList([...sweetList, sweetName]);
-      setSweetName('');
+  useEffect(() => {
+    const getAllSweets = async () => {
+      try {
+        const response = await axiosConfig.get("/sweet/getallsweets");
+        console.log(typeof response.data);
+        setSweetList(response.data);
+      } catch (error) {
+        console.log(error)
+      }
     }
-  };
+    getAllSweets();
+  },[]);
+
+  const addNewSweet = async (e) => {
+    
+      try {
+        const response = await axiosConfig.post("/sweet/addsweet",{
+          name:sweetName
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+  }
 
   return (
+    <>
+    < Navbar2 />
     <div className="mt-3 d-flex align-items-center flex-wrap">
     <div className=" col-lg-5 col-md-5 col-12">
     <img src="../assets/sweet.png" className="sweet-Img" />
@@ -40,7 +63,7 @@ const Sweets = () => {
             />
           </label>
           <div>
-          <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Create Sweet" clickType="Button" onClick={handleAddSweet} />
+          <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Create Sweet" clickType="Submit" onClick={addNewSweet} />
           </div>
         </form>
         <div >
@@ -51,9 +74,9 @@ const Sweets = () => {
             </tr>
           </thead>
           <tbody>
-            {sweetList.map((sweet, index) => (
-              <tr key={index}>
-                <td >{sweet}</td>
+            {sweetList && sweetList.map(data => (
+              <tr key={data.id}>
+                <td >{data.name}</td>
               </tr>
             ))}
           </tbody>
@@ -63,6 +86,8 @@ const Sweets = () => {
     </div>
       </div>
        </div>
+       < Footer />
+       </>
   );
 }
 

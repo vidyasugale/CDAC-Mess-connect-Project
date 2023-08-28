@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import "./MainMenu.css";
+import "./SelectMainMenu.css";
 import Button from "../header/Button";
 import { Link } from "react-router-dom";
+import Navbar2 from '../header/Navbar2'
+import Footer from '../footer/Footer'
 
-const MainMenu = () => {
+const SelectMainMenu = () => {
   const course = [
     {
       mainCourse: "dal",
@@ -29,17 +31,19 @@ const MainMenu = () => {
   ];
 
   return (
+    <>
+    < Navbar2 />
     <div className="mainCourse-container">
       <div className="" style={{ position: "relative", height: "5rem" }}>
           <div className="largeFont zIndBack registerHeadOut" style={{ left: "20%" }}>
-            Main Menu
+            Select Main Menu
           </div>
           <div className="smallFont zIndFront registerHeadIn" style={{}}>
-            Main Menu
+            Select Main Menu
           </div>
         </div>
       <div >
-        <Link to="/add-new-menu" > 
+        <Link to="/create-new-menu" > 
       <Button classname="btn btn-md customBtn text-light" btnText="Create New Menu" clickType="button" /> 
       </Link>
       <table className="table mt-3 table-responsive table-striped">
@@ -71,11 +75,13 @@ const MainMenu = () => {
      
       <Button classname="btn btn-md customBtn text-light" btnText="Add Today's Menu" clickType="button" />
       <Link to="/admin/home">
-      <Button classname="btn btn-md mx-2 customBtn text-light" btnText="Admin Menu" clickType="button" />
+      <Button classname="btn btn-md mx-2 customBtn text-light" btnText="Admin Home" clickType="button" />
       </Link>
 
   </div>
+  < Footer />
+       </>
   ) 
 };
 
-export default MainMenu;
+export default SelectMainMenu;

@@ -1,9 +1,11 @@
-import "./AddNewMenu.css";
+import "./CreateNewMenu.css";
 import { useState } from "react";
 import { Link } from 'react-router-dom';
 import Button from "../header/Button";
+import Navbar2 from '../header/Navbar2'
+import Footer from '../footer/Footer'
 
-const AddNewMenu = () => {
+const CreateNewMenu = () => {
   const [courseList, setCourseList] = useState([]);
   const [MainCourse, setMainCourse] = useState("");
   const [Bread, setBread] = useState("");
@@ -33,6 +35,7 @@ const AddNewMenu = () => {
 
   return (
     <>
+    < Navbar2 />
     <div className="addNewMenu-component">
     <div className="" style={{ position: "relative", height: "5rem" }}>
           <div className="largeFont zIndBack registerHeadOut" style={{ left: "20%" }}>
@@ -126,9 +129,9 @@ const AddNewMenu = () => {
         ></input>
       </div>
       <div >
-      <Button classname="btn btn-md mt-3  customBtn text-light" btnText="Create Menu" clickType="button" onClick={handleNewCourse}/>
-      <Link to="/main-menu">
-      <Button classname="btn btn-md mt-3 mx-2 customBtn text-light" btnText="Main Menu" clickType="button"/>
+      <Button classname="btn btn-md mt-3  col-md-3 customBtn text-light" btnText="Create Menu" clickType="button" onClick={handleNewCourse}/>
+      <Link to="/select-main-menu">
+      <Button classname="btn btn-md mt-3 mx-2 col-md-3  backBtn customBtn text-light" btnText="Back" clickType="button"/>
       </Link>
       </div>
       
@@ -136,9 +139,10 @@ const AddNewMenu = () => {
       </div>
       
     </div>
-   
-    </>
+    < Footer />
+       </>
+  
   );
 };
 
-export default AddNewMenu;
+export default CreateNewMenu;
