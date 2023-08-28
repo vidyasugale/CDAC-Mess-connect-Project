@@ -22,4 +22,10 @@ public class AddonServiceImpl implements AddonService {
 		return adList;
 	}
 
+	@Override
+	public String addNewAddon(AddOn newAddon) {
+		AddOn persistentAddon = addonRepository.save(newAddon);
+		return persistentAddon.getName() + " added to database!!";
+	}
+
 }

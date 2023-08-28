@@ -45,4 +45,10 @@ public class MenuServiceImpl implements MenuService {
 		return object;
 	}
 
+	@Override
+	public String addNewMenu(Menu newMenu) {
+		Menu persistentMenu = menuRepository.save(newMenu);
+		return persistentMenu.getName() + " added to database!!";
+	}
+
 }
