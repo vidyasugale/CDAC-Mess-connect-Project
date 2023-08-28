@@ -60,7 +60,7 @@ public class UserController {
 
 	}
 
-	@GetMapping("/getuserbalances/{userId}")
+	@GetMapping("/getuserbalance/{userId}")
 	public ResponseEntity<?> getBalance(@PathVariable Long userId) {
 		return new ResponseEntity<>(userService.getUserBalance(userId), HttpStatus.OK);
 	}

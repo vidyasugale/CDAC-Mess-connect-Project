@@ -2,12 +2,14 @@ package com.messconnect.services;
 
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.messconnect.customException.ResourceNotFoundException;
+import com.messconnect.dto.SigninUserResp;
 import com.messconnect.dto.UserDTO2;
 import com.messconnect.entities.Balance;
 import com.messconnect.entities.Order;
@@ -34,6 +36,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private OrderRepository orderRepository;
+
+	@Autowired
+	private ModelMapper mapper;
 
 	/*
 	 * Adds user
@@ -95,6 +100,27 @@ public class UserServiceImpl implements UserService {
 		updatedUser.setAddress(user.getAddress());
 		updatedUser.setPhone(user.getPhone());
 		return updatedUser;
+	}
+
+	@Override
+	public SigninUserResp getUserData(String email) {
+		List<User> uList = userRepository.findByEmail(email);
+
+		User user = null;
+		try {
+			user = uList.get(0);
+		} catch (Exception e) {
+			throw new ResourceNotFoundException("Invalid Email_id !!");
+		}
+
+		SigninUserResp rsp = mapper.map(user, SigninUserResp.class);
+
+		Balance b = balanceRepository.findById(user.getId())
+				.orElseThrow(() -> new ResourceNotFoundException("Invalid user id !!!!!"));
+
+		rsp.setBalance(b.getBalance());
+
+		return rsp;
 	}
 
 }
