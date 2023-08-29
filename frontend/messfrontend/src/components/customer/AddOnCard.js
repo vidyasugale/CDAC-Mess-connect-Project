@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 
-const AddOnCard = ({addOn,  onSelect}) => {
+const AddOnCard = ({addOn,  onSelect, setSelectedAddOns}) => {
     const [selectedAddons, setSelectedAddons] = useState([]);
+
 
     const handleAddonChange = (event) => {
       const addonId = event.target.value;
       const isChecked = event.target.checked;
-  
+    
       setSelectedAddons((prevSelectedAddons) => {
         if (isChecked) {
           return [...prevSelectedAddons, addonId];
@@ -14,8 +15,10 @@ const AddOnCard = ({addOn,  onSelect}) => {
           return prevSelectedAddons.filter((id) => id !== addonId);
         }
       });
-  
-      onSelect(selectedAddons); // Pass the selected addons array to the parent component
+      console.log(selectedAddons);
+      console.log(addonId);
+      
+      onSelect(selectedAddons.concat(addonId)); // Pass the updated selected addons array
     };
 
   return (
@@ -36,7 +39,7 @@ const AddOnCard = ({addOn,  onSelect}) => {
                     <div className="col-lg-2 col-md-4 col-sm-6 col-6 d-flex justify-content-center align-items-center">
 
                         <label>
-                            Add addOn {addOn.id} <input type="checkbox" onChange={handleAddonChange} value={addOn.id} />
+                            Add addOn {addOn.id} <input type="checkbox" onChange={handleAddonChange} value={addOn.id}  />
                         </label>
 
 
