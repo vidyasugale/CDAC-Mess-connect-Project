@@ -21,21 +21,21 @@ const Navbar2 = ({ userData, onLogout, homePath }) => {
         <div className="nav_bar  d-flex p-lg-3 col-lg-8 col-md-8 col-12 justify-content-center">
           <div>
             <Link to={homePath}>
-              <Button classname="navbtn btn btn-md text-secondary" btnText="HOME" />
+              <Button classname="navbtn btn btn-md" btnText="HOME" />
             </Link>
 
             <Link to="/about">
-              <Button classname="navbtn btn btn-md text-secondary" btnText="ABOUT US" />
+              <Button classname="navbtn btn btn-md" btnText="ABOUT US" />
             </Link>
 
             <Link to="/contact">
-              <Button classname="navbtn btn btn-md text-secondary" btnText="CONTACT" />
+              <Button classname="navbtn btn btn-md" btnText="CONTACT" />
             </Link>
 
             
               <Link to="/">
                 <Button
-                  classname="navbtn btn btn-md text-secondary"
+                  classname="navbtn btn btn-md"
                   btnText="LOGOUT"
                   onClick={onLogout}
                 />
@@ -44,7 +44,9 @@ const Navbar2 = ({ userData, onLogout, homePath }) => {
               <div className="user-icon-dropdown">
                 <i className="fa-solid fa-user"></i>
                 <div className="dropdown-content">
+                <Link to="/customer/edit-profile">
                   <div className="dropdown-item">Edit Profile</div>
+                </Link>
                   <div className="dropdown-item">Change Password</div>
                 
               </div>
