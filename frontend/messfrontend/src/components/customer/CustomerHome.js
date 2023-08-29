@@ -43,7 +43,10 @@ const CustomerHome = () => {
 
 
             </div>
-            <ThaliCards/>
+            <Link to="/customer/create-order">
+                <ThaliCards/>
+            </Link>
+            
 
             <Footer homePath="/customer/home"/>
         </>
