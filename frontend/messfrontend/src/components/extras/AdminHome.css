@@ -1,5 +1,5 @@
 .menu-container {
-  width: 60%;
+  width: 70%;
     margin: 5% auto;
     padding: 1rem;
     text-align: center;
@@ -40,64 +40,5 @@
     box-sizing: border-box;
     box-shadow: 4px 4px 4px rgb(61, 24, 1);
     color: #e26d00;
-  }
-  
-  .largeFont {
-    font-size: 60px;
-    font-weight: 900;
-    color: #f1f1f1;
-  }
-  .largeFont {
-    font-size: 60px;
-    font-weight: 900;
-    color: #f1f1f1;
-  }
-  
-  .smallFont {
-    font-size: 15px;
-    font-weight: 900;
-    color: #d66f10;
-  }
-
-  .zIndBack {
-    z-index: 1;
-    position: absolute;
-    
-  }
-  
-   .zIndFront {
-    position: absolute;
-    z-index: 2;
-  } 
-
-  @media (max-width: 500px) {
-    .zIndBack{
-      height: 25rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-  
-    .largeFont {
-      font-weight: 500;
-      font-size: 40px;
-    }
-  
-    .smallFont {
-      font-weight: 500;
-      font-size: 20px;
-    }
-  
-    .headingSmall {
-      top: 20px;
-    }
-  
-  }
-
-  .registerHeadOut{
-    left:20%;
-  }
-  .registerHeadIn{
-    left:30%;
-    top:35px;
+    font-size: 1.5vw;
   }

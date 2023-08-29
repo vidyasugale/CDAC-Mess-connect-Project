@@ -13,7 +13,6 @@ const Sweets = () => {
     const getAllSweets = async () => {
       try {
         const response = await axiosConfig.get("/sweet/getallsweets");
-        console.log(typeof response.data);
         setSweetList(response.data);
       } catch (error) {
         console.log(error)

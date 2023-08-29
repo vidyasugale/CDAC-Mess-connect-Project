@@ -13,7 +13,6 @@ const Curries =() => {
     const getAllCurries = async () => {
       try {
         const response = await axiosConfig.get("/curry/getallcuries");
-        console.log(typeof response.data);
         setCurryList(response.data);
       } catch (error) {
         console.log(error)
@@ -26,7 +25,7 @@ const Curries =() => {
     
       try {
         const response = await axiosConfig.post("/curry/addcurry",{
-          name:curryName
+          name:curryName 
         });
         console.log(response.data);
       } catch (error) {

@@ -4,6 +4,7 @@ import Button from '../header/Button';
 import React, { useRef } from 'react';
 import Navbar2 from '../header/Navbar2'
 import Footer from '../footer/Footer'
+import axiosConfig from "../../configs/axiosConfig";
 
 const Addons = () => {
   const images = [
@@ -17,10 +18,10 @@ const Addons = () => {
   ];
 
   const [addonsList, setAddonsList] = useState([]);
+  const [imageIndex, setImageIndex] = useState([]);
   const [addonName, setAddonName] = useState("");
   const [addonPrice, setAddonPrice] = useState("");
   const [addonId, setAddonId] = useState("");
-  const [imageIndex, setImageIndex] = useState([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -30,16 +31,29 @@ const Addons = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleAddons = () =>{
-    const newAddons={addonName, addonPrice, addonId};
-    setAddonsList([...addonsList, newAddons]);
-    setAddonName('');
-    setAddonPrice('');
-    setAddonId(null);
+  useEffect(() => {
+    const getAllAddons = async () => {
+      try {
+        const response = await axiosConfig.get("/admin/getalladdons");
+        setAddonsList(response.data);
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getAllAddons();
+  },[]);
 
-    console.log("Name :", addonName);
-    console.log("Price :", addonPrice);
-  }
+  const addNewAddons = async (e) => {
+    try {
+      const response = await axiosConfig.post("/admin/addnewaddon",{
+        name:addonName,
+        price:addonPrice
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+}
 
   const inputRef = useRef(null);
 
@@ -52,12 +66,10 @@ const Addons = () => {
     < Navbar2 homePath="/admin/home" />
     <div className="mt-3 d-flex align-items-center flex-wrap">
     <div className=" col-lg-5 col-md-5 col-12">
-      <div className="curry-Img">
-      <img
+      <img className="curry-Img"
       src={images[imageIndex]}
       alt={`Image ${imageIndex + 1}`}
     />
-      </div>
        </div>
     <div className="col-lg-7 col-md-6 col-12 justify-content-end">
     <div className="addon-component">
@@ -70,7 +82,9 @@ const Addons = () => {
         </div>
       </div>
       <div >
-        <table className="table table-head" >
+      <Button  classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Create New Add On" clickType="Button" onClick={handleButtonClick} />
+
+        <table className="table mt-3 table-head" >
           <thead  >
             <tr>
               <th >Name </th>
@@ -79,18 +93,18 @@ const Addons = () => {
             </tr>
           </thead>
           <tbody>
-            {addonsList.map((addon, index) => (
-              <tr key={index}>
-                <td >{addon}</td>
+            {addonsList && addonsList.map(data => (
+              <tr key={data.id}>
+                <td >{data.name}</td>
+                <td >{data.price}</td>
                 <td>
-              <input id=" " type="radio"></input>
+              <input type="radio"></input>
             </td>
               </tr>
             ))}
           </tbody>
         </table>
-        <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Add to Today's Add On" clickType="Button" onClick={handleAddons} />
-        <Button  classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Create New Add On" clickType="Button" onClick={handleButtonClick} />
+        <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Add to Today's Add On" clickType="Button"  />
         
         </div>
       <div className="mt-5">
@@ -120,7 +134,7 @@ const Addons = () => {
             />
           </label>
           <div>
-          <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Create Add On" clickType="Submit" onClick={handleAddons} />
+          <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Create Add On" clickType="Submit" onClick={addNewAddons} />
           </div>
         </form>
         
