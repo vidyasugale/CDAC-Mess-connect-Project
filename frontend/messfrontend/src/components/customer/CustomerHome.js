@@ -22,7 +22,7 @@ const CustomerHome = () => {
                 Welcome, {customerData.firstName} {customerData.lastName}
             </div>
             <div className="container d-flex justify-content-center align-items-center flex-wrap mt-3" >
-                <Link to="customer/create-order" style={{textDecoration:"none"}}>
+                <Link to="/customer/create-order" style={{textDecoration:"none"}}>
                     <div className='whiteBox'>
 
                         Make Order

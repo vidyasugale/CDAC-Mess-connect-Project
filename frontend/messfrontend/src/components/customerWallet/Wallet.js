@@ -4,13 +4,13 @@ import "../stylesheets/wallet.css"
 import { useEffect, useState } from "react"
 
 const Wallet = () => {
-    const [customerBalance,setCustomerBalance] = useState({});
+    const [customerData,setCustomerData] = useState({});
    
     useEffect(() => {
         const getCustomerData = () => {
             const data = JSON.parse( sessionStorage.getItem("customerData"));
             if(data){
-                setCustomerBalance(data);
+                setCustomerData(data);
                 
             }
         }
@@ -38,7 +38,7 @@ const Wallet = () => {
                     balance
                 </div>
                 <br/>
-                <div className="amount">{customerBalance.balance}</div>
+                <div className="amount">{customerData.balance}</div>
 
             </div>
         </div>
