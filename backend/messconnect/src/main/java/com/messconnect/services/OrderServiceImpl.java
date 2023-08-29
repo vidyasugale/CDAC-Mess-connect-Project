@@ -52,6 +52,9 @@ public class OrderServiceImpl implements OrderService {
 
 		Balance b = balanceRepository.findById(newOrderDTO.getUserId())
 				.orElseThrow(() -> new ResourceNotFoundException("Invalid user id !!!!!"));
+		if (b.getBalance() < order.getTotalAmount()) {
+			throw new ResourceNotFoundException("Not Enough balance!!!!");
+		}
 		b.setBalance(b.getBalance() - newOrderDTO.getTotalAmount());
 
 		Order persistentOrder = orederRepository.save(order);
