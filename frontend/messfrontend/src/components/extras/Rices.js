@@ -5,7 +5,7 @@ import axiosConfig from '../../configs/axiosConfig';
 import Navbar2 from '../header/Navbar2'
 import Footer from '../footer/Footer'
 
-function Rices() {
+const Rices =() => {
   const [riceList, setRiceList] = useState([]);
   const [riceName, setRiceName] = useState('');
 
@@ -13,7 +13,6 @@ function Rices() {
     const getAllRices = async () => {
       try {
         const response = await axiosConfig.get("/rice/getallrices");
-        console.log(typeof response.data);
         setRiceList(response.data);
       } catch (error) {
         console.log(error)

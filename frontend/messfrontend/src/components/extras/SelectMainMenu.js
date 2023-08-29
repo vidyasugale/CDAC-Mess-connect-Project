@@ -1,34 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./SelectMainMenu.css";
 import Button from "../header/Button";
 import { Link } from "react-router-dom";
 import Navbar2 from '../header/Navbar2'
 import Footer from '../footer/Footer'
+import axiosConfig from '../../configs/axiosConfig';
+
 
 const SelectMainMenu = () => {
-  const course = [
-    {
-      mainCourse: "dal",
-      bread: 'Butter Nan',
-      curry : 'Shev Bhaji',
-      rice: 'Jeera Rice',
-      sweet: 'Laadu',
-    },
-    {
-      mainCourse: "dal",
-      bread: 'Butter Nan',
-      curry : 'Shev Bhaji',
-      rice: 'Jeera Rice',
-      sweet: 'Laadu',
-    },
-    {
-      mainCourse: "dal",
-      bread: 'Butter Nan',
-      curry : 'Shev Bhaji',
-      rice: 'Jeera Rice',
-      sweet: 'Laadu',
-    },
-  ];
+  const [allMenu, setAllMenu] = useState([]);
+
+  useEffect(() => {
+    const getAllMenu = async () => {
+      try {
+        const response = await axiosConfig.get("/admin/getallmenu");
+        console.log(typeof response.data);
+        setAllMenu(response.data);
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getAllMenu();
+  },[]);
 
   return (
     <>
@@ -46,31 +39,39 @@ const SelectMainMenu = () => {
         <Link to="/create-new-menu" > 
       <Button classname="btn btn-md customBtn text-light" btnText="Create New Menu" clickType="button" /> 
       </Link>
-      <table className="table mt-3 table-responsive table-striped">
+      <div className="table-container ">
+      <table className="table mt-3 table-responsive table-striped ">
         <thead className="mainCourse-header">
+        <th >Menu Name </th>
         <th >Main Courses </th>
           <th >Bread </th>
           <th >Curry </th>
           <th >Rice </th>
           <th >Sweet </th>
+          <th >Price </th>
           <th >Select </th>
+
         
         </thead>
         <tbody className="mainCourse-body">
-          {course.map(s =>{
-            return <tr>
-              <td >{s.mainCourse}</td>
-              <td >{s.bread}</td>
-            <td >{s.curry}</td>
-            <td >{s.rice}</td>
-            <td >{s.sweet}</td>
+          {allMenu && allMenu.map(data =>{
+            return <tr key={data.id}>
+              <td >{data.name}</td>
+              <td >{data.mainCourse.name}</td>
+              <td >{data.bread.name}</td>
+            <td >{data.curry.name}</td>
+            <td >{data.rice.name}</td>
+            <td >{data.sweet.name}</td>
+            <td >{data.price}</td>
+
             <td>
-              <input type="radio"></input>
+              <input value={data.id} type="radio"></input>
             </td>
             </tr>
           })}
         </tbody>
       </table>
+      </div>
       </div> 
      
       <Button classname="btn btn-md customBtn text-light" btnText="Add Today's Menu" clickType="button" />

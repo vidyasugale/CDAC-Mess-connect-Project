@@ -13,7 +13,6 @@ const Breads = () => {
     const getAllBreads = async () => {
       try {
         const response = await axiosConfig.get("/bread/getallbreads");
-        console.log(typeof response.data);
         setBreadList(response.data);
       } catch (error) {
         console.log(error)

@@ -15,8 +15,10 @@
 
 .table-head{
  text-align: center;
+ color: black;
 }
 .table-body{
   text-align: center;
   border-bottom: 0px;
  }
+
