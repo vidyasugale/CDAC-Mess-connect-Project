@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const MenuCard = () => {
+const MenuCard = ({ menu, onSelect }) => {
+    const [selectedMenuId, setSelectedMenuId] = useState(null);
+
+    const handleMenuChange = (event) => {
+      const selectedId = event.target.value;
+      setSelectedMenuId(selectedId);
+      onSelect(selectedId); // Pass the selected menuId to the parent component
+    };
+
     return (
         <>
             <div className="card mb-3" >
@@ -10,41 +18,26 @@ const MenuCard = () => {
                     </div>
                     <div className="col-md-6">
                         <div className="card-body">
-                            <h5 className="card-title">Card title</h5>
-                            <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                            <h5 className="card-title">{menu.name}</h5>
+                            <p className="card-text">
+                                Delight your taste buds with the rich and creamy {menu.mainCourse.name}, accompanied by soft and fluffy {menu.bread.name}.The thali also features the hearty and savory {menu.curry.name}, adding depth to your meal. The thali also includes fragrant {menu.rice.name} to perfectly complement the flavors. Top off your meal with the delectable sweetness of {menu.sweet.name}, making your dining experience truly memorable.
+                                Price : Rs.{menu.price}
+                            </p>
+
                         </div>
                     </div>
                     <div className="col-md-2 d-flex justify-content-center align-items-center">
 
-                        <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off" />
-                        <label class="btn" style={{color:"#e26d00"}} for="danger-outlined">select</label>
+                        <label>
+                            <input type="radio" name="option" value={menu.id} onChange={handleMenuChange} /> menu {menu.id}
+                        </label>
+
 
 
                     </div>
                 </div>
             </div>
-            <div className="card mb-3" >
-                <div className="row g-0">
-                    <div className="col-md-4">
-                        <img src="../assets/thali.png" className="img-fluid rounded-start" alt="..." />
-                    </div>
-                    <div className="col-md-6">
-                        <div className="card-body">
-                            <h5 className="card-title">Card title</h5>
-                            <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                    <div className="col-md-2 d-flex justify-content-center align-items-center">
 
-                        <input type="radio" class="btn-check" name="options-outlined" id="selectMenu2" autocomplete="off" />
-                        <label class="btn" style={{color:"#e26d00"}} for="selectMenu2">select</label>
-
-
-                    </div>
-                </div>
-            </div>
         </>
     )
 }
