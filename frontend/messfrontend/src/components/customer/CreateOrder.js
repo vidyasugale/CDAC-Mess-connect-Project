@@ -5,87 +5,98 @@ import MenuCard from './MenuCard'
 import axiosConfig from '../../configs/axiosConfig'
 import AddOnCard from './AddOnCard'
 import Button from '../header/Button'
-import Addons from './../extras/Addons';
+import { useNavigate } from 'react-router-dom'
 
 const CreateOrder = () => {
-    const[addOns,setAddOns]=useState(null);
-    const[menus,setMenus]=useState(null);
-    const[selectedMenuId,setSelectedMenuId] = useState(0);
+    const [addOns, setAddOns] = useState(null);
+    const [menus, setMenus] = useState(null);
+    const [selectedMenuId, setSelectedMenuId] = useState(0);
     const [selectedAddOns, setSelectedAddOns] = useState([]);
-    const [addOnIds,setAddOnIds] = useState([]);
-    const [order,setOrder] = useState({});
-    const [customerData,setCustomerData] = useState({});
-   
+    const [customerData, setCustomerData] = useState({});
+    const navigate = useNavigate();
+
     useEffect(() => {
         const getCustomerData = () => {
-            const data = JSON.parse( sessionStorage.getItem("customerData"));
-            if(data){
+            const data = JSON.parse(sessionStorage.getItem("customerData"));
+            if (data) {
                 setCustomerData(data);
-                
+
             }
         }
         getCustomerData();
-        
-    },[]);
 
-    useEffect(()=> {
+    }, []);
+
+    useEffect(() => {
         const getAllData = async () => {
             const response = await axiosConfig.get("/todaysmenu");
             setAddOns(response.data.addons);
             setMenus(response.data.menu);
         }
         getAllData();
-    },[]);
+    }, []);
 
     const handleMenuSelect = (menuId) => {
         setSelectedMenuId(menuId);
-      };
-    
-      const handleAddonSelect = (selectedAddons) => {
-        setSelectedAddOns(selectedAddons);
-      };
+    };
 
-      console.log(selectedMenuId);
-      console.log(selectedAddOns);
+    const handleAddonSelect = (selectedAddons) => {
+        console.log(selectedAddons);
 
-    const orderSubmit = async () => {
-        if(selectedMenuId !== 0){
-            const data = JSON.parse( sessionStorage.getItem("customerData"));
+        setSelectedAddOns([...selectedAddOns, selectedAddons[0]]);
+
+
+        console.log(selectedAddOns);
+    };
+
+
+    const orderSubmit = async (e) => {
+        e.preventDefault();
+
+        if (selectedMenuId !== 0) {
             const selectedMenu = menus.find(menu => menu.id === parseInt(selectedMenuId));
-            let totalAmount=selectedMenu.price;
-            
-            if(selectedAddOns !== []){
-                console.log(selectedAddOns);
-                setAddOnIds(selectedAddOns.map(str => parseInt(str)));
-                // console.log(addOns);    
-                // console.log(addOnIds);
-                const add = addOns.find(addon => addon.id === addOnIds[0]);
-                // console.log(add);
-                addOnIds.map(addOnId => totalAmount += (addOns.find(addOn => addOn.id === addOnId)).price);
-                // console.log(addOnIds);
-                // console.log(totalAmount);
+            let totalAmount = selectedMenu.price;
+
+            if (selectedAddOns !== []) {
+
+                const addOnsIdInt = (selectedAddOns.map(str => parseInt(str)));
+                addOnsIdInt.map(addOnId => totalAmount += (addOns.find(addOn => addOn.id === addOnId)).price);
+                try {
+                    const response = await axiosConfig.post("/user/order", {
+                        "userId": customerData.id,
+                        "menuId": selectedMenuId,
+                        "addOnsIds": addOnsIdInt,
+                        "totalAmount": totalAmount
+                    })
+                    console.log(response);
+                    navigate("/customer/home");
+                } catch (error) {
+                    alert("Invalid Submittion!!!");
+                }
+
+            } else {
+                try {
+                    const response = await axiosConfig.post("/user/order", {
+                        "userId": customerData.id,
+                        "menuId": selectedMenuId,
+                        "addOnsIds": selectedAddOns,
+                        "totalAmount": totalAmount
+                    })
+                    console.log(response);
+                    navigate("/customer/home");
+                } catch (error) {
+                    alert("Invalid Submittion!!!")
+                }   
+
             }
-            // console.log(data.id);
-            // console.log(selectedMenuId);
-            // console.log(addOnIds);
-            // console.log(totalAmount);
-            // setOrder({
-            //     "userId": data.id,
-            //     "menuId": selectedMenuId,
-            //     "addOnsIds": ,
-            //     "totalAmount": totalAmount
-            // })
-            // console.log(order);
-            const response = await axiosConfig.post("/user/order",order)
-            console.log(response);
-        }else{
+        } else {
             alert("Please select 1 menu!!!");
         }
     }
 
-  return (
+    return (
         <>
-            <Navbar2 homePath="/customer/home"/>
+            <Navbar2 homePath="/customer/home" />
             <div id="menuCards" style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
                 <div className="mt-1" style={{ position: "relative" }}>
                     <div className="largeFont zIndBack headingLarge">
@@ -98,13 +109,13 @@ const CreateOrder = () => {
             </div>
             <div className='container'>
                 {
-                    menus && menus.map(data=>{
-                        return(
-                            <MenuCard menu={data} onSelect={handleMenuSelect}/>   
+                    menus && menus.map(data => {
+                        return (
+                            <MenuCard menu={data} onSelect={handleMenuSelect} />
                         );
                     })
                 }
-                
+
             </div>
             <div id="menuCards" style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
                 <div className="mt-1" style={{ position: "relative" }}>
@@ -119,19 +130,19 @@ const CreateOrder = () => {
             <div className="container">
                 {
                     addOns && addOns.map(data => {
-                        return(
-                            <AddOnCard addOn={data} onSelect={handleAddonSelect}/>
+                        return (
+                            <AddOnCard addOn={data} onSelect={handleAddonSelect} setSelectedAddOns={setSelectedAddOns} />
                         );
                     })
                 }
             </div>
             <div className='container d-flex justify-content-center align-items-center'>
-            <Button classname="btn btn-md customBtn" btnText="Order Now" clickType="button" onClick={orderSubmit}/>
+                <Button id="buton" classname="btn btn-md customBtn" btnText="Order Now" clickType="button" onClick={orderSubmit} />
             </div>
-            
-            <Footer homePath="/customer/home"/>
+
+            <Footer homePath="/customer/home" />
         </>
-  )
+    )
 }
 
 export default CreateOrder;
