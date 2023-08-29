@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.messconnect.dto.ActiveAddonsDTO;
+import com.messconnect.dto.ActiveMenuDTO;
 import com.messconnect.dto.AddonDTO;
 import com.messconnect.dto.BalanceDTO;
 import com.messconnect.dto.MenuDTO;
@@ -81,8 +83,20 @@ public class AdminController {
 
 	@PutMapping("/updatebalance")
 	public ResponseEntity<?> updateBalance(@RequestBody BalanceDTO balanceDTO) {
-		return new ResponseEntity<>(balanceService.updateUserBalance(balanceDTO.getUserId(), balanceDTO.getUpdatedBal()),
-				HttpStatus.OK);
+		return new ResponseEntity<>(
+				balanceService.updateUserBalance(balanceDTO.getUserId(), balanceDTO.getUpdatedBal()), HttpStatus.OK);
+
+	}
+
+	@PutMapping("/activateMenu")
+	public ResponseEntity<?> activateMenu(@RequestBody ActiveMenuDTO actMenuDTO) {
+		return new ResponseEntity<>(menuService.activateTodayMenu(actMenuDTO.getActiveMenus()), HttpStatus.OK);
+
+	}
+
+	@PutMapping("/activateAddon")
+	public ResponseEntity<?> activateAddon(@RequestBody ActiveAddonsDTO actAddonDTO) {
+		return new ResponseEntity<>(addonService.activateTodayAddon(actAddonDTO.getActiveAddons()), HttpStatus.OK);
 
 	}
 

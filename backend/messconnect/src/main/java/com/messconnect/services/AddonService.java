@@ -10,4 +10,6 @@ public interface AddonService {
 
 	String addNewAddon(AddOn newAddon);
 
+	String activateTodayAddon(List<Long> activeAddons);
+
 }

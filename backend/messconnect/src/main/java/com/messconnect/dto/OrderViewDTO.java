@@ -1,5 +1,7 @@
 package com.messconnect.dto;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -17,5 +19,7 @@ public class OrderViewDTO {
 	private String menuName;
 	private List<String> addonsNames;
 	private double totalAmount;
+	private LocalDate orderDate;
+	private LocalTime orderTime;
 
 }

@@ -103,7 +103,7 @@ public class UserServiceImpl implements UserService {
 			}
 
 			ovList.add(new OrderViewDTO(userId, order.getId(), order.getMenu().getName(), addonNames,
-					order.getTotalAmount()));
+					order.getTotalAmount(), order.getOrderDate(), order.getOrderTime()));
 
 		}
 		return ovList;
