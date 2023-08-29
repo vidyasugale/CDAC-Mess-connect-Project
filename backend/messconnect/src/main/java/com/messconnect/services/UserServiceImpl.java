@@ -1,5 +1,6 @@
 package com.messconnect.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
@@ -9,8 +10,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.messconnect.customException.ResourceNotFoundException;
+import com.messconnect.dto.OrderViewDTO;
 import com.messconnect.dto.SigninUserResp;
 import com.messconnect.dto.UserDTO2;
+import com.messconnect.entities.AddOn;
 import com.messconnect.entities.Balance;
 import com.messconnect.entities.Order;
 import com.messconnect.entities.Role;
@@ -74,6 +77,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public String deleteUser(Long id) {
+		orderRepository.deleteByUserId(id);
+		balanceRepository.deleteById(id);
 		userRepository.deleteById(id);
 		return "User deleted Successfully!!";
 	}
@@ -86,9 +91,23 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<Order> getUserOrders(Long userId) {
+	public List<OrderViewDTO> getUserOrders(Long userId) {
 		List<Order> oList = orderRepository.findOrderByUserId(userId);
-		return oList;
+		List<OrderViewDTO> ovList = new ArrayList<>();
+
+		for (Order order : oList) {
+			List<AddOn> addons = order.getAddOns();
+			List<String> addonNames = new ArrayList<>();
+			for (AddOn ao : addons) {
+				addonNames.add(ao.getName());
+			}
+
+			ovList.add(new OrderViewDTO(userId, order.getId(), order.getMenu().getName(), addonNames,
+					order.getTotalAmount()));
+
+		}
+		return ovList;
+
 	}
 
 	@Override
@@ -97,7 +116,6 @@ public class UserServiceImpl implements UserService {
 				.orElseThrow(() -> new ResourceNotFoundException("Invalid User !!! Can not upadate details"));
 		updatedUser.setFirstName(user.getFirstName());
 		updatedUser.setLastName(user.getLastName());
-		updatedUser.setAddress(user.getAddress());
 		updatedUser.setPhone(user.getPhone());
 		return updatedUser;
 	}
