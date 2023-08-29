@@ -48,6 +48,13 @@ const CreateOrder = () => {
 
         console.log(selectedAddOns);
     };
+    const checkCustomerBalance = (balance) => {
+        if(balance > customerData.balance){
+            return true;
+        }
+        alert("Insufficient Balance!!!");
+        return false;
+    }
 
 
     const orderSubmit = async (e) => {
@@ -61,32 +68,38 @@ const CreateOrder = () => {
 
                 const addOnsIdInt = (selectedAddOns.map(str => parseInt(str)));
                 addOnsIdInt.map(addOnId => totalAmount += (addOns.find(addOn => addOn.id === addOnId)).price);
-                try {
-                    const response = await axiosConfig.post("/user/order", {
-                        "userId": customerData.id,
-                        "menuId": selectedMenuId,
-                        "addOnsIds": addOnsIdInt,
-                        "totalAmount": totalAmount
-                    })
-                    console.log(response);
-                    navigate("/customer/home");
-                } catch (error) {
-                    alert("Invalid Submittion!!!");
+                if(checkCustomerBalance(totalAmount)){
+                    try {
+                        const response = await axiosConfig.post("/user/order", {
+                            "userId": customerData.id,
+                            "menuId": selectedMenuId,
+                            "addOnsIds": addOnsIdInt,
+                            "totalAmount": totalAmount
+                        })
+                        console.log(response);
+                        navigate("/customer/home");
+                    } catch (error) {
+                        alert("Invalid Submittion!!!");
+                    }
                 }
 
+
             } else {
-                try {
-                    const response = await axiosConfig.post("/user/order", {
-                        "userId": customerData.id,
-                        "menuId": selectedMenuId,
-                        "addOnsIds": selectedAddOns,
-                        "totalAmount": totalAmount
-                    })
-                    console.log(response);
-                    navigate("/customer/home");
-                } catch (error) {
-                    alert("Invalid Submittion!!!")
-                }   
+                if(checkCustomerBalance(totalAmount)){
+                    try {
+                        const response = await axiosConfig.post("/user/order", {
+                            "userId": customerData.id,
+                            "menuId": selectedMenuId,
+                            "addOnsIds": selectedAddOns,
+                            "totalAmount": totalAmount
+                        })
+                        console.log(response);
+                        navigate("/customer/home");
+                    } catch (error) {
+                        alert("Invalid Submittion!!!");
+                    }
+                }
+                  
 
             }
         } else {

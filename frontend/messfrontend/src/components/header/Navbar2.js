@@ -8,7 +8,7 @@ const Navbar2 = ({ userData, onLogout, homePath }) => {
     <>
       <div className="navbar d-flex text-secondary mb-1">
         <div className="col-lg-4 col-md-4 col-12">
-          <Link to="/">
+          <Link to={homePath}>
             <img
               style={{ width: '10vw', marginLeft: '10px' }}
               src="../assets/newlogo.svg"
@@ -24,11 +24,11 @@ const Navbar2 = ({ userData, onLogout, homePath }) => {
               <Button classname="navbtn btn btn-md" btnText="HOME" />
             </Link>
 
-            <Link to="/about">
+            <Link to="/customer/about">
               <Button classname="navbtn btn btn-md" btnText="ABOUT US" />
             </Link>
 
-            <Link to="/contact">
+            <Link to="/customer/contact">
               <Button classname="navbtn btn btn-md" btnText="CONTACT" />
             </Link>
 

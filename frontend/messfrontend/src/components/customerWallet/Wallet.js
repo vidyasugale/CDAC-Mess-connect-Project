@@ -2,15 +2,22 @@ import Navbar2 from "../header/Navbar2"
 import Footer from "../footer/Footer"
 import "../stylesheets/wallet.css"
 import { useEffect, useState } from "react"
+import axiosConfig from "../../configs/axiosConfig"
 
 const Wallet = () => {
-    const [customerData,setCustomerData] = useState({});
+    const [customerBalance,setCustomerBalance] = useState(0);
    
     useEffect(() => {
-        const getCustomerData = () => {
+        const getCustomerData = async () => {
             const data = JSON.parse( sessionStorage.getItem("customerData"));
             if(data){
-                setCustomerData(data);
+                try {
+                    const response = await axiosConfig.get(`/user/getuserbalance/${data.id}`);
+                    setCustomerBalance(response.data);
+                } catch (error) {
+                    alert("request error!!");
+                    console.log(error);
+                }
                 
             }
         }
@@ -38,7 +45,7 @@ const Wallet = () => {
                     balance
                 </div>
                 <br/>
-                <div className="amount">{customerData.balance}</div>
+                <div className="amount">{customerBalance}</div>
 
             </div>
         </div>
