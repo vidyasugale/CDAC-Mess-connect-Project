@@ -5,6 +5,7 @@ import React, { useRef } from 'react';
 import Navbar2 from '../header/Navbar2'
 import Footer from '../footer/Footer'
 import axiosConfig from "../../configs/axiosConfig";
+import { useNavigate } from "react-router-dom";
 
 const Addons = () => {
   const images = [
@@ -61,6 +62,42 @@ const Addons = () => {
     inputRef.current.focus();
   };
 
+
+
+  const [selectedAddons, setSelectedAddons] = useState([]);
+  const navigate = useNavigate();
+
+
+
+
+
+  const handleAddonChange = (event) => {
+    const addonId = parseInt(event.target.value);
+    const isChecked = event.target.checked;
+  
+    setSelectedAddons((prevSelectedAddons) => {
+      if (isChecked) {
+        console.log(addonId);
+        console.log(prevSelectedAddons);
+        return [...prevSelectedAddons, addonId];
+      } else {
+        console.log(prevSelectedAddons);
+        return prevSelectedAddons.filter((id) => id !== addonId);
+      }
+    });
+
+  };
+
+
+  const submitSelectedAddons = async (e) => {
+    e.preventDefault();
+    const selectedAddOnIds = selectedAddons.map(id => parseInt(id));
+    console.log(selectedAddOnIds);
+    const response = await axiosConfig.put("/admin/activateAddon",{
+      activeAddons:selectedAddOnIds
+    })
+    console.log(response);
+  }
   return (
     <>
     < Navbar2 homePath="/admin/home" />
@@ -98,13 +135,13 @@ const Addons = () => {
                 <td >{data.name}</td>
                 <td >{data.price}</td>
                 <td>
-              <input type="radio"></input>
+              <input type="checkbox" value={data.id} onChange={handleAddonChange}></input>
             </td>
               </tr>
             ))}
           </tbody>
         </table>
-        <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Add to Today's Add On" clickType="Button"  />
+        <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Add to Today's Add On" clickType="Button"  onClick={submitSelectedAddons}/>
         
         </div>
       <div className="mt-5">

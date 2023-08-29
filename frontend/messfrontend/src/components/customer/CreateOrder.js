@@ -12,14 +12,16 @@ const CreateOrder = () => {
     const [menus, setMenus] = useState(null);
     const [selectedMenuId, setSelectedMenuId] = useState(0);
     const [selectedAddOns, setSelectedAddOns] = useState([]);
-    const [customerData, setCustomerData] = useState({});
+    const [customerBalance, setCustomerBalance] = useState(0);
     const navigate = useNavigate();
-
+    const data = JSON.parse(sessionStorage.getItem("customerData"));
     useEffect(() => {
-        const getCustomerData = () => {
-            const data = JSON.parse(sessionStorage.getItem("customerData"));
+        const getCustomerData = async () => {
+            console.log(data);
             if (data) {
-                setCustomerData(data);
+                const response = await axiosConfig.get(`/user/getuserbalance/${data.id}`);
+                console.log(response.data);
+                setCustomerBalance(response.data);
 
             }
         }
@@ -48,10 +50,11 @@ const CreateOrder = () => {
 
         console.log(selectedAddOns);
     };
-    const checkCustomerBalance = (balance) => {
-        if(balance > customerData.balance){
+    const checkCustomerBalance = (price) => {
+        if(price < customerBalance){
             return true;
         }
+        console.log(price,customerBalance);
         alert("Insufficient Balance!!!");
         return false;
     }
@@ -70,8 +73,10 @@ const CreateOrder = () => {
                 addOnsIdInt.map(addOnId => totalAmount += (addOns.find(addOn => addOn.id === addOnId)).price);
                 if(checkCustomerBalance(totalAmount)){
                     try {
+                        console.log(addOnsIdInt);
+                        console.log(selectedAddOns);
                         const response = await axiosConfig.post("/user/order", {
-                            "userId": customerData.id,
+                            "userId": data.id,
                             "menuId": selectedMenuId,
                             "addOnsIds": addOnsIdInt,
                             "totalAmount": totalAmount
@@ -87,8 +92,9 @@ const CreateOrder = () => {
             } else {
                 if(checkCustomerBalance(totalAmount)){
                     try {
+                        
                         const response = await axiosConfig.post("/user/order", {
-                            "userId": customerData.id,
+                            "userId": data.id,
                             "menuId": selectedMenuId,
                             "addOnsIds": selectedAddOns,
                             "totalAmount": totalAmount
