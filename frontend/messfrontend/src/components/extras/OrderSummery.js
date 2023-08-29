@@ -30,17 +30,16 @@ const OrderSummery = () => {
         </div>
         <div className="col-lg-7 col-md-6 col-12 justify-content-end">
           <div className="summery-container">
-            <div className="" style={{ position: "relative", height: "5rem" }}>
-              <div
-                className="largeFont zIndBack registerHeadOut"
-                style={{ left: "20%" }}
-              >
-                OrderSummery
-              </div>
-              <div className="smallFont zIndFront registerHeadIn" style={{}}>
-                OrderSummery
-              </div>
+          <div style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
+          <div className="mt-1" style={{ position: "relative" }}>
+            <div className="largeFont zIndBack headingLarge">
+              Order Summery
             </div>
+            <div className="smallFont zIndFront headingSmall">
+              Order Summery
+            </div>
+          </div>
+        </div>
             <div>
                 <Button
                   classname="btn btn-md mt-2 customBtn text-light"
