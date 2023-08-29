@@ -48,11 +48,18 @@ public class HomeServiceImpl implements HomeService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+	/*
+	 * To Authenticate user from the system
+	 * 
+	 * @param request of SigninUser DTO type
+	 * 
+	 * @return SigninAdminResp DTO
+	 * 
+	 * @throws ResourceNotFoundException- in case the email or password is invalid
+	 */
 	@Override
 	public Object authenticate(SigninUser request) {
 
-//		User user = userRepository.findByEmailAndPassword(request.getEmail(), request.getPassword())
-//				.orElseThrow(() -> new ResourceNotFoundException("Bad Credentials , Invalid Login!!!!!!!!!!!!!"));
 		List<User> uList = userRepository.findByEmail(request.getEmail());
 		User user = null;
 		try {
@@ -77,12 +84,22 @@ public class HomeServiceImpl implements HomeService {
 		return new SigninAdminResp(user.getId(), user.getFirstName(), user.getLastName(), user.getRole());
 	}
 
+	/*
+	 * To get todays Menu from the system
+	 * 
+	 * @return List of Menu
+	 */
 	@Override
 	public List<Menu> getHomeData() {
 		List<Menu> activeMenu = menuRepository.findByActive(true);
 		return activeMenu;
 	}
 
+	/*
+	 * To get todays Menu and AddOn from the system
+	 * 
+	 * @return TodayMenuDTO containing Lists
+	 */
 	@Override
 	public TodayMenuDTO getTodayMenuData() {
 		List<Menu> mList = menuRepository.findByActive(true);
