@@ -10,7 +10,6 @@ const EditProfile = () => {
     const [editUserData, setEditUserData] = useState({
         firstName: "",
         lastName: "",
-        email:"",
         phone: "",
         address: ""
     })
@@ -20,18 +19,15 @@ const EditProfile = () => {
         const getUserData = async() =>{
             await axiosConfig.get(`/user/getuser/${data.id}`)
             .then( response =>{
-                console.log(response.data);
                 setEditData(response.data);
-                console.log(editData);
                 setEditUserData({
-                    ...editUserData,
-                    email: `${editData.email}`
+                    firstName: `${response.data.firstName}`,
+                    lastName: `${response.data.lastName}`,
+                    phone: `${response.data.phone}`,
+                    address: `${response.data.address}`
                 })
-            }
+            }).catch(e => console.log(e))
 
-            ).catch(e => console.log(e))
-
-            
         }
         getUserData();
     },[])
@@ -40,7 +36,7 @@ const EditProfile = () => {
     // const [invalidPass, setInvalidPass] = useState(false);
     const [invalidAddress, setInvalidAddress] = useState(false);
     const [invalidPhone, setInvalidPhone] = useState(false);
-    // const [invalidRole, setInvalidRole] = useState(false);
+    
     const navigate = useNavigate();
 
     const validateFirstName = (e) => {
@@ -99,11 +95,12 @@ const EditProfile = () => {
             window.location.reload();
         } 
         else {
+            console.log(editUserData)
             await axiosConfig.put(`/user/update/${editData.id}`, editUserData)
                 .then(response => {
                     alert("Profile Data Edited");
                     console.log(response.data);
-                    // navigate("/login");
+                    navigate("/customer/home");
                 })
                 .catch(error => {
                     alert("provide valid details!!!");
@@ -128,7 +125,7 @@ const EditProfile = () => {
                 <form>
                     <div className="mb-3">
                         <label htmlFor="firstname" className="form-label">First Name</label>
-                        <input type="text" name="firstName" className="form-control" id="firstname" placeholder={editData.firstName} aria-describedby="" required={true} onChange={(e) => e ? validateFirstName(e) : ""} />
+                        <input type="text" name="firstName" className="form-control" id="firstname" defaultValue={editData.firstName} aria-describedby="" required={true} onChange={(e) => e ? validateFirstName(e) : ""} />
                         <div>
                             {invalidFirstName && <><div>Invalid First Name!!!</div></>}
                         </div>
@@ -136,7 +133,7 @@ const EditProfile = () => {
 
                     <div className="mb-3">
                         <label htmlFor="lastname" className="form-label">Last Name</label>
-                        <input type="text" name="lastName" className="form-control" id="lastname" placeholder={editData.lastName} aria-describedby="" onChange={(e) => e ? validateLastName(e) : ""} />
+                        <input type="text" name="lastName" className="form-control" id="lastname" defaultValue={editData.lastName} aria-describedby="" onChange={(e) => e ? validateLastName(e) : ""} />
                         <div>
                             {invalidLastName && <><div>Invalid Last Name!!!</div></>}
                         </div>
@@ -147,24 +144,23 @@ const EditProfile = () => {
                     </div>
                     <div className="mb-3">
                         <label htmlFor="address" className="form-label">address</label>
-                        <textarea className="form-control" id="address" rows="3" name="address" placeholder={editData.address} onChange={(e) => e ? validateAddress(e) : ""}></textarea>
+                        <textarea className="form-control" id="address" rows="3" name="address" defaultValue={editData.address} onChange={(e) => e ? validateAddress(e) : ""}></textarea>
                         <div>
                             {invalidAddress && <><div>Minimum 5 charaters required!!!</div></>}
                         </div>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="mobile" className="form-label">Mobile no</label>
-                        <input name="phone" type="number" className="form-control" id="mobile" placeholder={editData.phone} aria-describedby="" required={true} onChange={(e) => e ? validatePhone(e) : ""}
+                        <input name="phone" type="number" className="form-control" id="mobile" defaultValue={editData.phone} aria-describedby="" required={true} onChange={(e) => e ? validatePhone(e) : ""}
                         />
                         <div>
                             {invalidPhone && <><div>Only 10 digits are allowed for mobile Number!</div></>}
                         </div>
                     </div>
-                    <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Done" clickType="button" onClick={submitEditedData} />
+                    <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Submit" clickType="submit" onClick={submitEditedData} />
                 </form>
             </div>
             <Footer homePath="/"/>
-
         </>
     )
 }
