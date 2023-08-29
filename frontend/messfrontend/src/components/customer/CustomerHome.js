@@ -17,7 +17,7 @@ const CustomerHome = () => {
     }
     return (
         <>
-            <Navbar2 homePath="/customer/home" userData={customerData} onLogout={logOutUser}/>
+            <Navbar2 homePath="/customer/home" profilePath="/customer/edit-profile" userData={customerData} onLogout={logOutUser}/>
             <div style={{fontWeight:"bold", fontSize:"20px"}}>
                 Welcome, {customerData.firstName} {customerData.lastName} 
             </div>
