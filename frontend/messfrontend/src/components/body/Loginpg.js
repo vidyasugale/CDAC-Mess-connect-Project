@@ -127,18 +127,7 @@ const Loginpg = ({ setValidUser }) => {
             name='password'
             onChange={(e) => validatePassword(e)}
           />
-          <div>
-            {invalidPass && <><div style={{textAlign:"start"}}>Password must contain
-              <ul>
-                <li>an Uppercase Letter</li>
-                <li>an Lowercase Letter</li>
-                <li>a special charater</li>
-                <li>a digit</li>
-              </ul>
 
-
-            </div></>}
-          </div>
           <div>
             <input className="m-1" type="checkbox" name="" id="" onClick={() => showPassword("password")} /><span>Show</span>
           </div>

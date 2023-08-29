@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Link} from "react-router-dom";
 import Herosection from "./Herosection";
 import ThaliCards from "./ThaliCards";
 import Registerpg from "./Registerpg";
@@ -21,6 +21,8 @@ import Wallet from './../customerWallet/Wallet';
 import Orders from './../CustomerOrders/Orders';
 import CreateOrder from "../customer/CreateOrder";
 import EditProfile from "../customer/EditProfile";
+import CustomerAboutUs from './../customer/CustomerAboutUs';
+import CustomerContactUs from './../customer/CustomerContactUs';
 
 
 const MainHomepg = () => {
@@ -33,7 +35,10 @@ const MainHomepg = () => {
                     <Route path="/" element={
                         <>
                             <Herosection />
+                            <Link to="/login">
                             <ThaliCards />
+                            </Link>
+                            
                             <Footer/>
                         </>
                     } />
@@ -50,7 +55,8 @@ const MainHomepg = () => {
                     <Route path="/customer/create-order" element={<CreateOrder/>}/>
                     <Route path="/customer/edit-profile" element={<EditProfile />}/>
 
-
+                    <Route path="/customer/about" element={<CustomerAboutUs/>}/>
+                    <Route path="/customer/contact" element={<CustomerContactUs/>}/>
 
 
                     <Route path="/admin/home" element={<AdminHome/>}/>

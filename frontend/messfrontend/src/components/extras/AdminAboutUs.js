@@ -2,10 +2,10 @@ import Navbar2 from "../header/Navbar2";
 import Footer from "../footer/Footer";
 import AboutCard from "../body/AboutCard";
 
-const CustomerAboutUs = () => {
+const AdminAboutUs = () => {
     return(
         <>
-        <Navbar2 homePath="/customer/home" />
+        <Navbar2 homePath="/admin/home"/>
         <br/>
         <AboutCard />
         <Footer />
@@ -14,4 +14,4 @@ const CustomerAboutUs = () => {
 
 }
 
-export default CustomerAboutUs
+export default AdminAboutUs
