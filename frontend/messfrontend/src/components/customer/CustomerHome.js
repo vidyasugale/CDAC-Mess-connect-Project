@@ -18,8 +18,8 @@ const CustomerHome = () => {
     return (
         <>
             <Navbar2 homePath="/customer/home" userData={customerData} onLogout={logOutUser}/>
-            <div>
-                Welcome, {customerData.firstName} {customerData.lastName}
+            <div style={{fontWeight:"bold", fontSize:"20px"}}>
+                Welcome, {customerData.firstName} {customerData.lastName} 
             </div>
             <div className="container d-flex justify-content-center align-items-center flex-wrap mt-3" >
                 <Link to="/customer/create-order" style={{textDecoration:"none"}}>

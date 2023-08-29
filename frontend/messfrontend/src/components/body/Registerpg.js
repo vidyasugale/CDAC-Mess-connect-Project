@@ -217,7 +217,7 @@ const Registerpg = () => {
 
                     </div>
                     <span>Already have an account?</span>
-                    <Link to="/login">
+                    <Link to="/login" style={{textDecoration:"none"}}>
                         <span className="ms-1" style={{color: "#e26d00"}}>
                             Login
                         </span>
