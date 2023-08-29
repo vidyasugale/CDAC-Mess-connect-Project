@@ -8,60 +8,54 @@ import Navbar2 from "../header/Navbar2";
 const AdminHome = () => {
   return (
     <>
-    <Navbar2 homePath="/admin/home"/>
+    <Navbar2 homePath="/admin/home" profilePath="/admin/edit-profile"/>
                 <div className="menu-container">
-                <div className="" style={{ position: "relative", height: "5rem" }}>
-          <div className="largeFont zIndBack registerHeadOut" style={{ left: "20%" }}>
-            Admin Home
-          </div>
-          <div className="smallFont zIndFront registerHeadIn" style={{}}>
-            Admin Home
+                <div style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
+          <div className="mt-1" style={{ position: "relative" }}>
+            <div className="largeFont zIndBack headingLarge">
+              Admin Home
+            </div>
+            <div className="smallFont zIndFront headingSmall">
+              Admin Home
+            </div>
           </div>
         </div>
                   <div className="menu-border">
-                    <div className="menu-row">
-                      <Link to="/select-main-menu" className="menu-box" >
+                    <div className="container d-flex justify-content-center align-items-center flex-wrap">
+                      <Link to="/select-main-menu" style={{textDecoration:"none"}} className="menu-box" >
                         Select Main Menu
                       </Link>
-                      <Link to="/search-user" className="menu-box">
+                      <Link to="/search-user" style={{textDecoration:"none"}} className="menu-box">
                         Search User
                       </Link>
                     </div>
-                    <div className="menu-row">
-                    <Link to="/addons" className="menu-box">
+                    <div className="container d-flex justify-content-center align-items-center flex-wrap mt-3">
+                    <Link to="/addons" style={{textDecoration:"none"}} className="menu-box">
                         Addons
                       </Link>
-                      <Link to="/main-courses" className="menu-box">
+                      <Link to="/main-courses" style={{textDecoration:"none"}} className="menu-box">
                         Main Courses
                       </Link>
-                      <Link to="/breads" className="menu-box">
+                      <Link to="/breads" style={{textDecoration:"none"}} className="menu-box">
                         Breads
                       </Link>
-                      
-                    </div>
-                    <div className="menu-row">
-                    <Link to="/rices" className="menu-box">
+                    </div >
+                    <div className="container d-flex justify-content-center align-items-center flex-wrap mt-3 mb-5">
+                    <Link to="/rices" style={{textDecoration:"none"}} className="menu-box">
                         Rices
                       </Link>
-                      <Link to="/curries" className="menu-box">
+                      <Link to="/curries" style={{textDecoration:"none"}} className="menu-box">
                         Curries
                       </Link>
-                      <Link to="/sweets" className="menu-box">
+                      <Link to="/sweets" style={{textDecoration:"none"}} className="menu-box">
                         Sweets
                       </Link>
-                                          
                     </div>
                   </div>
                       <Link to="/create-new-menu"> </Link>
                       <Link to="/admin/home"> </Link>
                 </div>
-
-
-
-          
         < Footer/>
-
-      
     </>
   );
 };

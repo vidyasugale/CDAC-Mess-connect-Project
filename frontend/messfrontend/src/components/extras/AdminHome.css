@@ -12,33 +12,20 @@
     font-size: larger;
   }
 
-  .menu-border{
-    border-radius: 20px;
-    padding: 20px;
-    background-color: #ffffff;
-  }
-
-  .menu-row {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 30px;
-  }
-  
   .menu-box {
     flex: 1;
-    min-width: 20px;
-    height: 80px;
-    background-color: #f0f0f0;
-    border: 1px solid #aaa;
-    border-radius: 10px;
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-    padding: 10px;
+    min-width: 200px;
+    height: 90px;
+    background-color: #fff7e9;
+    margin: 10px;
+    text-align: center;
+    -webkit-text-stroke: thin;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
     box-sizing: border-box;
-    box-shadow: 4px 4px 4px rgb(61, 24, 1);
-    color: #e26d00;
-    font-size: 1.5vw;
+    border: 1px solid #aaa;
   }

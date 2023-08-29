@@ -38,6 +38,17 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private AddonRepository addonRepository;
 
+	/*
+	 * To add new Order in the system
+	 * 
+	 * @param newOrderDTO of OrderDTO type
+	 * 
+	 * @return String massage
+	 * 
+	 * @throws IllegalArgumentException - in case the given id are null.
+	 * 
+	 * @throws ResourceNotFoundException- in case not enough balance.
+	 */
 	@Override
 	public String placeNewOrder(OrderDTO newOrderDTO) {
 		User user = userRepository.getReferenceById(newOrderDTO.getUserId());

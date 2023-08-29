@@ -43,12 +43,14 @@ const Breads = () => {
       </div>
       <div className="col-lg-7 col-md-6 col-12 justify-content-end">
       <div className="bread-component">
-      <div className="" style={{ position: "relative", height: "5rem" }}>
-          <div className="largeFont zIndBack registerHeadOut" style={{ left: "20%" }}>
-            Breads
-          </div>
-          <div className="smallFont zIndFront registerHeadIn" style={{}}>
-            Breads
+      <div style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
+          <div className="mt-1" style={{ position: "relative" }}>
+            <div className="largeFont zIndBack headingLarge">
+              Breads
+            </div>
+            <div className="smallFont zIndFront headingSmall">
+              Breads
+            </div>
           </div>
         </div>
       <div >

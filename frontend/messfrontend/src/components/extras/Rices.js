@@ -43,14 +43,16 @@ const Rices =() => {
     </div>
     <div className="col-lg-7 col-md-6 col-12 justify-content-end">
     <div className="rice-component">
-    <div className="" style={{ position: "relative", height: "5rem" }}>
-        <div className="largeFont zIndBack registerHeadOut" style={{ left: "20%" }}>
-          Rices
+    <div style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
+          <div className="mt-1" style={{ position: "relative" }}>
+            <div className="largeFont zIndBack headingLarge">
+              Rices
+            </div>
+            <div className="smallFont zIndFront headingSmall">
+              Rices
+            </div>
+          </div>
         </div>
-        <div className="smallFont zIndFront registerHeadIn" style={{}}>
-          Rices
-        </div>
-      </div>
       <div >
         <form >
           <label className="form-label">

@@ -60,6 +60,7 @@ const MainHomepg = () => {
 
 
                     <Route path="/admin/home" element={<AdminHome/>}/>
+                    <Route path="/admin/edit-profile" element={<EditProfile />}/>
 
                     <Route path="/select-main-menu" element={<SelectMainMenu />} /> 
           <Route path="/addons" element= {< Addons />} />

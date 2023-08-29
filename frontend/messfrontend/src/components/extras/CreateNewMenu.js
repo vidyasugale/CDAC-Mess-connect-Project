@@ -61,15 +61,14 @@ const CreateNewMenu = () => {
     <>
       <Navbar2 homePath="/admin/home" />
       <div className="addNewMenu-component">
-        <div className="" style={{ position: "relative", height: "5rem" }}>
-          <div
-            className="largeFont zIndBack registerHeadOut"
-            style={{ left: "20%" }}
-          >
-            Create New Menu
-          </div>
-          <div className="smallFont zIndFront registerHeadIn" style={{}}>
-            Create New Menu
+      <div style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
+          <div className="mt-1" style={{ position: "relative" }}>
+            <div className="largeFont zIndBack headingLarge">
+              Create New Menu
+            </div>
+            <div className="smallFont zIndFront headingSmall">
+              Create New Menu
+            </div>
           </div>
         </div>
         <div className="container mt-3  " style={{ width: "60%" }}>
@@ -219,7 +218,7 @@ const CreateNewMenu = () => {
               <Button
                 classname="btn btn-md mt-3  col-md-3 customBtn text-light"
                 btnText="Create Menu"
-                clickType="button"
+                clickType="Submit"
                 onClick={createNewMenu}
               />
               </Link>
@@ -228,7 +227,7 @@ const CreateNewMenu = () => {
                 <Button
                   classname="btn btn-md mt-3 mx-2 col-md-3  backBtn customBtn text-light"
                   btnText="Back"
-                  clickType="button"
+                  clickType="Submit"
                 />
               </Link>
             </div>

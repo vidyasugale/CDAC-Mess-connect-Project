@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./SelectMainMenu.css";
 import Button from "../header/Button";
+
 import { Link, useNavigate } from "react-router-dom";
 import Navbar2 from '../header/Navbar2'
 import Footer from '../footer/Footer'
 import axiosConfig from '../../configs/axiosConfig';
+
 
 
 const SelectMainMenu = () => {
@@ -18,11 +20,12 @@ const SelectMainMenu = () => {
         console.log(typeof response.data);
         setAllMenu(response.data);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
+    };
     getAllMenu();
   }, []);
+
 
 
 
@@ -68,10 +71,12 @@ const SelectMainMenu = () => {
         <div >
           <Link to="/create-new-menu" >
             <Button classname="btn btn-md customBtn text-light" btnText="Create New Menu" clickType="button" />
+
           </Link>
           <div className="table-container ">
             <table className="table mt-3 table-responsive table-striped ">
               <thead className="mainCourse-header">
+
                 <th >Menu Name </th>
                 <th >Main Courses </th>
                 <th >Bread </th>
@@ -99,10 +104,12 @@ const SelectMainMenu = () => {
                     </td>
                   </tr>
                 })}
+
               </tbody>
             </table>
           </div>
         </div>
+
 
         <Button classname="btn btn-md customBtn text-light" btnText="Add Today's Menu" clickType="button" onClick={onSubmitSelectedMenu}/>
         <Link to="/admin/home">
@@ -113,6 +120,7 @@ const SelectMainMenu = () => {
       < Footer />
     </>
   )
+
 };
 
 export default SelectMainMenu;

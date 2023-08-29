@@ -110,14 +110,16 @@ const Addons = () => {
        </div>
     <div className="col-lg-7 col-md-6 col-12 justify-content-end">
     <div className="addon-component">
-    <div className="" style={{ position: "relative", height: "5rem" }}>
-        <div className="largeFont zIndBack registerHeadOut" style={{ left: "20%" }}>
-          Add On's
+    <div style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
+          <div className="mt-1" style={{ position: "relative" }}>
+            <div className="largeFont zIndBack headingLarge">
+              Add On's
+            </div>
+            <div className="smallFont zIndFront headingSmall">
+              Add On's
+            </div>
+          </div>
         </div>
-        <div className="smallFont zIndFront registerHeadIn" style={{}}>
-          Add On's
-        </div>
-      </div>
       <div >
       <Button  classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Create New Add On" clickType="Button" onClick={handleButtonClick} />
 
@@ -145,14 +147,16 @@ const Addons = () => {
         
         </div>
       <div className="mt-5">
-      <div className="" style={{ position: "relative", height: "5rem" }}>
-        <div className="largeFont zIndBack registerHeadOut" style={{ left: "20%" }}>
-          Create Add On's
+      <div style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
+          <div className="mt-1" style={{ position: "relative" }}>
+            <div className="largeFont zIndBack headingLarge">
+              Create Add On's
+            </div>
+            <div className="smallFont zIndFront headingSmall">
+              Create Add On's
+            </div>
+          </div>
         </div>
-        <div className="smallFont zIndFront registerHeadIn" style={{}}>
-          Create Add On's
-        </div>
-      </div>
         <form >
           <label className="form-label mt-3">
             AddOn Name :

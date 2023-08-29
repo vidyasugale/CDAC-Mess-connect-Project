@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Button from './Button';
 import "./Navbar2.css"
 
-const Navbar2 = ({ userData, onLogout, homePath }) => {
+const Navbar2 = ({ userData, onLogout, homePath, profilePath }) => {
   return (
     <>
       <div className="navbar d-flex text-secondary mb-1">
@@ -44,7 +44,7 @@ const Navbar2 = ({ userData, onLogout, homePath }) => {
               <div className="user-icon-dropdown">
                 <i className="fa-solid fa-user"></i>
                 <div className="dropdown-content">
-                <Link to="/customer/edit-profile">
+                <Link to={profilePath}>
                   <div className="dropdown-item">Edit Profile</div>
                 </Link>
                   <div className="dropdown-item">Change Password</div>
