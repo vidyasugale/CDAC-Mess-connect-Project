@@ -43,14 +43,16 @@ const Sweets = () => {
     </div>
     <div className="col-lg-7 col-md-6 col-12 justify-content-end">
     <div className="sweet-component">
-    <div className="" style={{ position: "relative", height: "5rem" }}>
-        <div className="largeFont zIndBack registerHeadOut" style={{ left: "20%" }}>
-          Sweets
+    <div style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
+          <div className="mt-1" style={{ position: "relative" }}>
+            <div className="largeFont zIndBack headingLarge">
+              Sweets
+            </div>
+            <div className="smallFont zIndFront headingSmall">
+              Sweets
+            </div>
+          </div>
         </div>
-        <div className="smallFont zIndFront registerHeadIn" style={{}}>
-          Sweets
-        </div>
-      </div>
       <div >
         <form >
           <label className="sweet-form">

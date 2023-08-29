@@ -14,7 +14,18 @@
 }
 
 
-.table-container{
+/* .table-container{
   width: 100%; 
   overflow-x: auto;
+  overflow-x: visible;
+} */
+
+.table-responsive{
+  overflow-x: visible;
+}
+.td-resp {
+  overflow-y:hidden;
+}
+.sm{
+  width: 150px
 }
