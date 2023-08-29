@@ -13,4 +13,6 @@ public interface MenuService {
 
 	String addNewMenu(Menu newMenu);
 
+	String activateTodayMenu(List<Long> activeMenus);
+
 }

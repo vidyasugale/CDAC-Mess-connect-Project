@@ -28,4 +28,11 @@ public class AddonServiceImpl implements AddonService {
 		return persistentAddon.getName() + " added to database!!";
 	}
 
+	@Override
+	public String activateTodayAddon(List<Long> activeAddons) {
+		addonRepository.deactivateAll();
+		addonRepository.activateByIds(activeAddons);
+		return "Taodays addons added!!!";
+	}
+
 }

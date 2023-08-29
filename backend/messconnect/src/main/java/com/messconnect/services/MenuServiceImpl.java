@@ -51,4 +51,11 @@ public class MenuServiceImpl implements MenuService {
 		return persistentMenu.getName() + " added to database!!";
 	}
 
+	@Override
+	public String activateTodayMenu(List<Long> activeMenus) {
+		menuRepository.deactivateAll();
+		menuRepository.activateByIds(activeMenus);
+		return "Taodays menu added!!!";
+	}
+
 }
