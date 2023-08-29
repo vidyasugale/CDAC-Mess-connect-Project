@@ -20,6 +20,7 @@ import CreateNewMenu from './../extras/CreateNewMenu';
 import Wallet from './../customerWallet/Wallet';
 import Orders from './../CustomerOrders/Orders';
 import CreateOrder from "../customer/CreateOrder";
+import EditProfile from "../customer/EditProfile";
 
 
 const MainHomepg = () => {
@@ -47,6 +48,7 @@ const MainHomepg = () => {
                     <Route path="customer/wallet" element={<Wallet/>}/>
                     <Route path="/customer/order-summery" element={<Orders/>}/>
                     <Route path="/customer/create-order" element={<CreateOrder/>}/>
+                    <Route path="/customer/edit-profile" element={<EditProfile />}/>
 
 
 
