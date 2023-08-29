@@ -44,13 +44,13 @@ public class UserServiceImpl implements UserService {
 	private ModelMapper mapper;
 
 	/*
-	 * Adds user
+	 * Adds a new user to the system
 	 * 
-	 * @param newUser
+	 * @param newUser The user object to be added
 	 * 
-	 * @return
+	 * @return name of user and message if successful
 	 * 
-	 * @throws
+	 * @throws IllegalArgumentException - in case the given entity is null.
 	 */
 	@Override
 	public String addUser(User newUser) {
@@ -62,6 +62,15 @@ public class UserServiceImpl implements UserService {
 		return persistentUser.getFirstName() + " added to database!!!";
 	}
 
+	/*
+	 * To get one user from the system
+	 * 
+	 * @param userId of Long type
+	 * 
+	 * @return user of User type
+	 * 
+	 * @throws IllegalArgumentException - in case the given id is null.
+	 */
 	@Override
 	public User getUser(Long userId) {
 		User user = userRepository.findById(userId)
@@ -69,12 +78,26 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
+	/*
+	 * To get all users from the system
+	 * 
+	 * @return List of User type
+	 */
 	@Override
 	public List<User> getAllUsers() {
 		List<User> uList = userRepository.findAll();
 		return uList;
 	}
 
+	/*
+	 * To delete one user from the system
+	 * 
+	 * @param userId of Long type
+	 * 
+	 * @return String massage
+	 * 
+	 * @throws IllegalArgumentException - in case the given id is null.
+	 */
 	@Override
 	public String deleteUser(Long id) {
 		orderRepository.deleteByUserId(id);
@@ -83,6 +106,17 @@ public class UserServiceImpl implements UserService {
 		return "User deleted Successfully!!";
 	}
 
+	/*
+	 * To get balance of user from the system
+	 * 
+	 * @param userId of Long type
+	 * 
+	 * @return balance of user in double type
+	 * 
+	 * @throws IllegalArgumentException - in case the given id is null.
+	 * 
+	 * @throws ResourceNotFoundException - if id is invalid.
+	 */
 	@Override
 	public double getUserBalance(Long userId) {
 		double b = (balanceRepository.findById(userId)
@@ -90,6 +124,15 @@ public class UserServiceImpl implements UserService {
 		return b;
 	}
 
+	/*
+	 * To get all user orders from the system
+	 * 
+	 * @param userId of Long type
+	 * 
+	 * @return List of type OrderViewDTO
+	 * 
+	 * @throws IllegalArgumentException - in case the given id is null.
+	 */
 	@Override
 	public List<OrderViewDTO> getUserOrders(Long userId) {
 		List<Order> oList = orderRepository.findOrderByUserId(userId);
@@ -110,6 +153,17 @@ public class UserServiceImpl implements UserService {
 
 	}
 
+	/*
+	 * To update user from the system
+	 * 
+	 * @param userId of Long type and user of UserDTO2 type
+	 * 
+	 * @return String massage
+	 * 
+	 * @throws IllegalArgumentException - in case the given id is null.
+	 * 
+	 * @throws ResourceNotFoundException - if id is invalid.
+	 */
 	@Override
 	public User updateUserProfile(@Valid UserDTO2 user, Long userId) {
 		User updatedUser = userRepository.findById(userId)
@@ -117,8 +171,19 @@ public class UserServiceImpl implements UserService {
 		updatedUser.setFirstName(user.getFirstName());
 		updatedUser.setLastName(user.getLastName());
 		updatedUser.setPhone(user.getPhone());
+		updatedUser.setAddress(user.getAddress());
 		return updatedUser;
 	}
+
+	/*
+	 * To get user data from the system
+	 * 
+	 * @param email of String type
+	 * 
+	 * @return SigninUserResp DTO
+	 * 
+	 * @throws ResourceNotFoundException - if email is invalid.
+	 */
 
 	@Override
 	public SigninUserResp getUserData(String email) {
