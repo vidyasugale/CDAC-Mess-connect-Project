@@ -45,8 +45,9 @@ const Orders = () => {
       const data = JSON.parse( sessionStorage.getItem("customerData"));
       const response = await axiosConfig.get(`/user/getuserorders/${data.id}`);
       console.log(response);
-      setData(response.data);
-      // setData(orderData);
+      const reverseData = response.data.reverse();
+      setData(reverseData);
+      
     }
     getOrderSummery();
   },[]);

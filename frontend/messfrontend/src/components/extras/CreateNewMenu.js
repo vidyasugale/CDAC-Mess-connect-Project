@@ -1,18 +1,19 @@
 import "./CreateNewMenu.css";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../header/Button";
 import Navbar2 from "../header/Navbar2";
 import Footer from "../footer/Footer";
 import axiosConfig from "../../configs/axiosConfig";
 
 const CreateNewMenu = () => {
+
   const [mainCourseArray, setMainCourseArray] = useState([]);
   const [breadArray, setBreadArray] = useState([]);
   const [curryArray, setCurryArray] = useState([]);
   const [riceArray, setRiceArray] = useState([]);
   const [sweetArray, setSweetArray] = useState([]);
-  const [mainCourse, setmainCourse] = useState("");
+  const [mainCourse, setMainCourse] = useState("");
   const [mainMenuName, setMainMenuName] = useState("");
   const [bread, setBread] = useState("");
   const [curry, setCurry] = useState("");
@@ -36,15 +37,88 @@ const CreateNewMenu = () => {
     getAllIteams();
   }, []);
 
-  const createNewMenu = async (e) => {
-    const sweetObj = sweetArray.find(obj => obj.id == sweet);
-    const curryObj = curryArray.find(obj => obj.id == curry);
-    const riceObj = riceArray.find(obj => obj.id == rice);
-    const mainCourseObj = mainCourseArray.find(obj => obj.id == mainCourse);
-    const breadObj = breadArray.find(obj => obj.id == bread);
+    const [invalidMenuName, setInvalidMenuName] = useState(false);
+    const [invalidMenuBread, setInvalidMenuBread] = useState(false);
+    const [invalidMenuCurry, setInvalidMenuCurry] = useState(false);
+    const [invalidMenuRice, setInvalidMenuRice] = useState(false);
+    const [invalidMenuSweet, setInvalidMenuSweet] = useState(false);
+    const [invalidMenuMainCourse, setInvalidMenuMainCourse] = useState(false);
+    const navigate = useNavigate();
+
+    const validateMenuName = (e) => {
+      if (e !== "") {
+          setInvalidMenuName(false);
+          setMainMenuName(e)
+                }
+      else {
+        setInvalidMenuName(true);
+      }
+  }
+
+    const validateMenuBread = (e) => {
+      if (e !== "") {
+          setInvalidMenuBread(false);
+          setBread(e)
+      }
+      else {
+        setInvalidMenuBread(true);
+      }
+  }
+    const validateMenuCurry = (e) => {
+      if (e !== "") {
+          setInvalidMenuCurry(false);
+          setCurry(e)
+      }
+      else {
+        setInvalidMenuCurry(true);
+      }
+  }
+
+    const validateMenuRice = (e) => {
+      if (e!== "") {
+          setInvalidMenuRice(false);
+          setRice(e)
+      }
+      else {
+        setInvalidMenuRice(true);
+      }
+  }
+
+    const validateMenuSweet = (e) => {
+      if (e !== "") {
+          setInvalidMenuSweet(false);
+          setSweet(e)
+      }
+      else {
+        setInvalidMenuSweet(true);
+      }
+  }
+
+    const validateMenuMainCourse = (e) => {
+      if (e !== "") {
+          setInvalidMenuMainCourse(false);
+          setMainCourse(e)
+      }
+      else {
+        setInvalidMenuMainCourse(true);
+      }
+  }
+
     
-    try {
-      const response = await axiosConfig.post("/admin/addnewmenu", {
+  const sweetObj = sweetArray.find(obj => obj.id == sweet);
+  const curryObj = curryArray.find(obj => obj.id == curry);
+  const riceObj = riceArray.find(obj => obj.id == rice);
+  const mainCourseObj = mainCourseArray.find(obj => obj.id == mainCourse);
+  const breadObj = breadArray.find(obj => obj.id == bread);
+      
+    const submitMenu = async (event) => {
+      event.preventDefault();
+      if (invalidMenuName || invalidMenuMainCourse || invalidMenuCurry || invalidMenuBread || invalidMenuRice || invalidMenuSweet ) {
+          alert("invalid data filled!!!");
+          // window.location.reload();
+      } else
+  
+      await axiosConfig.post("/admin/addnewmenu", {
         name: mainMenuName,
         price: price,
         sweet: sweetObj,
@@ -52,10 +126,12 @@ const CreateNewMenu = () => {
         curry: curryObj,
         bread: breadObj ,
         mainCourse: mainCourseObj
-      });
-    } catch (error) {
-      console.log(error);
-    }
+      }).then(response =>{
+        console.log(response.data);
+        navigate("/select-main-menu");
+      }).catch (error => { 
+        alert("provide valid details!!!"); 
+    })
   };
   return (
     <>
@@ -80,9 +156,9 @@ const CreateNewMenu = () => {
               <input
                 required={true}
                 placeholder="Add Name for New Menu"
-                onChange={(event) => {
-                  setMainMenuName(event.target.value);
-                }}
+                onChange={(e) => 
+                  validateMenuName(e.target.value)
+                }
                 type="text"
                 id="name"
                 className="form-control"
@@ -94,9 +170,9 @@ const CreateNewMenu = () => {
               </label>
               <select
                 name="mainCourse"
-                onChange={(event) => {
-                  setmainCourse(event.target.value);
-                }}
+                onChange={(e) => 
+                  validateMenuMainCourse(e.target.value) 
+                }
                 required={true}
                 id="mainCourse"
                 className="form-select"
@@ -116,9 +192,9 @@ const CreateNewMenu = () => {
               </label>
               <select
                 name="bread"
-                onChange={(event) => {
-                  setBread(event.target.value);
-                }}
+                onChange={(e) => 
+                  validateMenuBread(e.target.value)
+                }
                 required={true}
                 id="bread"
                 className="form-select"
@@ -139,9 +215,9 @@ const CreateNewMenu = () => {
               </label>
               <select
                 name="curry"
-                onChange={(event) => {
-                  setCurry(event.target.value);
-                }}
+                onChange={(e) => 
+                  validateMenuCurry(e.target.value)
+                }
                 required={true}
                 id="curry"
                 className="form-select"
@@ -161,9 +237,9 @@ const CreateNewMenu = () => {
               </label>
               <select
                 name="rice"
-                onChange={(event) => {
-                  setRice(event.target.value);
-                }}
+                onChange={(e) => 
+                 validateMenuRice(e.target.value)
+                }
                 required={true}
                 id="rice"
                 className="form-select"
@@ -183,9 +259,9 @@ const CreateNewMenu = () => {
               </label>
               <select
                 name="sweet"
-                onChange={(event) => {
-                  setSweet(event.target.value);
-                }}
+                onChange={(e) => 
+                  validateMenuSweet(e.target.value)
+                }
                 required={true}
                 id="sweet"
                 className="form-select"
@@ -204,9 +280,9 @@ const CreateNewMenu = () => {
                 Price :
               </label>
               <input
-                onChange={(event) => {
-                  setPrice(event.target.value);
-                }}
+                onChange={(e) => 
+                  setPrice(e.target.value)
+                }
                 type="number"
                 required={true}
                 id="price"
@@ -214,14 +290,14 @@ const CreateNewMenu = () => {
               ></input>
             </div>
             <div>
-              <Link to="/select-main-menu">
+              
               <Button
                 classname="btn btn-md mt-3  col-md-3 customBtn text-light"
                 btnText="Create Menu"
                 clickType="Submit"
-                onClick={createNewMenu}
+                onClick={submitMenu}
               />
-              </Link>
+              
               
               <Link to="/select-main-menu">
                 <Button

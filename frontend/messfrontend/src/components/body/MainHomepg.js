@@ -42,7 +42,7 @@ const MainHomepg = () => {
                             <ThaliCards />
                             </Link>
                             
-                            <Footer/>
+                            <Footer />
                         </>
                     } />
                     
