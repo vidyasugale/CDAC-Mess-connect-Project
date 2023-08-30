@@ -5,7 +5,7 @@
     text-align: center;
     background-color: #ffffff;
     border-radius: 20px;
-    box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 4px 6px #3d3d3d;
     margin-top: 50px;
     color: #e26d00; 
     margin-bottom: 40px;
@@ -25,7 +25,11 @@
     text-align: center;
     -webkit-text-stroke: thin;
     border-radius: 10px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
+    box-shadow: 4px 4px 6px #3d3d3d;
     box-sizing: border-box;
-    border: 1px solid #aaa;
+    border: 1px solid #f5ece2;
+  }
+
+  a:hover{
+    color: #e26d00;
   }

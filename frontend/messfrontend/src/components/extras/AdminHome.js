@@ -1,8 +1,8 @@
 import "./AdminHome.css";
 
 import { Link} from "react-router-dom";
-import Footer from '../footer/Footer';
-import Navbar2 from "../header/Navbar2";
+import AdminFooter from '../footer/AdminFooter';
+import AdminNavbar from "../header/AdminNavbar";
 
 
 const AdminHome = () => {
@@ -10,8 +10,8 @@ const AdminHome = () => {
 
   return (
     <>
-    <Navbar2 homePath="/admin/home" profilePath="/admin/edit-profile" adminData={adminData}/>
-    <div style={{fontWeight:"bold", fontSize:"20px"}}>
+    <AdminNavbar adminData={adminData} />
+<div style={{fontWeight:"bold", fontSize:"20px"}}>
                 Welcome, {adminData.firstName} {adminData.lastName} 
             </div>
                 <div className="menu-container">
@@ -60,7 +60,7 @@ const AdminHome = () => {
                       <Link to="/create-new-menu"> </Link>
                       <Link to="/admin/home"> </Link>
                 </div>
-        < Footer/>
+        <AdminFooter />
     </>
   );
 };

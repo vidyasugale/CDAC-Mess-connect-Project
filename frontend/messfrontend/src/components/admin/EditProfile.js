@@ -1,5 +1,5 @@
-import Navbar2 from "../header/Navbar2"
-import Footer from "../footer/Footer"
+import AdminNavbar from "../header/AdminNavbar"
+import AdminFooter from "../footer/AdminFooter"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import axiosConfig from "../../configs/axiosConfig"
@@ -14,9 +14,9 @@ const EditProfile = () => {
         address: ""
     })
     useEffect(() => {
-        console.log(JSON.parse(sessionStorage.getItem("adminData")));
-        // const data = JSON.parse(sessionStorage.getItem("customerData"))
-        // console.log(data)
+
+        const data = JSON.parse(sessionStorage.getItem("adminData"))
+        
         const getUserData = async() =>{
             await axiosConfig.get(`/user/getuser/${data.id}`)
             .then( response =>{
@@ -112,7 +112,7 @@ const EditProfile = () => {
     
     return (
         <>
-            <Navbar2 homePath="/customer/home"/>
+            <AdminNavbar homePath="/customer/home"/>
             <div className="container mt-5 p-3 border registerdiv" style={{ width: "60%" }}>
                 <div className="" style={{ position: "relative", height: "5rem" }}>
                     <div className="largeFont zIndBack registerHeadOut" style={{ left: "20%" }}>
@@ -161,7 +161,7 @@ const EditProfile = () => {
                     <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Submit" clickType="submit" onClick={submitEditedData} />
                 </form>
             </div>
-            <Footer homePath="/admin/home" aboutPath="/admin/about" contactPath="/admin/contact" />
+            <AdminFooter />
         </>
     )
 }

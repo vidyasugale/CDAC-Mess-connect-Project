@@ -1,10 +1,10 @@
-import Footer from "../footer/Footer"
-import Navbar2 from "../header/Navbar2"
+import AdminFooter from "../footer/AdminFooter"
+import AdminNavbar from "../header/AdminNavbar"
 
 const AdminContactUs = () => {
     return(
         <>
-        <Navbar2 homePath="/admin/home"/>
+        <AdminNavbar />
         <div className="container" style={{height:"20rem"}}>
                 
                 <div className="container box box1 zIndBack" style={{transform:"translateX(12%)",height:"20rem"}}>
@@ -29,7 +29,7 @@ const AdminContactUs = () => {
                 
 
             </div>
-        <Footer homePath="/"/>
+        <AdminFooter />
         </>
     )
 }

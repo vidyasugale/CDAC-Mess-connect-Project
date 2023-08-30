@@ -6,6 +6,8 @@ import Loginpg from "./Loginpg";
 import ContactUs from "./ContactUs";
 import Footer from './../footer/Footer';
 import AboutUs from "./AboutUs";
+import AdminAboutUs from "../extras/AdminAboutUs";
+import AdminContactUs from "../extras/AdminContactUs";
 import CustomerHome from "../customer/CustomerHome";
 import AdminHome from "../extras/AdminHome";
 import SelectMainMenu from './../extras/SelectMainMenu';
@@ -21,6 +23,7 @@ import Wallet from './../customerWallet/Wallet';
 import Orders from './../CustomerOrders/Orders';
 import CreateOrder from "../customer/CreateOrder";
 import EditProfile from "../customer/EditProfile";
+import EditProfile2 from "../admin/EditProfile";
 import CustomerAboutUs from './../customer/CustomerAboutUs';
 import CustomerContactUs from './../customer/CustomerContactUs';
 
@@ -54,13 +57,15 @@ const MainHomepg = () => {
                     <Route path="/customer/order-summery" element={<Orders/>}/>
                     <Route path="/customer/create-order" element={<CreateOrder/>}/>
                     <Route path="/customer/edit-profile" element={<EditProfile />}/>
-
                     <Route path="/customer/about" element={<CustomerAboutUs/>}/>
                     <Route path="/customer/contact" element={<CustomerContactUs/>}/>
 
 
                     <Route path="/admin/home" element={<AdminHome/>}/>
-                    <Route path="/admin/edit-profile" element={<EditProfile />}/>
+                    <Route path="/admin/edit-profile" element={<EditProfile2 />}/>
+                    <Route path="/admin/about" element={<AdminAboutUs/>}/>
+                    <Route path="/admin/contact" element={<AdminContactUs/>}/>
+
 
                     <Route path="/select-main-menu" element={<SelectMainMenu />} /> 
           <Route path="/addons" element= {< Addons />} />

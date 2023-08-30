@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import Button from './Button';
 import "./Navbar2.css"
 
-const Navbar2 = ({ userData, onLogout}) => {
+const Navbar2 = ({ userData, onLogout }) => {
   return (
     <>
       <div className="navbar d-flex text-secondary mb-1">
         <div className="col-lg-4 col-md-4 col-12">
-          <Link to="/customer/home">
+          <Link to="/admin/home">
             <img
               style={{ width: '10vw', marginLeft: '10px' }}
               src="../assets/newlogo.svg"
@@ -20,15 +20,15 @@ const Navbar2 = ({ userData, onLogout}) => {
 
         <div className="nav_bar  d-flex p-lg-3 col-lg-8 col-md-8 col-12 justify-content-center">
           <div>
-            <Link to="/customer/home">
+            <Link to="/admin/home">
               <Button classname="navbtn btn btn-md" btnText="HOME" />
             </Link>
 
-            <Link to="/customer/about">
+            <Link to="/admin/about">
               <Button classname="navbtn btn btn-md" btnText="ABOUT US" />
             </Link>
 
-            <Link to="/customer/contact">
+            <Link to="/admin/contact">
               <Button classname="navbtn btn btn-md" btnText="CONTACT" />
             </Link>
 
@@ -44,7 +44,7 @@ const Navbar2 = ({ userData, onLogout}) => {
               <div className="user-icon-dropdown">
                 <i className="fa-solid fa-user"></i>
                 <div className="dropdown-content">
-                <Link to="/customer/edit-profile">
+                <Link to="/admin/edit-profile">
                   <div className="dropdown-item">Edit Profile</div>
                 </Link>
                   <div className="dropdown-item">Change Password</div>

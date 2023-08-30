@@ -1,5 +1,5 @@
 import Navbar2 from "../header/Navbar2"
-import Footer from "../footer/Footer"
+import CustomerFooter from "../footer/CustomerFooter"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import axiosConfig from "../../configs/axiosConfig"
@@ -160,7 +160,7 @@ const EditProfile = () => {
                     <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Submit" clickType="submit" onClick={submitEditedData} />
                 </form>
             </div>
-            <Footer homePath="/"/>
+            <CustomerFooter />
         </>
     )
 }
