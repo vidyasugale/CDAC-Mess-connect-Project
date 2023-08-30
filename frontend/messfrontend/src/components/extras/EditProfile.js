@@ -6,7 +6,7 @@ import axiosConfig from "../../configs/axiosConfig"
 import Button from "../header/Button"
 
 const EditProfile = () => {
-    const [editData,setEditData] = useState({});
+    const [editData, setEditData] = useState({});
     const [editUserData, setEditUserData] = useState({
         firstName: "",
         lastName: "",
@@ -16,28 +16,28 @@ const EditProfile = () => {
     useEffect(() => {
 
         const data = JSON.parse(sessionStorage.getItem("adminData"))
-        
-        const getUserData = async() =>{
+
+        const getUserData = async () => {
             await axiosConfig.get(`/user/getuser/${data.id}`)
-            .then( response =>{
-                setEditData(response.data);
-                setEditUserData({
-                    firstName: `${response.data.firstName}`,
-                    lastName: `${response.data.lastName}`,
-                    phone: `${response.data.phone}`,
-                    address: `${response.data.address}`
-                })
-            }).catch(e => console.log(e))
+                .then(response => {
+                    setEditData(response.data);
+                    setEditUserData({
+                        firstName: `${response.data.firstName}`,
+                        lastName: `${response.data.lastName}`,
+                        phone: `${response.data.phone}`,
+                        address: `${response.data.address}`
+                    })
+                }).catch(e => console.log(e))
 
         }
         getUserData();
-    },[])
+    }, [])
     const [invalidFirstName, setInvalidFirstName] = useState(false);
     const [invalidLastName, setInvalidLastName] = useState(false);
     // const [invalidPass, setInvalidPass] = useState(false);
     const [invalidAddress, setInvalidAddress] = useState(false);
     const [invalidPhone, setInvalidPhone] = useState(false);
-    
+
     const navigate = useNavigate();
 
     const validateFirstName = (e) => {
@@ -94,7 +94,7 @@ const EditProfile = () => {
         if (invalidFirstName || invalidLastName || invalidAddress || invalidPhone) {
             alert("invalid data filled!!!");
             window.location.reload();
-        } 
+        }
         else {
             console.log(editUserData)
             await axiosConfig.put(`/user/update/${editData.id}`, editUserData)
@@ -109,10 +109,10 @@ const EditProfile = () => {
         }
 
     }
-    
+
     return (
         <>
-            <AdminNavbar homePath="/customer/home"/>
+            <AdminNavbar homePath="/customer/home" />
             <div className="container mt-5 p-3 border registerdiv" style={{ width: "60%" }}>
                 <div className="" style={{ position: "relative", height: "5rem" }}>
                     <div className="largeFont zIndBack registerHeadOut" style={{ left: "20%" }}>

@@ -18,7 +18,7 @@ const Registerpg = () => {
         address: ""
     })
 
-    
+
     const [invalidFirstName, setInvalidFirstName] = useState(false);
     const [invalidLastName, setInvalidLastName] = useState(false);
     const [invalidEmail, setInvalidEmail] = useState(false);
@@ -142,7 +142,7 @@ const Registerpg = () => {
 
     return (
         <>
-            <Navbar homePath="/"/>
+            <Navbar homePath="/" />
             <div className="container mt-5 p-3 border registerdiv" style={{ width: "60%" }}>
                 <div className="" style={{ position: "relative", height: "5rem" }}>
                     <div className="largeFont zIndBack registerHeadOut" style={{ left: "20%" }}>
@@ -159,7 +159,7 @@ const Registerpg = () => {
                         <label htmlFor="firstname" className="form-label">First Name</label>
                         <input type="text" name="firstName" className="form-control" id="firstname" aria-describedby="" required={true} onChange={(e) => e ? validateFirstName(e) : ""} />
                         <div>
-                            {invalidFirstName && <><div>Invalid First Name!!!</div></>}
+                            {invalidFirstName && <><div>Invalid First Name format!!!</div></>}
                         </div>
                     </div>
 
@@ -167,14 +167,14 @@ const Registerpg = () => {
                         <label htmlFor="lastname" className="form-label">Last Name</label>
                         <input type="text" name="lastName" className="form-control" id="lastname" aria-describedby="" onChange={(e) => e ? validateLastName(e) : ""} />
                         <div>
-                            {invalidLastName && <><div>Invalid Last Name!!!</div></>}
+                            {invalidLastName && <><div>Invalid Last Name format!!!</div></>}
                         </div>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="email" className="form-label">Email address</label>
                         <input type="email" name="email" className="form-control" id="email" aria-describedby="emailHelp" required={true} onChange={(e) => e ? validateEmail(e) : ""} />
                         <div>
-                            {invalidEmail && <><div>Invalid Email!!!</div></>}
+                            {invalidEmail && <><div>Invalid Email format!!!</div></>}
                         </div>
                     </div>
                     <div className="mb-3">
@@ -182,7 +182,15 @@ const Registerpg = () => {
                         <input type="password" name="password" id="password" className="form-control" aria-describedby="passwordHelpInline" required={true} onChange={(e) => e ? validatePassword(e) : ""} />
                         <input className="m-1" type="checkbox" name="" id="" onClick={() => showPassword("password")} /><span>Show</span>
                         <div>
-                            {invalidPass && <><div>Invalid Password!!!</div></>}
+                            {invalidPass && <><div>
+                                Password(8-20 characters) Must Include Minimum 1
+                                <ul>
+                                    <li>Uppercase Letter</li>
+                                    <li>Lowercase Letter</li>
+                                    <li>Special character</li>
+                                    <li>Number</li>
+                                </ul>
+                            </div></>}
                         </div>
                     </div>
                     <div className="mb-3">
@@ -217,15 +225,15 @@ const Registerpg = () => {
 
                     </div>
                     <span>Already have an account?</span>
-                    <Link to="/login" style={{textDecoration:"none"}}>
-                        <span className="ms-1" style={{color: "#e26d00"}}>
+                    <Link to="/login" style={{ textDecoration: "none" }}>
+                        <span className="ms-1" style={{ color: "#e26d00" }}>
                             Login
                         </span>
-                        
+
                     </Link>
                 </form>
             </div>
-            <Footer homePath="/"/>
+            <Footer homePath="/" />
 
         </>
     )

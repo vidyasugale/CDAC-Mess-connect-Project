@@ -4,9 +4,9 @@ const MenuCard = ({ menu, onSelect }) => {
     const [selectedMenuId, setSelectedMenuId] = useState(null);
 
     const handleMenuChange = (event) => {
-      const selectedId = event.target.value;
-      setSelectedMenuId(selectedId);
-      onSelect(selectedId); // Pass the selected menuId to the parent component
+        const selectedId = event.target.value;
+        setSelectedMenuId(selectedId);
+        onSelect(selectedId); // Pass the selected menuId to the parent component
     };
 
     return (

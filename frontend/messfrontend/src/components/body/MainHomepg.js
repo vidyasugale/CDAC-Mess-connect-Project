@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, Link} from "react-router-dom";
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import Herosection from "./Herosection";
 import ThaliCards from "./ThaliCards";
 import Registerpg from "./Registerpg";
@@ -23,13 +23,13 @@ import Wallet from './../customerWallet/Wallet';
 import Orders from './../CustomerOrders/Orders';
 import CreateOrder from "../customer/CreateOrder";
 import EditProfile from "../customer/EditProfile";
-import EditProfile2 from "../admin/EditProfile";
+import EditProfile2 from "../extras/EditProfile";
 import CustomerAboutUs from './../customer/CustomerAboutUs';
 import CustomerContactUs from './../customer/CustomerContactUs';
 
 
 const MainHomepg = () => {
-    
+
 
     return (
         <>
@@ -39,48 +39,48 @@ const MainHomepg = () => {
                         <>
                             <Herosection />
                             <Link to="/login">
-                            <ThaliCards />
+                                <ThaliCards />
                             </Link>
-                            
+
                             <Footer />
                         </>
                     } />
-                    
-                    <Route path="/register" element={<Registerpg />}/>
-                    <Route path="/login" element={<Loginpg/>}/>
-                    <Route path="/contact" element={<ContactUs/>}/>
-                    <Route path="/about" element={<AboutUs/>} />
 
-                    
-                    <Route path="/customer/home" element={<CustomerHome />}/>
-                    <Route path="customer/wallet" element={<Wallet/>}/>
-                    <Route path="/customer/order-summery" element={<Orders/>}/>
-                    <Route path="/customer/create-order" element={<CreateOrder/>}/>
-                    <Route path="/customer/edit-profile" element={<EditProfile />}/>
-                    <Route path="/customer/about" element={<CustomerAboutUs/>}/>
-                    <Route path="/customer/contact" element={<CustomerContactUs/>}/>
+                    <Route path="/register" element={<Registerpg />} />
+                    <Route path="/login" element={<Loginpg />} />
+                    <Route path="/contact" element={<ContactUs />} />
+                    <Route path="/about" element={<AboutUs />} />
 
 
-                    <Route path="/admin/home" element={<AdminHome/>}/>
-                    <Route path="/admin/edit-profile" element={<EditProfile2 />}/>
-                    <Route path="/admin/about" element={<AdminAboutUs/>}/>
-                    <Route path="/admin/contact" element={<AdminContactUs/>}/>
+                    <Route path="/customer/home" element={<CustomerHome />} />
+                    <Route path="customer/wallet" element={<Wallet />} />
+                    <Route path="/customer/order-summery" element={<Orders />} />
+                    <Route path="/customer/create-order" element={<CreateOrder />} />
+                    <Route path="/customer/edit-profile" element={<EditProfile />} />
+                    <Route path="/customer/about" element={<CustomerAboutUs />} />
+                    <Route path="/customer/contact" element={<CustomerContactUs />} />
 
 
-                    <Route path="/select-main-menu" element={<SelectMainMenu />} /> 
-          <Route path="/addons" element= {< Addons />} />
-          <Route path="/main-courses" element= {< MainCourses />} />
-          <Route path="/breads" element= {< Breads />} />
-          <Route path="/rices" element= {< Rices />} />
-          <Route path="/curries"  element= {< Curries />} />
-          <Route path="/sweets" element= {< Sweets />} />
-          <Route path="/search-user"  element= {< SearchUser />}/>
-          <Route path="/create-new-menu" element={< CreateNewMenu />} />
-          {/* <Route path="/admin-menu" element={< AdminHome />} /> */}
+                    <Route path="/admin/home" element={<AdminHome />} />
+                    <Route path="/admin/edit-profile" element={<EditProfile2 />} />
+                    <Route path="/admin/about" element={<AdminAboutUs />} />
+                    <Route path="/admin/contact" element={<AdminContactUs />} />
 
-                        
-                    
-                    
+
+                    <Route path="/select-main-menu" element={<SelectMainMenu />} />
+                    <Route path="/addons" element={< Addons />} />
+                    <Route path="/main-courses" element={< MainCourses />} />
+                    <Route path="/breads" element={< Breads />} />
+                    <Route path="/rices" element={< Rices />} />
+                    <Route path="/curries" element={< Curries />} />
+                    <Route path="/sweets" element={< Sweets />} />
+                    <Route path="/search-user" element={< SearchUser />} />
+                    <Route path="/create-new-menu" element={< CreateNewMenu />} />
+                    {/* <Route path="/admin-menu" element={< AdminHome />} /> */}
+
+
+
+
                 </Routes>
             </BrowserRouter>
 

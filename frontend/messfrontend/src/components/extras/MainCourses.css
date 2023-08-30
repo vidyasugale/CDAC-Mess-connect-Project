@@ -13,12 +13,12 @@
   width: 45vw;
 }
 
-.table-head{
- text-align: center;
- color: black;
+.table-head {
+  text-align: center;
+  color: black;
 }
-.table-body{
+
+.table-body {
   text-align: center;
   border-bottom: 0px;
- }
-
+}

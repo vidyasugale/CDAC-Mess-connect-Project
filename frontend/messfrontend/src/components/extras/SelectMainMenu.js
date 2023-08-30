@@ -33,8 +33,8 @@ const SelectMainMenu = () => {
     e.preventDefault();
     const selectedMenuIdInt = selectedMenus.map(id => parseInt(id));
     console.log(selectedMenuIdInt);
-    const response = await axiosConfig.put("/admin/activateMenu",{
-      activeMenus : selectedMenuIdInt
+    const response = await axiosConfig.put("/admin/activateMenu", {
+      activeMenus: selectedMenuIdInt
     })
     console.log(response);
     navigate("/admin/home");
@@ -111,7 +111,7 @@ const SelectMainMenu = () => {
         </div>
 
 
-        <Button classname="btn btn-md customBtn text-light" btnText="Add Today's Menu" clickType="button" onClick={onSubmitSelectedMenu}/>
+        <Button classname="btn btn-md customBtn text-light" btnText="Add Today's Menu" clickType="button" onClick={onSubmitSelectedMenu} />
         <Link to="/admin/home">
           <Button classname="btn btn-md mx-2 customBtn text-light" btnText="Admin Home" clickType="button" />
         </Link>
