@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Navbar2 from '../header/Navbar2'
-import Footer from '../footer/Footer'
 import MenuCard from './MenuCard'
 import axiosConfig from '../../configs/axiosConfig'
-import AddOnCard from './AddOnCard'
 import Button from '../header/Button'
 import { useNavigate } from 'react-router-dom'
+import CustomerFooter from '../footer/CustomerFooter'
 
 const CreateOrder = () => {
     const [addOns, setAddOns] = useState(null);
@@ -42,10 +41,10 @@ const CreateOrder = () => {
     };
 
     const checkCustomerBalance = (price) => {
-        if(price < customerBalance){
+        if (price < customerBalance) {
             return true;
         }
-        console.log(price,customerBalance);
+        console.log(price, customerBalance);
         alert("Insufficient Balance!!!");
         return false;
     }
@@ -62,7 +61,7 @@ const CreateOrder = () => {
 
                 const addOnsIdInt = (selectedAddons.map(str => parseInt(str)));
                 addOnsIdInt.map(addOnId => totalAmount += (addOns.find(addOn => addOn.id === addOnId)).price);
-                if(checkCustomerBalance(totalAmount)){
+                if (checkCustomerBalance(totalAmount)) {
                     try {
                         console.log(addOnsIdInt);
                         console.log(selectedAddons);
@@ -81,9 +80,9 @@ const CreateOrder = () => {
 
 
             } else {
-                if(checkCustomerBalance(totalAmount)){
+                if (checkCustomerBalance(totalAmount)) {
                     try {
-                        
+
                         const response = await axiosConfig.post("/user/order", {
                             "userId": data.id,
                             "menuId": selectedMenuId,
@@ -96,7 +95,7 @@ const CreateOrder = () => {
                         alert("Invalid Submittion!!!");
                     }
                 }
-                  
+
 
             }
         } else {
@@ -111,23 +110,23 @@ const CreateOrder = () => {
     const handleAddonChange = (event) => {
         const addonId = parseInt(event.target.value);
         const isChecked = event.target.checked;
-      
+
         setSelectedAddons((prevSelectedAddons) => {
-          if (isChecked) {
-            console.log(addonId);
-            console.log(prevSelectedAddons);
-            return [...prevSelectedAddons, addonId];
-          } else {
-            console.log(prevSelectedAddons);
-            return prevSelectedAddons.filter((id) => id !== addonId);
-          }
+            if (isChecked) {
+                console.log(addonId);
+                console.log(prevSelectedAddons);
+                return [...prevSelectedAddons, addonId];
+            } else {
+                console.log(prevSelectedAddons);
+                return prevSelectedAddons.filter((id) => id !== addonId);
+            }
         });
-    
-      };
+
+    };
 
     return (
         <>
-            <Navbar2 homePath="/customer/home" />
+            <Navbar2 />
             <div id="menuCards" style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
                 <div className="mt-1" style={{ position: "relative" }}>
                     <div className="largeFont zIndBack headingLarge">
@@ -163,30 +162,30 @@ const CreateOrder = () => {
                     addOns && addOns.map(data => {
                         return (
                             <>
-                            <div className="card mb-3" >
-                <div className="row g-0">
-                    
-                    <div className="col-lg-2 col-md-4 col-sm-6 col-6">
-                        <div className="card-body">
-                            <h5 className="card-title">{}</h5>
-                            <p className="card-text">
-                                Name:{data.name}<br/>
-                                Price:{data.price}
-                            </p>
+                                <div className="card mb-3" >
+                                    <div className="row g-0">
 
-                        </div>
-                    </div>
-                    <div className="col-lg-2 col-md-4 col-sm-6 col-6 d-flex justify-content-center align-items-center">
+                                        <div className="col-lg-2 col-md-4 col-sm-6 col-6">
+                                            <div className="card-body">
+                                                <h5 className="card-title">{ }</h5>
+                                                <p className="card-text">
+                                                    Name:{data.name}<br />
+                                                    Price:{data.price}
+                                                </p>
 
-                        <label>
-                            Add addOn {data.id} <input type="checkbox" onChange={handleAddonChange} value={data.id}  />
-                        </label>
+                                            </div>
+                                        </div>
+                                        <div className="col-lg-2 col-md-4 col-sm-6 col-6 d-flex justify-content-center align-items-center">
+
+                                            <label>
+                                                Add addOn {data.id} <input type="checkbox" onChange={handleAddonChange} value={data.id} />
+                                            </label>
 
 
 
-                    </div>
-                </div>
-            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </>
                             //<AddOnCard addOn={data} onSelect={handleAddonSelect} setSelectedAddOns={setSelectedAddOns} />
                         );
@@ -197,7 +196,7 @@ const CreateOrder = () => {
                 <Button id="buton" classname="btn btn-md customBtn" btnText="Order Now" clickType="button" onClick={orderSubmit} />
             </div>
 
-            <Footer homePath="/customer/home" />
+            <CustomerFooter />
         </>
     )
 }

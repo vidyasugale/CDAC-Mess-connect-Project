@@ -14,12 +14,12 @@ const AboutCard = () => {
                             </div>
                         </div>
                         <div className="container aboutDetails p-1">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi quae sint atque similique sunt maiores cum repellendus odit! Voluptatum ab adipisci facilis amet quasi minima dolorem officia asperiores quaerat libero repellat suscipit labore, magni placeat quis quas quam eos ipsam reiciendis ratione quibusdam voluptate voluptatibus eveniet! eaque cupiditate accusamus!
+                            "Mess Connect" is designed to revolutionize the traditional campus dining experience by integrating smart technology, user centric design, and efficient management. This innovative platform provides a one-stop solution to manage meals, modifications, and payments, all through a user-friendly web interface. From the outset, the project envisions a seamless and convenient experience for all stakeholders, including <br /> students, mess administrators, and kitchen staff.
                         </div>
 
                     </div>
                     <div className="container box box2 zIndFront d-flex justify-content-center" >
-                    <img className="" style={{ width: "8vw"}} src="../assets/newlogo.svg" alt="logo" srcset="" />
+                        <img className="" style={{ width: "8vw" }} src="../assets/newlogo.svg" alt="logo" srcset="" />
                     </div>
                 </div>
             </div>

@@ -58,14 +58,17 @@ const Loginpg = ({ setValidUser }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (invalidEmail || invalidPass) {
-      alert("Invalid data filled!!!");
-      window.location.reload();
-    } else {
+    if (invalidEmail) {
+      alert("Invalid email!!!");
+
+    } else if (invalidPass) {
+      alert("Invalid Password!!!");
+    }
+    else {
       try {
         const response = await axiosConfig.post("/signin", loginUserData);
         const data = response.data;
-        
+
         if (response.status === 200) {
           if (data.role === "ROLE_CUSTOMER") {
             console.log(data);
@@ -94,7 +97,7 @@ const Loginpg = ({ setValidUser }) => {
 
   return (
     <>
-      <Navbar homePath="/"/>
+      <Navbar homePath="/" />
       <div className="login-container">
 
         <div className="" style={{ position: "relative", height: "5rem" }}>
@@ -116,7 +119,7 @@ const Loginpg = ({ setValidUser }) => {
             onChange={(e) => validateEmail(e)}
           />
           <div>
-            {invalidEmail && <><div>Invalid Email!!!</div></>}
+            {invalidEmail && <><div>Invalid Email format!!!</div></>}
           </div>
         </div>
         <div className="input-group">
@@ -148,7 +151,7 @@ const Loginpg = ({ setValidUser }) => {
 
 
       </div>
-      <Footer homePath="/"/>
+      <Footer homePath="/" />
     </>
   );
 };

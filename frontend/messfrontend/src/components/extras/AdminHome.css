@@ -1,35 +1,35 @@
 .menu-container {
   width: 70%;
-    margin: 5% auto;
-    padding: 1rem;
-    text-align: center;
-    background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 4px 4px 6px #3d3d3d;
-    margin-top: 50px;
-    color: #e26d00; 
-    margin-bottom: 40px;
-    font-size: larger;
-  }
+  margin: 5% auto;
+  padding: 1rem;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 4px 4px 6px #3d3d3d;
+  margin-top: 50px;
+  color: #e26d00;
+  margin-bottom: 40px;
+  font-size: larger;
+}
 
-  .menu-box {
-    flex: 1;
-    color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 200px;
-    height: 90px;
-    background-color: #fff7e9;
-    margin: 10px;
-    text-align: center;
-    -webkit-text-stroke: thin;
-    border-radius: 10px;
-    box-shadow: 4px 4px 6px #3d3d3d;
-    box-sizing: border-box;
-    border: 1px solid #f5ece2;
-  }
+.menu-box {
+  flex: 1;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 200px;
+  height: 90px;
+  background-color: #fff7e9;
+  margin: 10px;
+  text-align: center;
+  -webkit-text-stroke: thin;
+  border-radius: 10px;
+  box-shadow: 4px 4px 6px #3d3d3d;
+  box-sizing: border-box;
+  border: 1px solid #f5ece2;
+}
 
-  a:hover{
-    color: #e26d00;
-  }
+a:hover {
+  color: #e26d00;
+}
