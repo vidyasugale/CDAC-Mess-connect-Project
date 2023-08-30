@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Navbar2 from '../header/Navbar2';
-import Footer from '../footer/Footer';
+import CustomerFooter from '../footer/CustomerFooter';
 import "../stylesheets/customerHome.css";
 import ThaliCards from '../body/ThaliCards';
 const CustomerHome = () => {
@@ -48,7 +48,7 @@ const CustomerHome = () => {
             </Link>
             
 
-            <Footer homePath="/customer/home"/>
+            <CustomerFooter />
         </>
     )
 }

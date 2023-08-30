@@ -1,14 +1,14 @@
-import Navbar2 from "../header/Navbar2";
-import Footer from "../footer/Footer";
+import AdminNavbar from "../header/AdminNavbar";
+import AdminFooter from "../footer/AdminFooter";
 import AboutCard from "../body/AboutCard";
 
 const AdminAboutUs = () => {
     return(
         <>
-        <Navbar2 homePath="/admin/home"/>
+        <AdminNavbar />
         <br/>
         <AboutCard />
-        <Footer />
+        <AdminFooter />
         </>
     )
 

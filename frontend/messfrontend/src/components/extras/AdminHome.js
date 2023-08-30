@@ -1,14 +1,14 @@
 import "./AdminHome.css";
 
 import { Link} from "react-router-dom";
-import Footer from '../footer/Footer';
-import Navbar2 from "../header/Navbar2";
+import AdminFooter from '../footer/AdminFooter';
+import AdminNavbar from "../header/AdminNavbar";
 
 
 const AdminHome = () => {
   return (
     <>
-    <Navbar2 homePath="/admin/home" profilePath="/admin/edit-profile"/>
+    <AdminNavbar />
                 <div className="menu-container">
                 <div style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
           <div className="mt-1" style={{ position: "relative" }}>
@@ -55,7 +55,7 @@ const AdminHome = () => {
                       <Link to="/create-new-menu"> </Link>
                       <Link to="/admin/home"> </Link>
                 </div>
-        < Footer/>
+        <AdminFooter />
     </>
   );
 };

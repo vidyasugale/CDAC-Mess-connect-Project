@@ -1,10 +1,10 @@
-import Footer from "../footer/Footer"
+import CustomerFooter from "../footer/CustomerFooter"
 import Navbar2 from "../header/Navbar2"
 
 const CustomerContactUs = () => {
     return(
         <>
-        <Navbar2 homePath="/customer/home"/>
+        <Navbar2 />
         <div className="container" style={{height:"20rem"}}>
                 
                 <div className="container box box1 zIndBack" style={{transform:"translateX(12%)",height:"20rem"}}>
@@ -29,7 +29,7 @@ const CustomerContactUs = () => {
                 
 
             </div>
-        <Footer />
+        <CustomerFooter />
         </>
     )
 }
