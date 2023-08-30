@@ -11,7 +11,6 @@ const CreateOrder = () => {
     const [addOns, setAddOns] = useState(null);
     const [menus, setMenus] = useState(null);
     const [selectedMenuId, setSelectedMenuId] = useState(0);
-    const [selectedAddOns, setSelectedAddOns] = useState([]);
     const [customerBalance, setCustomerBalance] = useState(0);
     const navigate = useNavigate();
     const data = JSON.parse(sessionStorage.getItem("customerData"));
@@ -42,14 +41,6 @@ const CreateOrder = () => {
         setSelectedMenuId(menuId);
     };
 
-    const handleAddonSelect = (selectedAddons) => {
-        console.log(selectedAddons);
-
-        setSelectedAddOns([...selectedAddOns, selectedAddons[0]]);
-
-
-        console.log(selectedAddOns);
-    };
     const checkCustomerBalance = (price) => {
         if(price < customerBalance){
             return true;
@@ -67,14 +58,14 @@ const CreateOrder = () => {
             const selectedMenu = menus.find(menu => menu.id === parseInt(selectedMenuId));
             let totalAmount = selectedMenu.price;
 
-            if (selectedAddOns !== []) {
+            if (selectedAddons !== []) {
 
-                const addOnsIdInt = (selectedAddOns.map(str => parseInt(str)));
+                const addOnsIdInt = (selectedAddons.map(str => parseInt(str)));
                 addOnsIdInt.map(addOnId => totalAmount += (addOns.find(addOn => addOn.id === addOnId)).price);
                 if(checkCustomerBalance(totalAmount)){
                     try {
                         console.log(addOnsIdInt);
-                        console.log(selectedAddOns);
+                        console.log(selectedAddons);
                         const response = await axiosConfig.post("/user/order", {
                             "userId": data.id,
                             "menuId": selectedMenuId,
@@ -96,7 +87,7 @@ const CreateOrder = () => {
                         const response = await axiosConfig.post("/user/order", {
                             "userId": data.id,
                             "menuId": selectedMenuId,
-                            "addOnsIds": selectedAddOns,
+                            "addOnsIds": selectedAddons,
                             "totalAmount": totalAmount
                         })
                         console.log(response);
@@ -112,6 +103,27 @@ const CreateOrder = () => {
             alert("Please select 1 menu!!!");
         }
     }
+
+
+    const [selectedAddons, setSelectedAddons] = useState([]);
+
+
+    const handleAddonChange = (event) => {
+        const addonId = parseInt(event.target.value);
+        const isChecked = event.target.checked;
+      
+        setSelectedAddons((prevSelectedAddons) => {
+          if (isChecked) {
+            console.log(addonId);
+            console.log(prevSelectedAddons);
+            return [...prevSelectedAddons, addonId];
+          } else {
+            console.log(prevSelectedAddons);
+            return prevSelectedAddons.filter((id) => id !== addonId);
+          }
+        });
+    
+      };
 
     return (
         <>
@@ -150,7 +162,33 @@ const CreateOrder = () => {
                 {
                     addOns && addOns.map(data => {
                         return (
-                            <AddOnCard addOn={data} onSelect={handleAddonSelect} setSelectedAddOns={setSelectedAddOns} />
+                            <>
+                            <div className="card mb-3" >
+                <div className="row g-0">
+                    
+                    <div className="col-lg-2 col-md-4 col-sm-6 col-6">
+                        <div className="card-body">
+                            <h5 className="card-title">{}</h5>
+                            <p className="card-text">
+                                Name:{data.name}<br/>
+                                Price:{data.price}
+                            </p>
+
+                        </div>
+                    </div>
+                    <div className="col-lg-2 col-md-4 col-sm-6 col-6 d-flex justify-content-center align-items-center">
+
+                        <label>
+                            Add addOn {data.id} <input type="checkbox" onChange={handleAddonChange} value={data.id}  />
+                        </label>
+
+
+
+                    </div>
+                </div>
+            </div>
+                            </>
+                            //<AddOnCard addOn={data} onSelect={handleAddonSelect} setSelectedAddOns={setSelectedAddOns} />
                         );
                     })
                 }
