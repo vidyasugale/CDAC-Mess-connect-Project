@@ -26,7 +26,12 @@ const SearchUser = () => {
 
   const handleDelete = async (id) => {
     try{
-    const response= await axiosConfig.delete(`/user/deleteuser/${id}`);
+    await axiosConfig.delete(`/user/deleteuser/${id}`)
+    .then(response => {
+      console.log(response);
+      handleSearch();
+    }).catch(error => console.log(error));
+
   }catch(error) {
         console.log(error);
       };
