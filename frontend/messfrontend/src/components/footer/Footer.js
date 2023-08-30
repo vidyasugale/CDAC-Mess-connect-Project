@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "../stylesheets/footer.css";
-const Footer = ({homePath}) => {
+const Footer = ({homePath, aboutPath, contactPath}) => {
   return (
     <>
       <div className="footer container d-flex mt-5">
@@ -34,7 +34,7 @@ const Footer = ({homePath}) => {
 
             </li>
             <li className="nav-item">
-              <Link to="/About" style={{textDecoration: "none"}}>
+              <Link to={aboutPath} style={{textDecoration: "none"}}>
                 <span className="nav-link footerNav">
                   ABOUT US
                 </span>
@@ -43,7 +43,7 @@ const Footer = ({homePath}) => {
 
             </li>
             <li className="nav-item">
-              <Link to="/Contact" style={{textDecoration: "none"}}>
+              <Link to={contactPath} style={{textDecoration: "none"}}>
 
                 <span className="nav-link footerNav">
                   CONTACT US

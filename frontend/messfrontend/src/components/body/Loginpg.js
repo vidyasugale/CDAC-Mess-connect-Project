@@ -73,6 +73,7 @@ const Loginpg = ({ setValidUser }) => {
             navigate('/customer/home', { state: { data } });
           } else {
             sessionStorage.setItem("adminData", JSON.stringify(data));
+            console.log(data);
             navigate("/admin/home", { state: { data } });
           }
 

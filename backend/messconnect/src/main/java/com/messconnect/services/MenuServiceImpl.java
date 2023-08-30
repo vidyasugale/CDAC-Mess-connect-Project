@@ -32,12 +32,22 @@ public class MenuServiceImpl implements MenuService {
 	@Autowired
 	private SweetRepository sweetRepository;
 
+	/*
+	 * To get all Menu from the system
+	 * 
+	 * @return List of Menu
+	 */
 	@Override
 	public List<Menu> getAllMenuData() {
 		List<Menu> mList = menuRepository.findAll();
 		return mList;
 	}
 
+	/*
+	 * To get all items of food from the system
+	 * 
+	 * @return AllItemDTO containing Lists
+	 */
 	@Override
 	public AllItemsDTO getAllItemsData() {
 		AllItemsDTO object = new AllItemsDTO(breadRepository.findAll(), riceRepository.findAll(),
@@ -45,12 +55,28 @@ public class MenuServiceImpl implements MenuService {
 		return object;
 	}
 
+	/*
+	 * To add new Menu to the system
+	 * 
+	 * @param newMenu of Menu type
+	 * 
+	 * @return String massage
+	 * 
+	 * @throws IllegalArgumentException - in case the given entity is null.
+	 */
 	@Override
 	public String addNewMenu(Menu newMenu) {
 		Menu persistentMenu = menuRepository.save(newMenu);
 		return persistentMenu.getName() + " added to database!!";
 	}
 
+	/*
+	 * To change active status to true of selected id the system
+	 * 
+	 * @param activeMenus List of id of Long type
+	 * 
+	 * @return String massage
+	 */
 	@Override
 	public String activateTodayMenu(List<Long> activeMenus) {
 		menuRepository.deactivateAll();

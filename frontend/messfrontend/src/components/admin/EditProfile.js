@@ -14,8 +14,9 @@ const EditProfile = () => {
         address: ""
     })
     useEffect(() => {
-        const data = JSON.parse(sessionStorage.getItem("customerData"))
-        console.log(data)
+        console.log(JSON.parse(sessionStorage.getItem("adminData")));
+        // const data = JSON.parse(sessionStorage.getItem("customerData"))
+        // console.log(data)
         const getUserData = async() =>{
             await axiosConfig.get(`/user/getuser/${data.id}`)
             .then( response =>{
@@ -100,7 +101,7 @@ const EditProfile = () => {
                 .then(response => {
                     alert("Profile Data Edited");
                     console.log(response.data);
-                    navigate("/customer/home");
+                    navigate("/admin/home");
                 })
                 .catch(error => {
                     alert("provide valid details!!!");
@@ -160,7 +161,7 @@ const EditProfile = () => {
                     <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Submit" clickType="submit" onClick={submitEditedData} />
                 </form>
             </div>
-            <Footer homePath="/"/>
+            <Footer homePath="/admin/home" aboutPath="/admin/about" contactPath="/admin/contact" />
         </>
     )
 }

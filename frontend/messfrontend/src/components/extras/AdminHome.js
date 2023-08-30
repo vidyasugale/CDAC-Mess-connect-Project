@@ -8,7 +8,7 @@ import Navbar2 from "../header/Navbar2";
 const AdminHome = () => {
   return (
     <>
-    <Navbar2 homePath="/admin/home"/>
+    <Navbar2 homePath="/admin/home" profilePath="/admin/edit-profile"/>
                 <div className="menu-container">
                 <div style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
           <div className="mt-1" style={{ position: "relative" }}>
