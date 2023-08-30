@@ -6,9 +6,14 @@ import Navbar2 from "../header/Navbar2";
 
 
 const AdminHome = () => {
+  const adminData = JSON.parse( sessionStorage.getItem("adminData"));
+
   return (
     <>
-    <Navbar2 homePath="/admin/home" profilePath="/admin/edit-profile"/>
+    <Navbar2 homePath="/admin/home" profilePath="/admin/edit-profile" adminData={adminData}/>
+    <div style={{fontWeight:"bold", fontSize:"20px"}}>
+                Welcome, {adminData.firstName} {adminData.lastName} 
+            </div>
                 <div className="menu-container">
                 <div style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
           <div className="mt-1" style={{ position: "relative" }}>
