@@ -25,6 +25,8 @@ import com.messconnect.services.BalanceService;
 import com.messconnect.services.MenuService;
 import com.messconnect.services.UserService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/admin")
@@ -76,7 +78,7 @@ public class AdminController {
 	}
 
 	@PostMapping("addnewmenu")
-	public ResponseEntity<?> addMenu(@RequestBody MenuDTO newMenuDTO) {
+	public ResponseEntity<?> addMenu(@RequestBody @Valid MenuDTO newMenuDTO) {
 		Menu newMenu = mapper.map(newMenuDTO, Menu.class);
 		return new ResponseEntity<>(menuService.addNewMenu(newMenu), HttpStatus.OK);
 	}

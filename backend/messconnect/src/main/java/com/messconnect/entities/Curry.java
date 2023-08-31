@@ -4,11 +4,11 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 
 @Entity
 @Getter
@@ -16,10 +16,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "curries")
-public class Curry extends BaseEntity{
-	
+public class Curry extends BaseEntity {
+
 	@NotBlank(message = "Last name can't be blank!!")
 	@Column(length = 30)
+	@NotNull
 	private String name;
 
 }

@@ -16,6 +16,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,17 +32,21 @@ public class Order extends BaseEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id", nullable = false)
+	@NotNull
 	private User user;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "menu_id", nullable = false)
+	@NotNull
 	private Menu menu;
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "order_addons", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "addon_id"))
+	@NotNull
 	private List<AddOn> addOns = new ArrayList<>();
 
 	@Column(nullable = false, columnDefinition = "double default 0", name = "total_amount")
+	@NotNull
 	private double totalAmount;
 
 	@Column(nullable = false, name = "order_date")

@@ -7,6 +7,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +23,7 @@ public class Balance extends BaseEntity {
 	@OneToOne
 	@MapsId
 	@JoinColumn(name = "user_id")
+	@NotNull
 	private User user;
 
 	@Column(columnDefinition = "double default 0", nullable = false)
