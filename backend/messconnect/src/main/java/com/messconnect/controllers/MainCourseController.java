@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.messconnect.entities.MainCourse;
 import com.messconnect.services.MainCourseService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/maincourse")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -24,7 +26,7 @@ public class MainCourseController {
 	private MainCourseService mainCourseService;
 
 	@PostMapping("/addmaincourse")
-	public ResponseEntity<?> addMainCourse(@RequestBody MainCourse newMainCourse) {
+	public ResponseEntity<?> addMainCourse(@RequestBody @Valid MainCourse newMainCourse) {
 		return new ResponseEntity<>(mainCourseService.addNewMainCourse(newMainCourse), HttpStatus.OK);
 
 	}

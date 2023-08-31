@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.messconnect.entities.Sweet;
 import com.messconnect.services.SweetService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/sweet")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -24,7 +26,7 @@ public class SweetController {
 	private SweetService sweetService;
 
 	@PostMapping("/addsweet")
-	public ResponseEntity<?> addSweet(@RequestBody Sweet newSweet) {
+	public ResponseEntity<?> addSweet(@RequestBody @Valid Sweet newSweet) {
 		return new ResponseEntity<>(sweetService.addNewSweet(newSweet), HttpStatus.OK);
 	}
 
