@@ -62,7 +62,7 @@ const ThaliCards = () => {
 
     return (
         <>
-        <div id="menuCards" style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
+            <div id="menuCards" style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
                 <div className="mt-5" style={{ position: "relative" }}>
                     <div className="largeFont zIndBack headingLarge">
                         Today's Menu
@@ -73,16 +73,16 @@ const ThaliCards = () => {
                 </div>
             </div>
             <div className="container">
-            {cardData && cardData.map(data => {
-                return (
-                    <Card key={data.key} cardData={data} />
-                )
-            })}
+                {cardData && cardData.map(data => {
+                    return (
+                        <Card key={data.key} cardData={data} />
+                    )
+                })}
             </div>
         </>
-            
 
-        
+
+
 
     )
 }

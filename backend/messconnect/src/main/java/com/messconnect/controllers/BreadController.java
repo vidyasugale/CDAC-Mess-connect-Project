@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.messconnect.entities.Bread;
 import com.messconnect.services.BreadService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/bread")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -24,7 +26,7 @@ public class BreadController {
 	private BreadService breadService;
 
 	@PostMapping("/addbread")
-	public ResponseEntity<?> addBread(@RequestBody Bread newBread) {
+	public ResponseEntity<?> addBread(@RequestBody @Valid Bread newBread) {
 		return new ResponseEntity<>(breadService.addNewBread(newBread), HttpStatus.OK);
 	}
 

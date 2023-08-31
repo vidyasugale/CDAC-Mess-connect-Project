@@ -1,24 +1,23 @@
-.summery-container{
-    width: auto;
-    margin: 5%;
-    margin-top: 1%;
-    padding: 1rem;
-    background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.2);
-  }
-  
-  .summery-head {
-    text-align: center;
-  }
-  
-  .summery-Img {
+.summery-container {
+  width: auto;
+  margin: 5%;
+  margin-top: 1%;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.2);
+}
+
+.summery-head {
+  text-align: center;
+}
+
+.summery-Img {
   width: 45vw;
-  }
-  
-  .table-end{
-    border-bottom: #ffffff;
-    border-top: 3px solid black;
-    margin-top: 50px;
-  }
-  
+}
+
+.table-end {
+  border-bottom: #ffffff;
+  border-top: 3px solid black;
+  margin-top: 50px;
+}

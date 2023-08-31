@@ -25,7 +25,7 @@ const Footer = () => {
         <div className=" col-lg-4 col-md-4 col-sm-4 col-4">
           <ul className="nav flex-column">
             <li className="nav-item">
-              <Link to="/admin/home" style={{textDecoration: "none"}}>
+              <Link to="/admin/home" style={{ textDecoration: "none" }}>
                 <span className="nav-link footerNav">
                   HOME
                 </span>
@@ -33,7 +33,7 @@ const Footer = () => {
 
             </li>
             <li className="nav-item">
-              <Link to="/admin/about" style={{textDecoration: "none"}}>
+              <Link to="/admin/about" style={{ textDecoration: "none" }}>
                 <span className="nav-link footerNav">
                   ABOUT US
                 </span>
@@ -42,7 +42,7 @@ const Footer = () => {
 
             </li>
             <li className="nav-item">
-              <Link to="/admin/contact" style={{textDecoration: "none"}}>
+              <Link to="/admin/contact" style={{ textDecoration: "none" }}>
 
                 <span className="nav-link footerNav">
                   CONTACT US

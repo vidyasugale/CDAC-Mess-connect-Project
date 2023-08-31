@@ -36,107 +36,107 @@ const CreateNewMenu = () => {
     getAllIteams();
   }, []);
 
-    const [invalidMenuName, setInvalidMenuName] = useState(false);
-    const [invalidMenuBread, setInvalidMenuBread] = useState(false);
-    const [invalidMenuCurry, setInvalidMenuCurry] = useState(false);
-    const [invalidMenuRice, setInvalidMenuRice] = useState(false);
-    const [invalidMenuSweet, setInvalidMenuSweet] = useState(false);
-    const [invalidMenuMainCourse, setInvalidMenuMainCourse] = useState(false);
-    const navigate = useNavigate();
+  const [invalidMenuName, setInvalidMenuName] = useState(false);
+  const [invalidMenuBread, setInvalidMenuBread] = useState(false);
+  const [invalidMenuCurry, setInvalidMenuCurry] = useState(false);
+  const [invalidMenuRice, setInvalidMenuRice] = useState(false);
+  const [invalidMenuSweet, setInvalidMenuSweet] = useState(false);
+  const [invalidMenuMainCourse, setInvalidMenuMainCourse] = useState(false);
+  const navigate = useNavigate();
 
-    const validateMenuName = (e) => {
-      if (e !== "") {
-          setInvalidMenuName(false);
-          setMainMenuName(e)
-                }
-      else {
-        setInvalidMenuName(true);
-      }
+  const validateMenuName = (e) => {
+    if (e !== "") {
+      setInvalidMenuName(false);
+      setMainMenuName(e)
+    }
+    else {
+      setInvalidMenuName(true);
+    }
   }
 
-    const validateMenuBread = (e) => {
-      if (e !== "") {
-          setInvalidMenuBread(false);
-          setBread(e)
-      }
-      else {
-        setInvalidMenuBread(true);
-      }
+  const validateMenuBread = (e) => {
+    if (e !== "") {
+      setInvalidMenuBread(false);
+      setBread(e)
+    }
+    else {
+      setInvalidMenuBread(true);
+    }
   }
-    const validateMenuCurry = (e) => {
-      if (e !== "") {
-          setInvalidMenuCurry(false);
-          setCurry(e)
-      }
-      else {
-        setInvalidMenuCurry(true);
-      }
-  }
-
-    const validateMenuRice = (e) => {
-      if (e!== "") {
-          setInvalidMenuRice(false);
-          setRice(e)
-      }
-      else {
-        setInvalidMenuRice(true);
-      }
+  const validateMenuCurry = (e) => {
+    if (e !== "") {
+      setInvalidMenuCurry(false);
+      setCurry(e)
+    }
+    else {
+      setInvalidMenuCurry(true);
+    }
   }
 
-    const validateMenuSweet = (e) => {
-      if (e !== "") {
-          setInvalidMenuSweet(false);
-          setSweet(e)
-      }
-      else {
-        setInvalidMenuSweet(true);
-      }
+  const validateMenuRice = (e) => {
+    if (e !== "") {
+      setInvalidMenuRice(false);
+      setRice(e)
+    }
+    else {
+      setInvalidMenuRice(true);
+    }
   }
 
-    const validateMenuMainCourse = (e) => {
-      if (e !== "") {
-          setInvalidMenuMainCourse(false);
-          setMainCourse(e)
-      }
-      else {
-        setInvalidMenuMainCourse(true);
-      }
+  const validateMenuSweet = (e) => {
+    if (e !== "") {
+      setInvalidMenuSweet(false);
+      setSweet(e)
+    }
+    else {
+      setInvalidMenuSweet(true);
+    }
   }
 
-    
+  const validateMenuMainCourse = (e) => {
+    if (e !== "") {
+      setInvalidMenuMainCourse(false);
+      setMainCourse(e)
+    }
+    else {
+      setInvalidMenuMainCourse(true);
+    }
+  }
+
+
   const sweetObj = sweetArray.find(obj => obj.id == sweet);
   const curryObj = curryArray.find(obj => obj.id == curry);
   const riceObj = riceArray.find(obj => obj.id == rice);
   const mainCourseObj = mainCourseArray.find(obj => obj.id == mainCourse);
   const breadObj = breadArray.find(obj => obj.id == bread);
-      
-    const submitMenu = async (event) => {
-      event.preventDefault();
-      if (invalidMenuName || invalidMenuMainCourse || invalidMenuCurry || invalidMenuBread || invalidMenuRice || invalidMenuSweet ) {
-          alert("invalid data filled!!!");
-          // window.location.reload();
-      } else
-  
+
+  const submitMenu = async (event) => {
+    event.preventDefault();
+    if (invalidMenuName || invalidMenuMainCourse || invalidMenuCurry || invalidMenuBread || invalidMenuRice || invalidMenuSweet) {
+      alert("invalid data filled!!!");
+      // window.location.reload();
+    } else
+
       await axiosConfig.post("/admin/addnewmenu", {
         name: mainMenuName,
         price: price,
         sweet: sweetObj,
         rice: riceObj,
         curry: curryObj,
-        bread: breadObj ,
+        bread: breadObj,
         mainCourse: mainCourseObj
-      }).then(response =>{
+      }).then(response => {
         console.log(response.data);
         navigate("/select-main-menu");
-      }).catch (error => { 
-        alert("provide valid details!!!"); 
-    })
+      }).catch(error => {
+        alert("provide valid details!!!");
+      })
   };
   return (
     <>
     <AdminNavbar homePath="/admin/home"/> 
       <div className="addNewMenu-component">
-      <div style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
+        <div style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
           <div className="mt-1" style={{ position: "relative" }}>
             <div className="largeFont zIndBack headingLarge">
               Create New Menu
@@ -155,7 +155,7 @@ const CreateNewMenu = () => {
               <input
                 required={true}
                 placeholder="Add Name for New Menu"
-                onChange={(e) => 
+                onChange={(e) =>
                   validateMenuName(e.target.value)
                 }
                 type="text"
@@ -169,8 +169,8 @@ const CreateNewMenu = () => {
               </label>
               <select
                 name="mainCourse"
-                onChange={(e) => 
-                  validateMenuMainCourse(e.target.value) 
+                onChange={(e) =>
+                  validateMenuMainCourse(e.target.value)
                 }
                 required={true}
                 id="mainCourse"
@@ -191,7 +191,7 @@ const CreateNewMenu = () => {
               </label>
               <select
                 name="bread"
-                onChange={(e) => 
+                onChange={(e) =>
                   validateMenuBread(e.target.value)
                 }
                 required={true}
@@ -214,7 +214,7 @@ const CreateNewMenu = () => {
               </label>
               <select
                 name="curry"
-                onChange={(e) => 
+                onChange={(e) =>
                   validateMenuCurry(e.target.value)
                 }
                 required={true}
@@ -236,8 +236,8 @@ const CreateNewMenu = () => {
               </label>
               <select
                 name="rice"
-                onChange={(e) => 
-                 validateMenuRice(e.target.value)
+                onChange={(e) =>
+                  validateMenuRice(e.target.value)
                 }
                 required={true}
                 id="rice"
@@ -248,7 +248,7 @@ const CreateNewMenu = () => {
                 </option>
                 {riceArray &&
                   riceArray.map((item) => (
-                    <option key={item.id}value={item.id}> {item.name} </option>
+                    <option key={item.id} value={item.id}> {item.name} </option>
                   ))}
               </select>
             </div>
@@ -258,7 +258,7 @@ const CreateNewMenu = () => {
               </label>
               <select
                 name="sweet"
-                onChange={(e) => 
+                onChange={(e) =>
                   validateMenuSweet(e.target.value)
                 }
                 required={true}
@@ -279,7 +279,7 @@ const CreateNewMenu = () => {
                 Price :
               </label>
               <input
-                onChange={(e) => 
+                onChange={(e) =>
                   setPrice(e.target.value)
                 }
                 type="number"
@@ -289,15 +289,15 @@ const CreateNewMenu = () => {
               ></input>
             </div>
             <div>
-              
+
               <Button
                 classname="btn btn-md mt-3  col-md-3 customBtn text-light"
                 btnText="Create Menu"
                 clickType="Submit"
                 onClick={submitMenu}
               />
-              
-              
+
+
               <Link to="/select-main-menu">
                 <Button
                   classname="btn btn-md mt-3 mx-2 col-md-3  backBtn customBtn text-light"

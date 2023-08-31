@@ -3,12 +3,12 @@ import AdminFooter from "../footer/AdminFooter";
 import AboutCard from "../body/AboutCard";
 
 const AdminAboutUs = () => {
-    return(
+    return (
         <>
-        <AdminNavbar />
-        <br/>
-        <AboutCard />
-        <AdminFooter />
+            <AdminNavbar />
+            <br />
+            <AboutCard />
+            <AdminFooter />
         </>
     )
 

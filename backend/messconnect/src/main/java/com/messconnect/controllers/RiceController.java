@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.messconnect.entities.Rice;
 import com.messconnect.services.RiceService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/rice")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -24,7 +26,7 @@ public class RiceController {
 	private RiceService riceService;
 
 	@PostMapping("/addrice")
-	public ResponseEntity<?> addRice(@RequestBody Rice newRice) {
+	public ResponseEntity<?> addRice(@RequestBody @Valid Rice newRice) {
 		return new ResponseEntity<>(riceService.addNewRice(newRice), HttpStatus.OK);
 
 	}

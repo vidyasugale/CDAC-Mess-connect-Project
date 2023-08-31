@@ -30,8 +30,8 @@ const SelectMainMenu = () => {
     e.preventDefault();
     const selectedMenuIdInt = selectedMenus.map(id => parseInt(id));
     console.log(selectedMenuIdInt);
-    const response = await axiosConfig.put("/admin/activateMenu",{
-      activeMenus : selectedMenuIdInt
+    const response = await axiosConfig.put("/admin/activateMenu", {
+      activeMenus: selectedMenuIdInt
     })
     console.log(response);
     navigate("/admin/home");

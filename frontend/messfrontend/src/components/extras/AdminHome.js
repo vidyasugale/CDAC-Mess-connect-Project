@@ -6,7 +6,7 @@ import ThaliCards from "../body/ThaliCards";
 
 
 const AdminHome = () => {
-  const adminData = JSON.parse( sessionStorage.getItem("adminData"));
+  const adminData = JSON.parse(sessionStorage.getItem("adminData"));
 
   return (
     <>
@@ -16,6 +16,12 @@ const AdminHome = () => {
             </div>
                 <div className="menu-container">
                 <div style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
+      <AdminNavbar adminData={adminData} />
+      <div style={{ fontWeight: "bold", fontSize: "20px" }}>
+        Welcome, {adminData.firstName} {adminData.lastName}
+      </div>
+      <div className="menu-container">
+        <div style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
           <div className="mt-1" style={{ position: "relative" }}>
             <div className="largeFont zIndBack headingLarge">
               Admin Home

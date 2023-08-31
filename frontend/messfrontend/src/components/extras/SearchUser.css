@@ -1,4 +1,4 @@
-.searchUser-container{
+.searchUser-container {
   width: auto;
   margin: 5%;
   margin-top: 1%;
@@ -20,12 +20,14 @@
   overflow-x: visible;
 } */
 
-.table-responsive{
+.table-responsive {
   overflow-x: visible;
 }
+
 .td-resp {
-  overflow-y:hidden;
+  overflow-y: hidden;
 }
-.sm{
+
+.sm {
   width: 150px
 }
