@@ -88,8 +88,8 @@ const Breads = () => {
           </div>
         </div>
       </div>
-       </div>
       < AdminFooter />
+      
        </>
   );
 }

@@ -124,7 +124,7 @@ const Registerpg = () => {
         event.preventDefault();
         if (invalidFirstName || invalidLastName || invalidEmail || invalidPass || invalidAddress || invalidRole) {
             alert("invalid data filled!!!");
-            window.location.reload();
+            // window.location.reload();
         } else {
             await axiosConfig.post("/user/signup", registerUserData)
                 .then(response => {

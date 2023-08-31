@@ -145,51 +145,6 @@ const Addons = () => {
         </table>
         <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Add to Today's Add On" clickType="Button"  onClick={submitSelectedAddons}/>
         
-      < Navbar2 homePath="/admin/home" />
-      <div className="mt-3 d-flex align-items-center flex-wrap">
-        <div className=" col-lg-5 col-md-5 col-12">
-          <img className="curry-Img"
-            src={images[imageIndex]}
-            alt={`Image ${imageIndex + 1}`}
-          />
-        </div>
-        <div className="col-lg-7 col-md-6 col-12 justify-content-end">
-          <div className="addon-component">
-            <div style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
-              <div className="mt-1" style={{ position: "relative" }}>
-                <div className="largeFont zIndBack headingLarge">
-                  Add On's
-                </div>
-                <div className="smallFont zIndFront headingSmall">
-                  Add On's
-                </div>
-              </div>
-            </div>
-            <div >
-              <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Create New Add On" clickType="Button" onClick={handleButtonClick} />
-
-              <table className="table mt-3 table-head" >
-                <thead  >
-                  <tr>
-                    <th >Name </th>
-                    <th > Price </th>
-                    <th > Select </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {addonsList && addonsList.map(data => (
-                    <tr key={data.id}>
-                      <td >{data.name}</td>
-                      <td >{data.price}</td>
-                      <td>
-                        <input type="checkbox" value={data.id} onChange={handleAddonChange}></input>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              <Button classname="btn btn-md ps-3 pe-3 mt-1 me-5 customBtn text-light" btnText="Add to Today's Add On" clickType="Button" onClick={submitSelectedAddons} />
-
             </div>
             <div className="mt-5">
               <div style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>

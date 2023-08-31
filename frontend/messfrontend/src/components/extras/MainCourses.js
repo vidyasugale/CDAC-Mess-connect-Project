@@ -90,7 +90,6 @@ const MainCourses = () => {
           </div>
         </div>
       </div>
-       </div>
       < AdminFooter />
        </>
   );
