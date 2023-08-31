@@ -2,10 +2,9 @@ import "./CreateNewMenu.css";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../header/Button";
-import Navbar2 from "../header/Navbar2";
-import Footer from "../footer/Footer";
 import axiosConfig from "../../configs/axiosConfig";
-
+import AdminFooter from '../footer/AdminFooter'
+import AdminNavbar from '../header/AdminNavbar'
 const CreateNewMenu = () => {
 
   const [mainCourseArray, setMainCourseArray] = useState([]);
@@ -135,7 +134,7 @@ const CreateNewMenu = () => {
   };
   return (
     <>
-      <Navbar2 homePath="/admin/home" />
+    <AdminNavbar homePath="/admin/home"/> 
       <div className="addNewMenu-component">
         <div style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
           <div className="mt-1" style={{ position: "relative" }}>
@@ -310,7 +309,7 @@ const CreateNewMenu = () => {
           </form>
         </div>
       </div>
-      <Footer />
+      < AdminFooter />
     </>
   );
 };

@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./SelectMainMenu.css";
 import Button from "../header/Button";
-
 import { Link, useNavigate } from "react-router-dom";
-import Navbar2 from '../header/Navbar2'
-import Footer from '../footer/Footer'
 import axiosConfig from '../../configs/axiosConfig';
-
-
+import AdminFooter from '../footer/AdminFooter'
+import AdminNavbar from '../header/AdminNavbar'
 
 const SelectMainMenu = () => {
   const [allMenu, setAllMenu] = useState([]);
@@ -58,7 +55,7 @@ const SelectMainMenu = () => {
 
   return (
     <>
-      < Navbar2 homePath="/admin/home" />
+    <AdminNavbar homePath="/admin/home"/> 
       <div className="mainCourse-container">
         <div className="" style={{ position: "relative", height: "5rem" }}>
           <div className="largeFont zIndBack registerHeadOut" style={{ left: "20%" }}>
@@ -117,7 +114,7 @@ const SelectMainMenu = () => {
         </Link>
 
       </div>
-      < Footer />
+      < AdminFooter />
     </>
   )
 

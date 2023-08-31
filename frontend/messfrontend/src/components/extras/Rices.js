@@ -2,8 +2,8 @@ import './Rices.css';
 import React, { useEffect, useState } from 'react';
 import Button from '../header/Button';
 import axiosConfig from '../../configs/axiosConfig';
-import Navbar2 from '../header/Navbar2'
-import Footer from '../footer/Footer'
+import AdminFooter from '../footer/AdminFooter'
+import AdminNavbar from '../header/AdminNavbar'
 
 const Rices = () => {
   const [riceList, setRiceList] = useState([]);
@@ -35,10 +35,10 @@ const Rices = () => {
 
   return (
     <>
-      < Navbar2 homePath="/admin/home" />
-      <div className="mt-3 d-flex align-items-center flex-wrap">
-        <div className=" col-lg-5 col-md-5 col-12">
-          <img src="../assets/rice.png" className="rice-Img" />
+    <AdminNavbar homePath="/admin/home"/> 
+    <div className="mt-3 d-flex align-items-center flex-wrap">
+    <div className=" col-lg-5 col-md-5 col-12">
+    <img src="../assets/rice.png" className="rice-Img" />
 
         </div>
         <div className="col-lg-7 col-md-6 col-12 justify-content-end">
@@ -87,8 +87,9 @@ const Rices = () => {
           </div>
         </div>
       </div>
-      < Footer />
-    </>
+       </div>
+      < AdminFooter />
+       </>
   );
 }
 

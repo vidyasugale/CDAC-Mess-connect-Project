@@ -14,7 +14,7 @@ const AboutCard = () => {
                             </div>
                         </div>
                         <div className="container aboutDetails p-1">
-                            "Mess Connect" is designed to revolutionize the traditional campus dining experience by integrating smart technology, user centric design, and efficient management. This innovative platform provides a one-stop solution to manage meals, modifications, and payments, all through a user-friendly web interface. From the outset, the project envisions a seamless and convenient experience for all stakeholders, including <br /> students, mess administrators, and kitchen staff.
+                        "Mess Connect" is designed to revolutionize the traditional campus dining experience by integrating smart technology, user centric design, and efficient management. This innovative platform provides a one-stop solution to manage meals, modifications, and payments, all through a user-friendly web interface. From the outset, the project envisions a seamless and convenient experience for all stakeholders, including students, mess administrators, and kitchen staff.
                         </div>
 
                     </div>

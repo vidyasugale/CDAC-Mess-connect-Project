@@ -10,6 +10,12 @@ const AdminHome = () => {
 
   return (
     <>
+    <AdminNavbar homePath="/admin/home"/> 
+<div style={{fontWeight:"bold", fontSize:"20px"}}>
+                Welcome, {adminData.firstName} {adminData.lastName} 
+            </div>
+                <div className="menu-container">
+                <div style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
       <AdminNavbar adminData={adminData} />
       <div style={{ fontWeight: "bold", fontSize: "20px" }}>
         Welcome, {adminData.firstName} {adminData.lastName}
