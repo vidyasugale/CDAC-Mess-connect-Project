@@ -1,12 +1,12 @@
 import Card from "./Card";
 import AppContext from "../../configs/AppContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import axiosConfig from "../../configs/axiosConfig";
 
 
 const ThaliCards = () => {
 
-
-
+    const [cardData,setCardData] = useState([])
     // const cardData = [
     //     {
     //         id: 1,
@@ -44,7 +44,22 @@ const ThaliCards = () => {
     // useEffect(() => {
     //     setCardDetails(cardData)
     // }, [])
-    const cardData = useContext(AppContext);
+    // const cardData = useContext(AppContext);
+
+    useEffect(() => {
+
+        const myfunc = async () => {
+            try {
+                const response = await axiosConfig.get("/home");
+                console.log(response);
+                setCardData(response.data);
+              } catch (error) {
+                console.log(error);
+              }
+        }
+        myfunc();
+    },[]);
+
     return (
         <>
         <div id="menuCards" style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>

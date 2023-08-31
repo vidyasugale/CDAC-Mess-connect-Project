@@ -1,8 +1,8 @@
 import "./AdminHome.css";
-
 import { Link} from "react-router-dom";
 import AdminFooter from '../footer/AdminFooter';
 import AdminNavbar from "../header/AdminNavbar";
+import ThaliCards from "../body/ThaliCards";
 
 
 const AdminHome = () => {
@@ -60,6 +60,7 @@ const AdminHome = () => {
                       <Link to="/create-new-menu"> </Link>
                       <Link to="/admin/home"> </Link>
                 </div>
+                <ThaliCards />
         <AdminFooter />
     </>
   );
