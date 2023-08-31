@@ -139,7 +139,7 @@ const Loginpg = ({ setValidUser }) => {
         </div>
 
 
-        <Button classname="btn btn-md  customBtn text-light mb-3" btnText="Login" clickType="button" onClick={handleLogin} />
+        <Button classname="btn btn-md  customBtn text-light mb-3" btnText="Login" clickType="Submit" onClick={handleLogin} />
         <div>
 
           <div>Don't have an account?</div>
