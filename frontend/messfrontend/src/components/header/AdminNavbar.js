@@ -32,23 +32,23 @@ const Navbar2 = ({ userData, onLogout }) => {
               <Button classname="navbtn btn btn-md" btnText="CONTACT" />
             </Link>
 
-            
-              <Link to="/">
-                <Button
-                  classname="navbtn btn btn-md"
-                  btnText="LOGOUT"
-                  onClick={onLogout}
-                />
-              </Link>
-              
-              <div className="user-icon-dropdown">
-                <i className="fa-solid fa-user"></i>
-                <div className="dropdown-content">
+
+            <Link to="/">
+              <Button
+                classname="navbtn btn btn-md"
+                btnText="LOGOUT"
+                onClick={onLogout}
+              />
+            </Link>
+
+            <div className="user-icon-dropdown">
+              <i className="fa-solid fa-user"></i>
+              <div className="dropdown-content">
                 <Link to="/admin/edit-profile">
                   <div className="dropdown-item">Edit Profile</div>
                 </Link>
-                  <div className="dropdown-item">Change Password</div>
-                
+                <div className="dropdown-item">Change Password</div>
+
               </div>
             </div>
           </div>

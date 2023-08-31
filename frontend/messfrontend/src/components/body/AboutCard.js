@@ -19,7 +19,7 @@ const AboutCard = () => {
 
                     </div>
                     <div className="container box box2 zIndFront d-flex justify-content-center" >
-                    <img className="" style={{ width: "8vw"}} src="../assets/newlogo.svg" alt="logo" srcset="" />
+                        <img className="" style={{ width: "8vw" }} src="../assets/newlogo.svg" alt="logo" srcset="" />
                     </div>
                 </div>
             </div>

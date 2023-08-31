@@ -3,12 +3,12 @@ import CustomerFooter from "../footer/CustomerFooter";
 import AboutCard from "../body/AboutCard";
 
 const CustomerAboutUs = () => {
-    return(
+    return (
         <>
-        <Navbar2 />
-        <br/>
-        <AboutCard />
-        <CustomerFooter />
+            <Navbar2 />
+            <br />
+            <AboutCard />
+            <CustomerFooter />
         </>
     )
 

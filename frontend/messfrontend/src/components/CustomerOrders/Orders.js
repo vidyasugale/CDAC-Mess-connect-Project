@@ -1,9 +1,9 @@
-import {useEffect, useState} from "react"
-import Footer from "../footer/Footer"
+import { useEffect, useState } from "react"
 import Navbar2 from "../header/Navbar2"
 import "../stylesheets/customerOrders.css"
 import axiosConfig from "../../configs/axiosConfig"
 import "../stylesheets/navbar.css"
+import CustomerFooter from "../footer/CustomerFooter"
 
 const Orders = () => {
   const [data, setData] = useState([]);
@@ -38,61 +38,61 @@ const Orders = () => {
   //     Order_Date : "10/05/2023"
   //   }
   // ]
-  
+
 
   useEffect(() => {
     const getOrderSummery = async () => {
-      const data = JSON.parse( sessionStorage.getItem("customerData"));
+      const data = JSON.parse(sessionStorage.getItem("customerData"));
       const response = await axiosConfig.get(`/user/getuserorders/${data.id}`);
       console.log(response);
       const reverseData = response.data.reverse();
       setData(reverseData);
-      
+
     }
     getOrderSummery();
-  },[]);
+  }, []);
 
-    return(
-        <>
-        <Navbar2 homePath="/customer/home" />
-        <div className="container orders mt-5 p-4 ps-5 pe-5 table-responsive">
+  return (
+    <>
+      <Navbar2 />
+      <div className="container orders mt-5 p-4 ps-5 pe-5 table-responsive">
         <table className="list table">
-  <thead>
-    <tr>
-      <th className="ths" scope="col">Order No.</th>
-      <th className="ths" scope="col">Thali</th>
-      <th className="ths" scope="col">Add-Ons</th>
-      <th className="ths" scope="col">Amount</th>
-      <th className="ths" scope="col">Order Date</th>
-      <th className="ths" scope="col">Order Time</th>
-    </tr>
-  </thead>
-  <tbody>
-    {data && data.map(data => {
-      return(
-        <>
+          <thead>
             <tr>
-      <th className="ths" scope="row">{data.orderId}</th>
-      <td>{data.menuName}</td>
+              <th className="ths" scope="col">Order No.</th>
+              <th className="ths" scope="col">Thali</th>
+              <th className="ths" scope="col">Add-Ons</th>
+              <th className="ths" scope="col">Amount</th>
+              <th className="ths" scope="col">Order Date</th>
+              <th className="ths" scope="col">Order Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data && data.map(data => {
+              return (
+                <>
+                  <tr>
+                    <th className="ths" scope="row">{data.orderId}</th>
+                    <td>{data.menuName}</td>
 
-      <td>
-      {
-        (data.addonsNames.length > 0) ? data.addonsNames.map(addOn => <span>{addOn}, </span>) : <span>No AddOns</span>
-      }
-      </td>
-      <td>{data.totalAmount}</td>
-      <td>{data.orderDate}</td>
-      <td>{(data.orderTime).slice(0,8)}</td>
-    </tr>
-        </>
-      )
-    })}
-  </tbody>
-</table>
-        </div>
-        <Footer />
-        </>
-    )
+                    <td>
+                      {
+                        (data.addonsNames.length > 0) ? data.addonsNames.map(addOn => <span>{addOn}, </span>) : <span>No AddOns</span>
+                      }
+                    </td>
+                    <td>{data.totalAmount}</td>
+                    <td>{data.orderDate}</td>
+                    <td>{(data.orderTime).slice(0, 8)}</td>
+                  </tr>
+                </>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+      <CustomerFooter />
+    </>
+  )
 }
 
 export default Orders;

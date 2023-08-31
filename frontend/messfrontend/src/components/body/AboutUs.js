@@ -3,12 +3,12 @@ import Navbar from "../header/Navbar";
 import AboutCard from "./AboutCard";
 
 const AboutUs = () => {
-    return(
+    return (
         <>
             <Navbar />
-            <br/>
-            <AboutCard/>
-            <Footer/>
+            <br />
+            <AboutCard />
+            <Footer />
         </>
     )
 }
