@@ -2,10 +2,10 @@ import "./Addons.css";
 import { useState, useEffect } from "react";
 import Button from '../header/Button';
 import React, { useRef } from 'react';
-import Navbar2 from '../header/Navbar2'
-import Footer from '../footer/Footer'
 import axiosConfig from "../../configs/axiosConfig";
 import { useNavigate } from "react-router-dom";
+import AdminFooter from '../footer/AdminFooter'
+import AdminNavbar from '../header/AdminNavbar'
 
 const Addons = () => {
   const images = [
@@ -100,7 +100,7 @@ const Addons = () => {
   }
   return (
     <>
-    < Navbar2 homePath="/admin/home" />
+    <AdminNavbar homePath="/admin/home"/> 
     <div className="mt-3 d-flex align-items-center flex-wrap">
     <div className=" col-lg-5 col-md-5 col-12">
       <img className="curry-Img"
@@ -183,7 +183,7 @@ const Addons = () => {
       </div>
       </div>
       </div>
-      < Footer />
+      < AdminFooter />
        </>
   )
 };

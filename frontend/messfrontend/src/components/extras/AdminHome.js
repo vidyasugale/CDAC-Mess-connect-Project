@@ -10,7 +10,7 @@ const AdminHome = () => {
 
   return (
     <>
-    <AdminNavbar adminData={adminData} />
+    <AdminNavbar homePath="/admin/home"/> 
 <div style={{fontWeight:"bold", fontSize:"20px"}}>
                 Welcome, {adminData.firstName} {adminData.lastName} 
             </div>

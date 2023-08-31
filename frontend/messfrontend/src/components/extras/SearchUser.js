@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axiosConfig from "../../configs/axiosConfig";
-import Navbar2 from "../header/Navbar2";
-import Footer from "../footer/Footer";
 import Button from "../header/Button";
 import "./SearchUser.css";
+import AdminFooter from '../footer/AdminFooter'
+import AdminNavbar from '../header/AdminNavbar'
 
 const SearchUser = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -50,7 +50,7 @@ const SearchUser = () => {
 
   return (
     <>
-      <Navbar2 homePath="/admin/home" />
+    <AdminNavbar homePath="/admin/home"/> 
       <div className="searchUser-container">
       <div style={{ textAlign: "center", marginTop: "10px", height: "100px" }}>
           <div className="mt-1" style={{ position: "relative" }}>
@@ -139,7 +139,7 @@ const SearchUser = () => {
         </table>
         </div>
       </div>
-      <Footer />
+      < AdminFooter />
     </>
   );
 };

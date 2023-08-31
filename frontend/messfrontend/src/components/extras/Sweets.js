@@ -2,8 +2,8 @@ import './Sweets.css';
 import React, { useEffect, useState } from 'react';
 import Button from '../header/Button';
 import axiosConfig from '../../configs/axiosConfig';
-import Navbar2 from '../header/Navbar2'
-import Footer from '../footer/Footer'
+import AdminFooter from '../footer/AdminFooter'
+import AdminNavbar from '../header/AdminNavbar'
 
 const Sweets = () => {
   const [sweetList, setSweetList] = useState([]);
@@ -35,7 +35,7 @@ const Sweets = () => {
 
   return (
     <>
-    < Navbar2 homePath="/admin/home" />
+    <AdminNavbar homePath="/admin/home"/> 
     <div className="mt-3 d-flex align-items-center flex-wrap">
     <div className=" col-lg-5 col-md-5 col-12">
     <img src="../assets/sweet.png" className="sweet-Img" />
@@ -87,7 +87,7 @@ const Sweets = () => {
     </div>
       </div>
        </div>
-       < Footer />
+      < AdminFooter />
        </>
   );
 }
