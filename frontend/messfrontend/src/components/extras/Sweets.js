@@ -88,7 +88,6 @@ const Sweets = () => {
           </div>
         </div>
       </div>
-       </div>
       < AdminFooter />
        </>
 

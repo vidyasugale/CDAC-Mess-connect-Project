@@ -87,7 +87,6 @@ const Rices = () => {
           </div>
         </div>
       </div>
-       </div>
       < AdminFooter />
        </>
   );
